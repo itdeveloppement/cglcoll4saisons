@@ -13,11 +13,26 @@ class Bdd {
 
 
     // attributs
-    protected static $dsn = 'mysql:host=localhost;dbname=dbetxgjwagullv;charset=UTF8';
-    protected static $userName = 'cigaleav_dolites';
-    protected static $password  = 'CglAvt30120';
-    protected static $options = [PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING];
+    protected static $dsn;
+    protected static $userName;
+    protected static $password;
+    protected static $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING];
     protected static $bdd = null;
+
+
+    // ---------- setter et getter --------------------------
+    public static function setUserName($name) {
+        self::$userName = $name;
+    }
+    public static function setPassword($password) {
+        self::$password = $password;
+    }
+    public static function setDsn($dsn) {
+        self::$dsn = $dsn;
+    }
+
+   
+
 
     /** 
      * Role : connecter la base de donnée
@@ -28,6 +43,9 @@ class Bdd {
      * @return : l'objet de connexion ou l'erreur d'exception 
      */
     public static function connexion() {
+        // var_dump(self::$userName);
+        // var_dump( self::$password);
+        
         try 
         { 
         self::$bdd = new PDO (self::$dsn, self::$userName, self::$password, self::$options); 

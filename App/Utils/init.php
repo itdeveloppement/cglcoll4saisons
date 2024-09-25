@@ -5,10 +5,7 @@
  * Editeur : Société Cigale Aventure
  */
 
-/**
- * role : initialiser le projet
- */
-
+use App\Services\Bdd;
 
 // DEVELOPPEMENT : Affichage des erreurs
 ini_set('display_errors', 1);// Aficher les erreurs
@@ -19,7 +16,7 @@ error_reporting(E_ALL); // Toutes les erreurs
 // header("Cache-Control: max-age=6000"); // limiter le temps de durée du cache par defaut 12h
 header("Cache-Control: no-cache"); // ne pas mettre en cache 
 
-//Parametrage module pour Dolibarr pour acces exterieur et non affichage des menus
+// ------------------------- INIT ACCES EXTERIEUR A DOLIBARR--------------------------------
 
 // define('NOTOKENRENEWAL', 1); // Pour éviter de renouveler le token
 // define('NOCSRFCHECK', 1);    // Pour éviter le check CSRF
@@ -27,6 +24,8 @@ define('NOLOGIN', 1);        // Pour bypasser la vérification de login
 // define('NOREQUIREMENU', 1);  // Pour désactiver les menus (haut et gauche)
 // define('NOREQUIREHTML', 1);  // Pour désactiver les en-têtes et pieds de page HTML
 // define('NOREQUIREAJAX', 1);  // Pour désactiver AJAX
+
+// ------------------------- INIT MAIN DOLIBARR --------------------------------
 
 // Load Dolibarr environment
 $res = 0;
@@ -65,7 +64,8 @@ if (!$res) {
 
 require_once DOL_DOCUMENT_ROOT.'/core/class/html.formfile.class.php';
 require_once DOL_DOCUMENT_ROOT . '/core/lib/admin.lib.php';
-// Load translation files required by the page
+
+// ------------------------- INIT LANG --------------------------------
 
 // initialisation langue dans la session par default francais
 $langs->loadLangs(array("cglcoll4saisons@cglcoll4saisons"));
@@ -74,12 +74,8 @@ if (!isset($_SESSION["lang"])) {
     $_SESSION["lang"] = "fr_FR"; // Langue par défaut
 }
 
-function changeLang ($db, $conf,  $lang) { 
-    if (!empty($lang)) { 
-        $newLang =$lang;
-        dolibarr_set_const($db, "MAIN_LANG_DEFAULT", $newLang, 'chaine', 0, '', $conf->entity);
-    }
-}
+
+//----------------------- AUTRES -------------------------------------
 
 $action = GETPOST('action', 'aZ09');
 $max = 5;
@@ -93,13 +89,10 @@ $now = dol_now("tzuser");
 //	accessforbidden();
 //}
 //restrictedArea($user, 'cglcoll4saisons', 0, 'cglcoll4saisons_myobject', 'myobject', '', 'rowid');
-
 // $db->close();
 
-// BASE URL
-define('BASE_URL', '/custom/cglcoll4saisons/');
+// ------------------------- INIT CLASSES ET FONCTIONS ----------------
 
-// chargement des classes
     require_once __DIR__ . '/../Services/Bdd.php';
     require_once __DIR__ . '/../Services/Session.php';
     require_once __DIR__ . '/../Services/Authentification.php';
@@ -111,7 +104,20 @@ define('BASE_URL', '/custom/cglcoll4saisons/');
     require_once __DIR__ . '/../Modeles/ParticipantDep.php';
     require_once __DIR__ . '/../Utils/date_fct.php';
     require_once __DIR__ . '/../Utils/affichage_fct.php';
+    require_once __DIR__ . '/../Utils/langs_fct.php';
     require_once __DIR__ . '/../Utils/verification_champs.php';
+    require_once __DIR__ . '/../../vendor/autoload.php';
 
-// initialisation de la session
+// ------------------------- INIT VARIABLES ENVIRONNEMENT .ENV --------------------------------  
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    try {
+        $dotenv->load();
+        Bdd::setUserName($_ENV["DB_USER"]);
+        Bdd::setPassword($_ENV["DB_PASSWORD"]);
+        Bdd::setDsn($_ENV["DB_DSN"]);
+    } catch (\Dotenv\Exception\InvalidPathException $e) {
+        dol_syslog("Message : init.php - Erreur lors du chargement des variable d'environnement. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
+    }
+
+// ------------------------- INIT SESSION -------------------------------- 
 session_start();
