@@ -85,7 +85,9 @@ class User extends Modele {
                 $this->default_lang = '';
             }    
         } catch (PDOException $e) {
-            echo "Erreur lors de la recuperation des caracteristique de l'utilisateur : " . $e->getMessage();
+            dol_syslog("Message : Class User.php - Erreur SQL select user. Requette : " . $sql, LOG_ERR, 0, "_cglColl4Saisons" );
+            require_once __DIR__ . "/../views/error/errtech.php";
+            exit;
         }
     }
     

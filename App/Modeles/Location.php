@@ -121,7 +121,9 @@ class Location extends Modele {
             $result = $req->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            echo "Erreur lors de la recuperation de la liste des deprts : " . $e->getMessage();
+            dol_syslog("Message : Classe Location.php - Erreur lors de la recuperation de la liste des locations. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
+            require_once __DIR__ . "/../views/error/errtech.php";
+            exit;
         }
     }
 
@@ -177,7 +179,9 @@ class Location extends Modele {
             $result = $req->fetch(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            echo "Erreur lors de la recuperation de la liste des deprts : " . $e->getMessage();
+            dol_syslog("Message : Classe Location.php - Erreur lors de la recuperation d'un LO. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
+            require_once __DIR__ . "/../views/error/errtech.php";
+            exit;
         }
     }
     

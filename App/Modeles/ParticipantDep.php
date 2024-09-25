@@ -115,7 +115,9 @@ class ParticipantDep extends Modele {
             $result = $req->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            echo "Erreur lors de la recuperation de la liste des participant d'une location : " . $e->getMessage();
+            dol_syslog("Message : ParticipantDep.php - Erreur SQL liste des participant depart. Requette : " . $sql, LOG_ERR, 0, "_cglColl4Saisons" );
+            require_once __DIR__ . "/../views/error/errtech.php";
+            exit;
         }
     } 
 
@@ -148,8 +150,9 @@ class ParticipantDep extends Modele {
             $result = $req->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            dol_syslog("Message : ParticipantDep.php - Erreur SQL. Requette : " . $sql, LOG_ERR, 0, "_cglColl4Saisons" );
-
+            dol_syslog("Message : ParticipantDep.php - Erreur SQL update participant depart. Requette : " . $sql, LOG_ERR, 0, "_cglColl4Saisons" );
+            require_once __DIR__ . "/../views/error/errtech.php";
+            exit;
         } 
     }
 }

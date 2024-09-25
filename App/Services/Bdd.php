@@ -53,8 +53,9 @@ class Bdd {
         return  self::$bdd;
         }
         catch (PDOException $exception ) {
-        // include "app/controleurs/index.php"
-        echo "Erreur de connexion à la BDD : " . $exception->getMessage() . "Code message : " . $exception->getCode();;
+            dol_syslog("Message : Class Bdd.php - Erreur SQL select user Erreur de connexion à la BDD : " . $exception->getMessage() . " Code message : " . $exception->getCode(), LOG_ERR, 0, "_cglColl4Saisons");
+            require_once __DIR__ . "/../views/error/errtech.php";
+            exit;
         }
     }
 
