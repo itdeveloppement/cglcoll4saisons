@@ -1,0 +1,86 @@
+# Copyright (C) 2024 Marti Castellano <marti.castellano@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleCglColl4SaisonsName'
+ModuleCglColl4SaisonsName = CglColl4Saisons
+# Module description 'ModuleCglColl4SaisonsDesc'
+ModuleCglColl4SaisonsDesc = CglColl4Saisons description
+
+#
+# Admin page
+#
+CglColl4SaisonsSetup = CglColl4Saisons setup
+Settings = Settings
+CglColl4SaisonsSetupPage = CglColl4Saisons setup page
+CGLCOLL4SAISONS_MYPARAM1 = My param 1
+CGLCOLL4SAISONS_MYPARAM1Tooltip = My param 1 tooltip
+CGLCOLL4SAISONS_MYPARAM2=My param 2
+CGLCOLL4SAISONS_MYPARAM2Tooltip=My param 2 tooltip
+
+
+#
+# About page
+#
+About = About
+CglColl4SaisonsAbout = About CglColl4Saisons
+CglColl4SaisonsAboutPage = CglColl4Saisons about page
+
+#
+# Sample page
+#
+CglColl4SaisonsArea = Home CglColl4Saisons
+MyPageName = My page name
+
+#
+# Sample widget
+#
+MyWidget = My widget
+MyWidgetDescription = My widget description
+
+# page liste des depart
+intitule-liste-depart = For each activity, fill in the information.
+
+# page detail des BU et LO
+intitule-detail-depart = For each participant, fill in or change the information and validate.
+participant = Participant
+loc-velo = Bike rental.
+
+# page a bientot
+intitlule-abientot = Thank you for visiting!
+
+# page erreur droit
+intitlule-errdroit = You cannot access this content! Contact Cigale Aventure. Leave a message and you will be automatically contacted.
+
+# page erreur tech
+intitlule-errtech = A technical error occurred! Contact Cigale Aventure. Leave a message and you will be automatically contacted.
+
+# page infos enregistrées
+intitlule-infos-enregistrees = Your information is saved.
+
+# boutons
+btn-accueil = Home
+btn-anglais = English
+btn-francais = French
+btn-quitter = Exit
+btn-info = Complete the information
+btn-valider = Validate the information
+btn-retour = Back to list of activities
+
+# footer
+text-footer = Cigale Aventure is at your service.

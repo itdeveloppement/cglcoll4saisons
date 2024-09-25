@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(189, 165, 165);
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+h3 {
+    margin: 10px 0;
+}
+
+/* header */
+header {
+    flex-direction: column;
+}
+.container-img {
+    max-width: 600px;
+    height: auto;
+}
+header img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}

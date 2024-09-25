@@ -1,0 +1,87 @@
+# Copyright (C) 2024 Marti Castellano <marti.castellano@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleCglColl4SaisonsName'
+ModuleCglColl4SaisonsName = CglColl4Saisons
+# Module description 'ModuleCglColl4SaisonsDesc'
+ModuleCglColl4SaisonsDesc = CglColl4Saisons description
+
+#
+# Admin page
+#
+CglColl4SaisonsSetup = CglColl4Saisons setup
+Settings = Settings
+CglColl4SaisonsSetupPage = CglColl4Saisons setup page
+CGLCOLL4SAISONS_MYPARAM1 = My param 1
+CGLCOLL4SAISONS_MYPARAM1Tooltip = My param 1 tooltip
+CGLCOLL4SAISONS_MYPARAM2=My param 2
+CGLCOLL4SAISONS_MYPARAM2Tooltip=My param 2 tooltip
+
+
+#
+# About page
+#
+About = About
+CglColl4SaisonsAbout = About CglColl4Saisons
+CglColl4SaisonsAboutPage = CglColl4Saisons about page
+
+#
+# Sample page
+#
+CglColl4SaisonsArea = Home CglColl4Saisons
+MyPageName = My page name
+
+#
+# Sample widget
+#
+MyWidget = My widget
+MyWidgetDescription = My widget description
+
+# page liste des depart
+intitule-liste-depart = Pour chaque activités, renseigner les informations.
+
+# page detail des BU et LO
+intitule-detail-depart = Pour chaque participant, renseigner ou modifier les informations puis valider.
+participant = Participant
+loc-velo = Location velo.
+
+# page a bientot
+intitlule-abientot = Merci de votre visite !
+
+# page erreur droit
+intitlule-errdroit = Vous ne pouvez pas acceder à ce contenu ! Contacter Cigale Aventure. Laissez un message et vous serez automatiquement contacter.
+
+# page erreur tech
+intitlule-errtech = Une erreur technique est survenue ! Contacter Cigale Aventure. Laissez un message et vous serez automatiquement contacter.
+
+# page infos enregistrées
+intitlule-infos-enregistrees = Vos informations sont enregistrées.
+
+# boutons
+btn-accueil = Accueil
+btn-anglais = English
+btn-francais = French
+btn-quitter = Sortir
+btn-info = Compléter les informations
+btn-valider = Valider les informations
+btn-retour = Retour à la liste des activités
+
+# footer
+text-footer = Cigale Aventure est à votre écoute.
+
