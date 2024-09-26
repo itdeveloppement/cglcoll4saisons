@@ -82,13 +82,16 @@ class Depart extends Modele {
             * sinon $intituleDepart = valeur du champ intitule de la table llx_agefodd_formation_catalogue
      */
     public function loadDeparts () {
+        global $conf;
+      
+        $intitule = $conf->global->CGL_ACTIVITE_INDETERMINE;
 
         $sql = "SELECT distinct
                     /* id de la session/depart */
                     ses.rowid AS id_session,
                     /* nom de la session/depart */
                     CASE 
-                        WHEN cat.intitule = 'AUTRES' THEN ses.intitule_custo
+                        WHEN cat.rowid = $intitule THEN ses.intitule_custo
                         ELSE cat.intitule
                     END AS intituleDepart,
                     /* date de debut de la session/depart */

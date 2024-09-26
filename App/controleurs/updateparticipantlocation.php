@@ -62,7 +62,6 @@ foreach($prenom as $idBullDet => $value) {
         dol_syslog("Message : updatparticipant.php - Parametre ct3 POST non valide. Le format des données est incorecte  - Url : " . $_SERVER['REQUEST_URI'], LOG_ERR, 0, "_cglColl4Saisons" );
         header('Location: ../views/error/errtech.php');
         exit;
-        
     }
 
     // charger et inserer l'objet participant
@@ -74,8 +73,6 @@ foreach($prenom as $idBullDet => $value) {
             $participant->set("age", $valueAge);
             $participant->set("taille", $valueTaille);
             $participant->updateParticipants();
-            header('Location: ./afficherinfosenregistrees.php');
-            exit;
         } catch (PDOException $e) {
             dol_syslog("Message : updatparticipant.php - Erreur lors du cchargement de l'objet participant. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
             header('Location: ../views/error/errtech.php');
@@ -86,5 +83,7 @@ foreach($prenom as $idBullDet => $value) {
          header('Location: ../views/error/errtech.php');
          exit;
     }
+
+    header('Location: ./afficherinfosenregistrees.php');
 }
 

@@ -20,13 +20,17 @@ echo '<form id="participantFormDepart">';
         echo "<h3>" . $langs->trans("participant") . " $index</h3>";
         echo "<div class='flex'>";
 
-            echo '<input type="text" id="prenom_depart_' . $participant->get("rowid_participant") . '" name="prenom[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("prenom") !== null ? htmlspecialchars($participant->get("prenom")) : '' ). '" placeholder="Prenom">';
+            echo '<input class="prenom" type="text" id="prenom_depart_' . $participant->get("rowid_participant") . '" name="prenom[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("prenom") !== null ? htmlspecialchars($participant->get("prenom")) : '' ). '" placeholder="Prenom">';
+            echo '<p class="p-error d-none" id="error-prenom"></p>';
 
-            echo '<input class="age-field" type="text" id="age_depart_' . $participant->get("rowid_participant") . '" name="age[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("age") !== null ? htmlentities($participant->get("age")) : '' ). '" placeholder="Age">';
+            echo '<input class="age-field age" type="text" id="age_depart_' . $participant->get("rowid_participant") . '" name="age[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("age") !== null ? htmlentities($participant->get("age")) : '' ). '" placeholder="Age">';
+            echo '<p class="p-error d-none" id="error-age"></p>';
 
-            echo '<input class="taille-field" type="text" id="taille_depart_' . $participant->get("rowid_participant") . '" name="taille[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("taille") !== null ? htmlentities($participant->get("taille")) : '' ). '" placeholder="Taille en cm">';
+            echo '<input class="taille-field taille" type="text" id="taille_depart_' . $participant->get("rowid_participant") . '" name="taille[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("taille") !== null ? htmlentities($participant->get("taille")) : '' ). '" placeholder="Taille en cm">';
+            echo '<p class="p-error d-none" id="error-taille"></p>';
 
-            echo '<input class="poids-field" type="text" id="poids_depart_' . $participant->get("rowid_participant") . '" name="poids[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("poids") !== null ? htmlentities($participant->get("poids")) : '' ). '" placeholder="Poids en kg">';
+            echo '<input class="poids-field poids" type="text" id="poids_depart_' . $participant->get("rowid_participant") . '" name="poids[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("poids") !== null ? htmlentities($participant->get("poids")) : '' ). '" placeholder="Poids en kg">';
+            echo '<p class="p-error d-none" id="error-poids"></p>';
 
         echo "</div>";
     }
