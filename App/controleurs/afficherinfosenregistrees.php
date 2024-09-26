@@ -17,5 +17,4 @@ if (!$session->isConnected()) {
     require_once __DIR__ . "/../views/error/errdroit.php";
     exit;
 }
-
 require_once __DIR__ . "/../views/main/infosenregistrees.php";

@@ -18,6 +18,7 @@ if (!$session->isConnected()) {
     exit;
 }
 
+// verifier la langue
 if (!isset($_GET["lang"]) || empty($_GET["lang"])) {
     require_once __DIR__ . "/../views/error/errtech.php";
 exit;

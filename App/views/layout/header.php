@@ -20,18 +20,15 @@
         <img src="/custom/cglcoll4saisons/public/images/banniere.png" alt="image logo Cigale Aventure">
     </div>
     <?php 
-    
+    // contenu du bouton langue et parametre $lang url
     if ( $_SESSION["lang"] == "en_US") {
         $lang = "fr_FR";
         $btn = "French";
-    } else if  ($_SESSION["lang"] == "fr_FR"){
+    } else {
         $lang = "en_US";
         $btn = "English";
-    } else {
-        
     }
    
-    
     ?>
     <div>
         <button><a href="/custom/cglcoll4saisons/public/index.php">Accueil</a></button>
