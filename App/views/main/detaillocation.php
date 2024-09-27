@@ -21,11 +21,14 @@ echo '<form id="participantFormLocation">';
         echo "<h3>Participant $index</h3>";
         echo "<div class='flex'>";
 
-            echo '<input type="text" id="prenom_' . $participant->get("rowid_product") . '" name="prenom[' . $participant->get("rowid_product") . ']" value="' . ($participant->get("prenom") !== null ? htmlspecialchars($participant->get("prenom")) : '' ). '" placeholder="Prenom">';
+            echo '<input class="prenom" type="text" id="prenom_' . $participant->get("rowid_product") . '" name="prenom[' . $participant->get("rowid_product") . ']" value="' . ($participant->get("prenom") !== null ? htmlspecialchars($participant->get("prenom")) : '' ). '" placeholder="Prenom">';
+            echo '<p class="p-error d-none" id="error-prenom"></p>';
 
-            echo '<input class="age-field" type="text" id="age_' . $participant->get("rowid_product") . '" name="age[' . $participant->get("rowid_product") . ']" value="' . ($participant->get("age") !== null ? htmlentities($participant->get("age")) : '' ). '" placeholder="Age">';
+            echo '<input class="age-field age" type="text" id="age_' . $participant->get("rowid_product") . '" name="age[' . $participant->get("rowid_product") . ']" value="' . ($participant->get("age") !== null ? htmlentities($participant->get("age")) : '' ). '" placeholder="Age">';
+            echo '<p class="p-error d-none" id="error-age"></p>';
 
-            echo '<input class="taille-field" type="text" id="taille_' . $participant->get("rowid_product") . '" name="taille[' . $participant->get("rowid_product") . ']" value="' . ($participant->get("taille") !== null ? htmlentities($participant->get("taille")) : '' ). '" placeholder="Taille en cm">';
+            echo '<input class="taille-field taille" type="text" id="taille_' . $participant->get("rowid_product") . '" name="taille[' . $participant->get("rowid_product") . ']" value="' . ($participant->get("taille") !== null ? htmlentities($participant->get("taille")) : '' ). '" placeholder="Taille en cm">';
+            echo '<p class="p-error d-none" id="error-taille"></p>';
 
         echo "</div>";
     }

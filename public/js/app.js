@@ -1,71 +1,79 @@
 
 // fonction
 
-function testPrenom (prenom) {
+function testPrenom (prenom, idInput) {
     console.log(prenom);
+    console.log(idInput);
     // longueur maximale
     if(maxLength(prenom, 40)){
-        afficheErreur("prenom", `40 caracteres maximum`);
+        afficheErreur("prenom",idInput, `err-longueur-prenom`);
         return false
     } else if(hasCode(prenom)){ 
-        afficheErreur("prenom", "Les caractéres < ou > ne sont pas autorisés");
+        afficheErreur("prenom",idInput, 'err-insert-code');
         return false
     }
-    enleveErreur("prenom")
+    enleveErreur("prenom", idInput)
+   
     return true
 }
 
-function testAge (age) {
+function testAge (age,idInput) {
     console.log(age);
+    console.log(idInput);
    if(hasCode(age)){ 
-        afficheErreur("age", "Les caractéres < ou > ne sont pas autorisés");
+        afficheErreur("age",idInput, "err-insert-code");
         return false
     // si la valeur du champ n'est pas un nombre
     } else if (onlyTwoNumber (age)=== false) {
-        afficheErreur("age", "Nombre entre 1 et 99");
+        afficheErreur("age",idInput, "err-nombre-age");
         return false
     }
     
-    enleveErreur("age")
+    enleveErreur("age", idInput)
     return true
 }
 
-function testTaille (taille) {
+function testTaille(taille, idInput) {
     console.log(taille);
+    console.log(idInput);
    if(hasCode(taille)){ 
-        afficheErreur("taille", "Les caractéres < ou > ne sont pas autorisés");
+        afficheErreur("taille",idInput, "err-insert-code");
         return false
     // si la valeur du champ n'est pas un nombre
     } else if (onlyThreeNumber (taille)=== false) {
-        afficheErreur("taille", "Nombre entre 1 et 299");
+        afficheErreur("taille",idInput, "err-nombre");
         return false
     }
-    enleveErreur("taille")
+    enleveErreur("taille", idInput)
     return true
 }
 
-function testPoids (poids) {
+function testPoids(poids, idInput) {
     console.log(poids);
+    console.log(idInput);
     if(hasCode(poids)){ 
-        afficheErreur("poids", "Les caractéres < ou > ne sont pas autorisés");
+        afficheErreur("poids",idInput, "err-insert-code");
         return false
     // si la valeur du champ n'est pas un nombre
     } else if (onlyThreeNumber (poids)=== false) {
-        afficheErreur("poids", "Nombre entre 1 et 299");
+        afficheErreur("poids",idInput, "err-nombre");
         return false
     }
     
-    enleveErreur("poids")
+    enleveErreur("poids", idInput)
     return true
 }
 
+/*
 // AFFICHAGE DU MESSAGE ERREUR
 
 /** affiche un message d'erreur
  * @param {string} id 
  * @param {string} messageErreur 
  */
-function afficheErreur(id,messageErreur){
+/*
+function afficheErreur(id,idInput, messageErreur){
+    console.log(id)
     // Role : Afficher une erreur : mettre une bordure sur le bon input, et remplir le paragraphe d'erreur associé
     // Parametres : id l'id de l'input dans le quel il y a une erreur
     // messageErreur : le message a afficher
@@ -73,13 +81,16 @@ function afficheErreur(id,messageErreur){
     let input = document.querySelector(`.${id}`);
     input.classList.add("input-error");
     let p = document.getElementById("error-"+id);
-    p.innerText = messageErreur;
+    
+    let messageEr = erreurMessage[messageErreur];
+    p.innerText = messageEr;
     p.classList.remove("d-none");
 }
 /** efface le message d'erreur
  * @param {string} id 
  * 
  */
+/*
 function enleveErreur(id){
     // Role: eneleve l'erreur sur l'input et cache le paragraphe associé
     let input = document.querySelector(`.${id}`);
@@ -88,7 +99,56 @@ function enleveErreur(id){
     p.innerText ="";
     p.classList.add("d-none");
 }
+*/
 
+// AFFICHAGE DU MESSAGE ERREUR
+
+/** affiche un message d'erreur
+ * @param {string} id 
+ * @param {string} messageErreur 
+ */
+function afficheErreur(id,idInput, messageErreur){
+    
+    // Role : Afficher une erreur : mettre une bordure sur le bon input, et remplir le paragraphe d'erreur associé
+    // Parametres : id l'id de l'input dans le quel il y a une erreur
+    // messageErreur : le message a afficher
+    // retour: rien !
+    let input = document.getElementById(idInput);
+    input.classList.add("input-error");
+    let p = document.querySelector(`.p-error[data-id="${idInput}"]`);
+    let messageEr = erreurMessage[messageErreur];
+    p.innerText = messageEr;
+    p.classList.remove("d-none");
+}
+/** efface le message d'erreur
+ * @param {string} id 
+ * 
+ */
+
+function enleveErreur(id, idInput){
+    // Role: eneleve l'erreur sur l'input et cache le paragraphe associé
+    let input = document.getElementById(idInput);
+    input.classList.remove("input-error");
+    let p = document.querySelector(`.p-error[data-id="${idInput}"]`);
+    p.innerText ="";
+    p.classList.add("d-none");
+    // message erreur submit
+    let btn_form = document.getElementById("btn-form");
+    btn_form.classList.add("d-none");
+}
+
+
+
+/** NOMBRE COMPARAISON : compare si la valeur du champ est superieure à une valeur (logueur voulue) passée en parametre
+ * @param {number} string la chaine de caractere du champ
+ * @param {number} longueurMax la longueur max que peut prendre la chaine
+ * @returns true si la chaine de caractere du camps est plus longue que le parametre sinon retourne false
+ */
+function maxLength (valueField, longueurMax){
+    if(valueField.length >= longueurMax) {
+    return true;
+    } return false
+}
 /** TEXTE CODE : verifie si la valeur du champ contient du code
  * @param {string} valueField la chaine de caractere du champ
  * @returns  true si il y a du code 
@@ -125,28 +185,11 @@ function onlyTwoNumber (valueField) {
 function onlyThreeNumber (valueField) {
     // let reg=/^\d+$/;
     let reg = /^(?:[1-9]|[1-9][0-9]|[12][0-9]{2})$/;
+    valueField = String(valueField);
     if (reg.test(valueField) || valueField.trim() == "") {
         return true;
     } return false
 }
-
-/** NOMBRE COMPARAISON : compare si la valeur du champ est superieure à une valeur (logueur voulue) passée en parametre
- * @param {number} string la chaine de caractere du champ
- * @param {number} longueurMax la longueur max que peut prendre la chaine
- * @returns true si la chaine de caractere du camps est plus longue que le parametre sinon retourne false
- */
-function maxLength (valueField, longueurMax){
-    if(valueField.length >= longueurMax) {
-    return true;
-    } return false
-}
-
-
-
-
-
-
-
 
 // ----- FORMULAIRE PARTICIPANT ------------------
 
@@ -157,35 +200,59 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
     if (formLocation) {
+
+          // verifier la valeur de la saisie du champ
+          let prenom = document.querySelector(".prenom");
+          let age = document.querySelector(".age");
+          let taille= document.querySelector(".taille");
+              
+          // verification des champs à la saisie
+          prenom.addEventListener("input", () => { testPrenom(prenom.value) });
+          age.addEventListener("input", () => {testAge(age.value)});
+          taille.addEventListener("input", () => {testTaille(taille.value)});
+
         formLocation.addEventListener("submit", function(event) {
             event.preventDefault();
             let formData = new FormData(formLocation);
 
-            // Vérifie le contenu de formData
-            formData.forEach((value, key) => {
-                console.log(`${key}: ${value}`);
-            });
+            // verification et soumission
+            let test1 = testPrenom(prenom.value);
+            let test2 = testAge(age.value.slice(0, -4));
+            let test3 = testTaille(taille.value.slice(0, -3));
+    
+            if(test1===true && 
+                test2 === true &&
+                test3 ===true ){
+                // formDepart.submit();
 
-            fetch('../controleurs/updateparticipantlocation.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.redirected) {
-                    window.location.href = response.url;
-                    return; 
-                }
-            })
-            .catch(error => {
-                console.error('Erreur:', error.message);
-                window.location.href = '../../App/views/error/errtech.php'
-            });
+                // Vérifie le contenu de formData
+                formData.forEach((value, key) => {
+                    console.log(`${key}: ${value}`);
+                });
+
+                fetch('../controleurs/updateparticipantlocation.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                        return; 
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error.message);
+                    window.location.href = '../../App/views/error/errtech.php'
+                });
+            }
         });
     }
-
+    /*
     // formulaire BU
     let formDepart = document.getElementById("participantFormDepart");
-    
+
+    // 
+
     if (formDepart) {
 
         // verifier la valeur de la saisie du champ
@@ -193,24 +260,19 @@ document.addEventListener("DOMContentLoaded", function() {
         let age = document.querySelector(".age");
         let taille= document.querySelector(".taille");
         let poids = document.querySelector(".poids");
-            
+           
+        
         // verification des champs à la saisie
-        prenom.addEventListener("change", () => { testPrenom(prenom.value) });
-        age.addEventListener("change", () => {testAge(age.value)});
-        taille.addEventListener("change", () => {testTaille(taille)});
-        poids.addEventListener("change", () => {testPoids(poids)});
-
+        prenom.addEventListener("input", () => { testPrenom(prenom.value) });
+        age.addEventListener("input", () => {testAge(age.value)});
+        taille.addEventListener("input", () => {testTaille(taille.value)});
+        poids.addEventListener("input", () => {testPoids(poids.value)});
 
           formDepart.addEventListener("submit", function(event) {
             event.preventDefault();
             let formData = new FormData(formDepart);
        
-    
-            // soumission
             // verification et soumission
-            
-
-
             let test1 = testPrenom(prenom.value);
             let test2 = testAge(age.value.slice(0, -4));
             let test3 = testTaille(taille.value.slice(0, -3));
@@ -221,14 +283,114 @@ document.addEventListener("DOMContentLoaded", function() {
                 test3 ===true && 
                 test4 ===true ){
                 // formDepart.submit();
+           
+                // Vérifie le contenu de formData
+                formData.forEach((value, key) => {
+                    console.log(`${key}: ${value}`);
+                });
+
+                // modifier les donnée en bdd
+                fetch('../controleurs/updateparticipantdepart.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                        return;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error.message);
+                    window.location.href = '../../App/views/error/errtech.php'
+                });
             }
 
+          });
+    }
+
+*/
+
+// formulaire BU
+let formDepart = document.getElementById("participantFormDepart");
+
+if (formDepart) {
+
+    // Fonction pour ajouter des écouteurs d'événements
+    const ajouterEcouteurs = (input) => {
+        input.addEventListener("input", () => {
+            switch (input.classList[0]) {
+                case "prenom":
+                    testPrenom(input.value, input.id);
+                    break;
+                case "age":
+                    testAge(input.value, input.id);
+                    break;
+                case "taille":
+                    testTaille(input.value, input.id);
+                    break;
+                case "poids":
+                    testPoids(input.value, input.id);
+                    break;
+            }
+        });
+    };
+
+    // Sélectionnez tous les champs d'entrée et ajoutez les écouteurs
+    document.querySelectorAll(".prenom, .age, .taille, .poids").forEach(ajouterEcouteurs);
+
+    formDepart.addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+
+        resultTest = [];
+        document.querySelectorAll("input").forEach((input) => {
+
+            // Vérification des champs avant la soumission
+            if (input.classList.contains("prenom")) {
+            let test = testPrenom(input.value, input.id);
+                if (test == false) {
+                    resultTest.push("false")
+                }
+            }
+
+                if (input.classList.contains("age")) {
+                let test = testAge(input.value.slice(0, -4), input.id);
+                if (test == false) {
+                    resultTest.push("false")
+                }
+            }
+                if (input.classList.contains("taille")) {
+                let test = testTaille(input.value.slice(0, -3), input.id);
+                if (test == false) {
+                    resultTest.push("false")
+                }
+            }
+                if (input.classList.contains("poids")) {
+                    let test = testPoids(input.value.slice(0, -3), input.id);
+                if (test == false) {
+                    resultTest.push("false")
+                }
+            }
+
+        })
+            
+console.log(resultTest)
+        let allTrue = true;
+            resultTest.forEach((value) => {
+                if (value !== true) {
+                    allTrue = false;
+                }
+            });
+
+        if (allTrue) {
             // Vérifie le contenu de formData
+            let formData = new FormData(formDepart);
             formData.forEach((value, key) => {
                 console.log(`${key}: ${value}`);
             });
 
-            // modifier les donnée en bdd
+            // Modifier les données en BDD
             fetch('../controleurs/updateparticipantdepart.php', {
                 method: 'POST',
                 body: formData
@@ -241,11 +403,28 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => {
                 console.error('Erreur:', error.message);
-                // window.location.href = '../../App/views/error/errtech.php'
+                window.location.href = '../../App/views/error/errtech.php';
             });
-          });
-    }
+        } else {
+            // message erreur submit
+            let btn_form = document.getElementById("btn-form");
+            btn_form.classList.remove("d-none");
+
+
+        }
+    });
+}
+
 });
+
+
+
+
+
+
+
+
+
 
 // Champ âge
 document.querySelectorAll('.age-field').forEach(function(input) {

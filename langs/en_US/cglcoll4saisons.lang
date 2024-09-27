@@ -73,6 +73,13 @@ intitlule-errtech = A technical error occurred! Contact Cigale Aventure. Leave a
 # page infos enregistrées
 intitlule-infos-enregistrees = Your information is saved.
 
+# message erreur
+err-longueur-prenom = 40 characters maximum.
+err-nombre = Number from 1 to 299.
+err-nombre-age = Number from to 1 to 99.
+err-insert-code = < or > are not allowed.
+err_sumit-form = Error in one of the fields of the form.
+
 # boutons
 btn-accueil = Home
 btn-anglais = English

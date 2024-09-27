@@ -90,6 +90,7 @@ foreach($prenom as $idBullDet => $value) {
             $participant->set("taille", $valueTaille);
             $participant->set("poids", $valuePoids);
             $participant->updateParticipantsDepart();
+           
         } catch (PDOException $e) {
             dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
             header('Location: ../views/error/errtech.php');

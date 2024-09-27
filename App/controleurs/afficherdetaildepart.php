@@ -24,7 +24,7 @@ if (!$session->isConnected()) {
 
 // verifier les données GET
 if(empty($_GET['session'])) {
-    dol_syslog("Message : afficherdetaillocation.php - Parametre url GET non valide  - Url : " . $_SERVER['REQUEST_URI'], LOG_ERR, 0, "_cglColl4Saisons" );
+    dol_syslog("Message : afficherdetaildepart.php - Parametre ct1 url GET non valide  - Url : " . $_SERVER['REQUEST_URI'], LOG_ERR, 0, "_cglColl4Saisons" );
     require_once __DIR__ . "/../views/error/errtech.php";
     exit;
 }
@@ -34,7 +34,7 @@ $id_session = intval($_GET['session']);
 $id_societe = $session->getIdConnected();
 
 if(!filter_var($id_session, FILTER_VALIDATE_INT)) {
-    dol_syslog("Message : afficherdetaillocation.php - Parametre url GET non valide  - id prodcut n'est pas de type integer", LOG_ERR, 0, "_cglColl4Saisons" );
+    dol_syslog("Message : afficherdetaildepart.php - Parametre ct2 url GET non valide  - id prodcut n'est pas de type integer", LOG_ERR, 0, "_cglColl4Saisons" );
     require_once __DIR__ . "/../views/error/errtech.php";
     exit;
 }
@@ -46,7 +46,7 @@ $depart = new Depart ($id_societe, $id_session, null);
 $departs = $depart->loadDeparts();
 
 if(empty($departs) || !is_array($departs)) {
-    dol_syslog("Message : afficherdetaillocation.php - la liste des locations est vide ou n'est pas au format d'un tableau", LOG_ERR, 0, "_cglColl4Saisons" );
+    dol_syslog("Message : afficherdetaildepart.php - la liste ct1 des locations est vide ou n'est pas au format d'un tableau", LOG_ERR, 0, "_cglColl4Saisons" );
     require_once __DIR__ . "/../views/error/errtech.php";
     exit;
 }
@@ -60,7 +60,7 @@ if (!in_array($id_session, $id_sessions)) {
 $listeParticipants = new ParticipantDep($id_societe, $id_session);
 $listeParticipantsDep = $listeParticipants->listeParticipantsDep();
 if(empty($listeParticipantsDep) || !is_array($listeParticipantsDep)) {
-    dol_syslog("Message : afficherdetaillocation.php - la liste des participants est vide ou n'est pas au format d'un tableau", LOG_ERR, 0, "_cglColl4Saisons" );
+    dol_syslog("Message : afficherdetailldepart.php - la liste ct2 des participants est vide ou n'est pas au format d'un tableau", LOG_ERR, 0, "_cglColl4Saisons" );
     require_once __DIR__ . "/../views/error/errtech.php";
     exit;
 }

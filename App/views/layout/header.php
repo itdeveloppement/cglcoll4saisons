@@ -31,9 +31,9 @@
    
     ?>
     <div>
-        <button><a href="/custom/cglcoll4saisons/public/index.php">Accueil</a></button>
-        <button><a href="/custom/cglcoll4saisons/App/controleurs/changerlangue.php?lang=<?= $lang ?>"><?= $btn ?></a></button>
-        <button><a href="/custom/cglcoll4saisons/App/controleurs/afficherabientot.php">Quitter</a></button>
+        <a href="/custom/cglcoll4saisons/public/index.php"><?= $langs->trans("btn-accueil") ?></a>
+        <a href="/custom/cglcoll4saisons/App/controleurs/changerlangue.php?lang=<?= $lang ?>"><?= $btn ?></a>
+        <a href="/custom/cglcoll4saisons/App/controleurs/afficherabientot.php"><?= $langs->trans("btn-quitter") ?></a>
     </div>
 
 </header>

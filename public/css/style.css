@@ -36,3 +36,6 @@ header img {
 .d-none{
     display: none;
 }
+.input-error{
+    border: 2px solid red;
+}

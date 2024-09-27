@@ -21,24 +21,35 @@ echo '<form id="participantFormDepart">';
         echo "<div class='flex'>";
 
             echo '<input class="prenom" type="text" id="prenom_depart_' . $participant->get("rowid_participant") . '" name="prenom[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("prenom") !== null ? htmlspecialchars($participant->get("prenom")) : '' ). '" placeholder="Prenom">';
-            echo '<p class="p-error d-none" id="error-prenom"></p>';
+            echo '<p class="p-error d-none" id="error-prenom" data-id="prenom_depart_' . $participant->get("rowid_participant") . '"></p>';
 
-            echo '<input class="age-field age" type="text" id="age_depart_' . $participant->get("rowid_participant") . '" name="age[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("age") !== null ? htmlentities($participant->get("age")) : '' ). '" placeholder="Age">';
-            echo '<p class="p-error d-none" id="error-age"></p>';
+            echo '<input class="age age-field" type="text" id="age_depart_' . $participant->get("rowid_participant") . '" name="age[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("age") !== null ? htmlentities($participant->get("age")) : '' ). '" placeholder="Age">';
+            echo '<p class="p-error d-none" id="error-age" data-id="age_depart_' . $participant->get("rowid_participant") . '"></p>';
 
-            echo '<input class="taille-field taille" type="text" id="taille_depart_' . $participant->get("rowid_participant") . '" name="taille[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("taille") !== null ? htmlentities($participant->get("taille")) : '' ). '" placeholder="Taille en cm">';
-            echo '<p class="p-error d-none" id="error-taille"></p>';
+            echo '<input class="taille taille-field" type="text" id="taille_depart_' . $participant->get("rowid_participant") . '" name="taille[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("taille") !== null ? htmlentities($participant->get("taille")) : '' ). '" placeholder="Taille en cm">';
+            echo '<p class="p-error d-none" id="error-taille" data-id="taille_depart_' . $participant->get("rowid_participant") . '"></p>';
 
-            echo '<input class="poids-field poids" type="text" id="poids_depart_' . $participant->get("rowid_participant") . '" name="poids[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("poids") !== null ? htmlentities($participant->get("poids")) : '' ). '" placeholder="Poids en kg">';
-            echo '<p class="p-error d-none" id="error-poids"></p>';
+            echo '<input class="poids poids-field" type="text" id="poids_depart_' . $participant->get("rowid_participant") . '" name="poids[' . $participant->get("rowid_participant") . ']" value="' . ($participant->get("poids") !== null ? htmlentities($participant->get("poids")) : '' ). '" placeholder="Poids en kg">';
+            echo '<p class="p-error d-none" id="error-poids" data-id="poids_depart_' . $participant->get("rowid_participant") . '"></p>';
 
         echo "</div>";
     }
-    echo '<button  type="submit">' . $langs->trans("btn-valider") . '</button>';
+    echo '<p class="p-error d-none" id="btn-form">' .  $langs->trans("err_sumit-form"). '</p>';
+    echo '<button type="submit">' . $langs->trans("btn-valider") . '</button>';
 echo '</form>';
 
 include_once __DIR__ . "/../layout/footer.php";
 
 ?>
+
+<script>
+    // Crée un tableau JavaScript contenant des messages d'erreur
+    let erreurMessage = {
+       'err-nombre': <?= json_encode($langs->trans("err-nombre")) ?>,
+        'err-longueur-prenom': <?= json_encode($langs->trans("err-longueur-prenom")) ?>,
+        'err-nombre-age': <?= json_encode($langs->trans("err-nombre-age")) ?>,
+        'err-insert-code': <?= json_encode($langs->trans("err-insert-code")) ?>
+    };
+</script>
 
 <script src="../../public/js/app.js" defer></script>

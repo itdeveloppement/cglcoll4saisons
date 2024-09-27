@@ -82,6 +82,13 @@ btn-info = Compléter les informations
 btn-valider = Valider les informations
 btn-retour = Retour à la liste des activités
 
+# message erreur
+err-longueur-prenom = 40 caracteres maximum.
+err-nombre= Nombre entre 1 et 299.
+err-nombre-age = Nombre entre 1 et 99.
+err-insert-code = Ne pas utiliser < ou >.
+err_sumit-form = Erreur dans un des champs du formulaire.
+
 # footer
 text-footer = Cigale Aventure est à votre écoute.
 
