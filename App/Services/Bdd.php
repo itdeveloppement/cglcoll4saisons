@@ -42,10 +42,10 @@ class Bdd {
      * @param {array} : $option - tableau associatif pour gerer notamant les erreurs et exception
      * @return : l'objet de connexion ou l'erreur d'exception 
      */
-    public static function connexion() {
+
+     public static function connexion() {
         // var_dump(self::$userName);
         // var_dump( self::$password);
-        
         try 
         { 
         self::$bdd = new PDO (self::$dsn, self::$userName, self::$password, self::$options); 

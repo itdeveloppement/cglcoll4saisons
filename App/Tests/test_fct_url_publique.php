@@ -6,6 +6,7 @@
  use App\Modeles\Depart;
  use App\Modeles\Location;
  use App\Modeles\User;
+use App\Services\Bdd;
 
 require_once __DIR__ . "/../Utils/init.php";
 
@@ -83,6 +84,24 @@ function affichageURL_LO($rowidTiers, $rowidBulletinLO) {
     } else {
         $url ='';
         return $url;
+    }
+}
+
+/**
+ * role : parametrage base de donnée
+ */
+function parametrageBdd() {
+        global $dolibarr_main_db_user;
+        global $dolibarr_main_db_pass;
+        global $dolibarr_main_db_host;
+        global $dolibarr_main_db_name;
+    try {
+        Bdd::setUserName($dolibarr_main_db_user);
+        Bdd::setPassword($dolibarr_main_db_pass);
+        $host ="mysql:host=$dolibarr_main_db_host;dbname=$dolibarr_main_db_name;charset=UTF8";
+        Bdd::setDsn($host);
+    } catch (PDOException $e) {
+        dol_syslog("Message : init.php - Erreur lors du chargement des variable d'environnement de la bdd. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
     }
 }
 

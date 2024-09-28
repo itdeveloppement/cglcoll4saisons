@@ -27,6 +27,7 @@ define('NOLOGIN', 1);        // Pour bypasser la vérification de login
 
 // ------------------------- INIT MAIN DOLIBARR --------------------------------
 
+
 // Load Dolibarr environment
 $res = 0;
 // Try main.inc.php into web root known defined into CONTEXT_DOCUMENT_ROOT (not always defined)
@@ -109,13 +110,14 @@ $now = dol_now("tzuser");
     require_once __DIR__ . '/../../vendor/autoload.php';
 
 // ------------------------- INIT VARIABLES ENVIRONNEMENT .ENV --------------------------------  
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    // $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     try {
-        $dotenv->load();
-        Bdd::setUserName($_ENV["DB_USER"]);
-        Bdd::setPassword($_ENV["DB_PASSWORD"]);
-        Bdd::setDsn($_ENV["DB_DSN"]);
-    } catch (\Dotenv\Exception\InvalidPathException $e) {
+        // $dolibarr_main_db_type
+        Bdd::setUserName($dolibarr_main_db_user);
+        Bdd::setPassword($dolibarr_main_db_pass);
+        $host ="mysql:host=$dolibarr_main_db_host;dbname=$dolibarr_main_db_name;charset=UTF8";
+        Bdd::setDsn($host);
+    } catch (PDOException $e) {
         dol_syslog("Message : init.php - Erreur lors du chargement des variable d'environnement. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
     }
 
