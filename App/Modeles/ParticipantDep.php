@@ -22,7 +22,7 @@ class ParticipantDep extends Modele {
     */
     protected $rowid_session;
      /**
-     * {integer} : id d'un participant'
+     * {integer} : id d'un participant table bull_det'
     */
     protected $rowid_participant;
        /**

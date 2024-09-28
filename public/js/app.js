@@ -1,118 +1,90 @@
 
 // fonction
 
+/**
+ * role : tester le champ prenom du formulaire
+ * @param {Sting} prenom : la valeur du champ à tester
+ * @param {String} idInput : id du champ à tester
+ * @returns true si le teste est validé
+ */
 function testPrenom (prenom, idInput) {
-    console.log(prenom);
-    console.log(idInput);
     // longueur maximale
     if(maxLength(prenom, 40)){
-        afficheErreur("prenom",idInput, `err-longueur-prenom`);
+        afficheErreur(idInput, `err-longueur-prenom`);
         return false
     } else if(hasCode(prenom)){ 
-        afficheErreur("prenom",idInput, 'err-insert-code');
+        afficheErreur(idInput, 'err-insert-code');
         return false
     }
-    enleveErreur("prenom", idInput)
-   
+    enleveErreur(idInput)
     return true
 }
 
+/**
+ * role : tester le champ prenom du formulaire
+ * @param {Sting} age : la valeur du champ à tester
+ * @param {String} idInput : id du champ à tester
+ * @returns true si le teste est validé
+ */
 function testAge (age,idInput) {
-    console.log(age);
-    console.log(idInput);
    if(hasCode(age)){ 
-        afficheErreur("age",idInput, "err-insert-code");
+        afficheErreur(idInput, "err-insert-code");
         return false
     // si la valeur du champ n'est pas un nombre
     } else if (onlyTwoNumber (age)=== false) {
-        afficheErreur("age",idInput, "err-nombre-age");
+        afficheErreur(idInput, "err-nombre-age");
         return false
     }
-    
-    enleveErreur("age", idInput)
+    enleveErreur(idInput)
     return true
 }
 
+/**
+ * role : tester le champ prenom du formulaire
+ * @param {Sting} taille : la valeur du champ à tester
+ * @param {String} idInput : id du champ à tester
+ * @returns true si le teste est validé
+ */
 function testTaille(taille, idInput) {
-    console.log(taille);
-    console.log(idInput);
    if(hasCode(taille)){ 
-        afficheErreur("taille",idInput, "err-insert-code");
+        afficheErreur(idInput, "err-insert-code");
         return false
     // si la valeur du champ n'est pas un nombre
     } else if (onlyThreeNumber (taille)=== false) {
-        afficheErreur("taille",idInput, "err-nombre");
+        afficheErreur(idInput, "err-nombre");
         return false
     }
-    enleveErreur("taille", idInput)
+    enleveErreur(idInput)
     return true
 }
 
+/**
+ * role : tester le champ prenom du formulaire
+ * @param {Sting} poids : la valeur du champ à tester
+ * @param {String} idInput : id du champ à tester
+ * @returns true si le teste est validé
+ */
 function testPoids(poids, idInput) {
-    console.log(poids);
-    console.log(idInput);
     if(hasCode(poids)){ 
-        afficheErreur("poids",idInput, "err-insert-code");
+        afficheErreur(idInput, "err-insert-code");
         return false
     // si la valeur du champ n'est pas un nombre
     } else if (onlyThreeNumber (poids)=== false) {
-        afficheErreur("poids",idInput, "err-nombre");
+        afficheErreur(idInput, "err-nombre");
         return false
     }
-    
-    enleveErreur("poids", idInput)
+    enleveErreur(idInput)
     return true
 }
 
-/*
 // AFFICHAGE DU MESSAGE ERREUR
 
-/** affiche un message d'erreur
- * @param {string} id 
- * @param {string} messageErreur 
+/** role : Afficher une erreur : mettre une bordure sur le bon input, et remplir le paragraphe d'erreur associé
+ * @param {string} idInput - id l'id de l'input dans le quel il y a une erreur
+ * @param {string} messageErreur - le message a afficher
  */
-/*
-function afficheErreur(id,idInput, messageErreur){
-    console.log(id)
-    // Role : Afficher une erreur : mettre une bordure sur le bon input, et remplir le paragraphe d'erreur associé
-    // Parametres : id l'id de l'input dans le quel il y a une erreur
-    // messageErreur : le message a afficher
-    // retour: rien !
-    let input = document.querySelector(`.${id}`);
-    input.classList.add("input-error");
-    let p = document.getElementById("error-"+id);
-    
-    let messageEr = erreurMessage[messageErreur];
-    p.innerText = messageEr;
-    p.classList.remove("d-none");
-}
-/** efface le message d'erreur
- * @param {string} id 
- * 
- */
-/*
-function enleveErreur(id){
-    // Role: eneleve l'erreur sur l'input et cache le paragraphe associé
-    let input = document.querySelector(`.${id}`);
-    input.classList.remove("input-error");
-    let p = document.getElementById("error-"+id);
-    p.innerText ="";
-    p.classList.add("d-none");
-}
-*/
-
-// AFFICHAGE DU MESSAGE ERREUR
-
-/** affiche un message d'erreur
- * @param {string} id 
- * @param {string} messageErreur 
- */
-function afficheErreur(id,idInput, messageErreur){
-    
-    // Role : Afficher une erreur : mettre une bordure sur le bon input, et remplir le paragraphe d'erreur associé
-    // Parametres : id l'id de l'input dans le quel il y a une erreur
-    // messageErreur : le message a afficher
-    // retour: rien !
+function afficheErreur(idInput, messageErreur){
+    console.log(messageErreur)
     let input = document.getElementById(idInput);
     input.classList.add("input-error");
     let p = document.querySelector(`.p-error[data-id="${idInput}"]`);
@@ -120,24 +92,21 @@ function afficheErreur(id,idInput, messageErreur){
     p.innerText = messageEr;
     p.classList.remove("d-none");
 }
-/** efface le message d'erreur
- * @param {string} id 
- * 
- */
 
-function enleveErreur(id, idInput){
-    // Role: eneleve l'erreur sur l'input et cache le paragraphe associé
+/** Role: eneleve l'erreur sur l'input et cache le paragraphe associé
+ * @param {string} idInput - id l'id de l'input dans le quel il y a une erreur
+ */
+function enleveErreur(idInput){
+    console.log(idInput)
     let input = document.getElementById(idInput);
     input.classList.remove("input-error");
     let p = document.querySelector(`.p-error[data-id="${idInput}"]`);
     p.innerText ="";
     p.classList.add("d-none");
-    // message erreur submit
+    // message erreur submit 
     let btn_form = document.getElementById("btn-form");
     btn_form.classList.add("d-none");
 }
-
-
 
 /** NOMBRE COMPARAISON : compare si la valeur du champ est superieure à une valeur (logueur voulue) passée en parametre
  * @param {number} string la chaine de caractere du champ
@@ -194,129 +163,98 @@ function onlyThreeNumber (valueField) {
 // ----- FORMULAIRE PARTICIPANT ------------------
 
 document.addEventListener("DOMContentLoaded", function() {
-
     // formulaire LO
     let formLocation = document.getElementById("participantFormLocation");
 
-    
     if (formLocation) {
+        // ajouter des écouteurs d'événements
+        const ajouterEcouteurs = (input) => {
+            input.addEventListener("input", () => {
+                switch (input.classList[0]) {
+                    case "prenom":
+                        testPrenom(input.value, input.id);
+                        break;
+                    case "age":
+                        testAge(input.value, input.id);
+                        break;
+                    case "taille":
+                        testTaille(input.value, input.id);
+                        break;
+                }
+            });
+        };
 
-          // verifier la valeur de la saisie du champ
-          let prenom = document.querySelector(".prenom");
-          let age = document.querySelector(".age");
-          let taille= document.querySelector(".taille");
-              
-          // verification des champs à la saisie
-          prenom.addEventListener("input", () => { testPrenom(prenom.value) });
-          age.addEventListener("input", () => {testAge(age.value)});
-          taille.addEventListener("input", () => {testTaille(taille.value)});
+        // Sélectionnez tous les champs d'entrée et ajoutez les écouteurs
+        document.querySelectorAll(".prenom, .age, .taille").forEach(ajouterEcouteurs);
 
+        // à la soumission du formulaire
         formLocation.addEventListener("submit", function(event) {
             event.preventDefault();
-            let formData = new FormData(formLocation);
 
-            // verification et soumission
-            let test1 = testPrenom(prenom.value);
-            let test2 = testAge(age.value.slice(0, -4));
-            let test3 = testTaille(taille.value.slice(0, -3));
-    
-            if(test1===true && 
-                test2 === true &&
-                test3 ===true ){
-                // formDepart.submit();
+            // Vérification des champs avant la soumission
+            resultTest = [];
+            document.querySelectorAll("input").forEach((input) => {
+                if (input.classList.contains("prenom")) {
+                let test = testPrenom(input.value, input.id);
+                    if (test == false) {
+                        resultTest.push("false")
+                    }
+                }
+                    if (input.classList.contains("age")) {
+                    let test = testAge(input.value.slice(0, -4), input.id);
+                    if (test == false) {
+                        resultTest.push("false")
+                    }
+                }
+                    if (input.classList.contains("taille")) {
+                    let test = testTaille(input.value.slice(0, -3), input.id);
+                    if (test == false) {
+                        resultTest.push("false")
+                    }
+                }
+            })
+            let allTrue = true;
+                resultTest.forEach((value) => {
+                    if (value !== true) {
+                        allTrue = false;
+                    }
+                });
 
+            if (allTrue) {
                 // Vérifie le contenu de formData
+                let formData = new FormData(formLocation);
                 formData.forEach((value, key) => {
                     console.log(`${key}: ${value}`);
                 });
 
+                // Modifier les données en BDD
                 fetch('../controleurs/updateparticipantlocation.php', {
                     method: 'POST',
                     body: formData
                 })
                 .then(response => {
                     if (response.redirected) {
-                        window.location.href = response.url;
-                        return; 
-                    }
-                })
-                .catch(error => {
-                    console.error('Erreur:', error.message);
-                    window.location.href = '../../App/views/error/errtech.php'
-                });
-            }
-        });
-    }
-    /*
-    // formulaire BU
-    let formDepart = document.getElementById("participantFormDepart");
-
-    // 
-
-    if (formDepart) {
-
-        // verifier la valeur de la saisie du champ
-        let prenom = document.querySelector(".prenom");
-        let age = document.querySelector(".age");
-        let taille= document.querySelector(".taille");
-        let poids = document.querySelector(".poids");
-           
-        
-        // verification des champs à la saisie
-        prenom.addEventListener("input", () => { testPrenom(prenom.value) });
-        age.addEventListener("input", () => {testAge(age.value)});
-        taille.addEventListener("input", () => {testTaille(taille.value)});
-        poids.addEventListener("input", () => {testPoids(poids.value)});
-
-          formDepart.addEventListener("submit", function(event) {
-            event.preventDefault();
-            let formData = new FormData(formDepart);
-       
-            // verification et soumission
-            let test1 = testPrenom(prenom.value);
-            let test2 = testAge(age.value.slice(0, -4));
-            let test3 = testTaille(taille.value.slice(0, -3));
-            let test4 = testPoids(poids.value.slice(0, -3));
-
-            if(test1===true && 
-                test2 === true &&
-                test3 ===true && 
-                test4 ===true ){
-                // formDepart.submit();
-           
-                // Vérifie le contenu de formData
-                formData.forEach((value, key) => {
-                    console.log(`${key}: ${value}`);
-                });
-
-                // modifier les donnée en bdd
-                fetch('../controleurs/updateparticipantdepart.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (response.redirected) {
-                        window.location.href = response.url;
+                        // window.location.href = response.url;
                         return;
                     }
                 })
                 .catch(error => {
                     console.error('Erreur:', error.message);
-                    window.location.href = '../../App/views/error/errtech.php'
+                    window.location.href = '../../App/views/error/errtech.php';
                 });
+            } else {
+                // message erreur submit
+                let btn_form = document.getElementById("btn-form");
+                btn_form.classList.remove("d-none");
             }
+        });
 
-          });
     }
-
-*/
 
 // formulaire BU
 let formDepart = document.getElementById("participantFormDepart");
-
 if (formDepart) {
-
-    // Fonction pour ajouter des écouteurs d'événements
+    // ajouter des écouteurs d'événements
     const ajouterEcouteurs = (input) => {
         input.addEventListener("input", () => {
             switch (input.classList[0]) {
@@ -339,21 +277,19 @@ if (formDepart) {
     // Sélectionnez tous les champs d'entrée et ajoutez les écouteurs
     document.querySelectorAll(".prenom, .age, .taille, .poids").forEach(ajouterEcouteurs);
 
+    // à la soumission du formulaire
     formDepart.addEventListener("submit", function(event) {
         event.preventDefault();
-        
 
+         // Vérification des champs avant la soumission
         resultTest = [];
         document.querySelectorAll("input").forEach((input) => {
-
-            // Vérification des champs avant la soumission
             if (input.classList.contains("prenom")) {
             let test = testPrenom(input.value, input.id);
                 if (test == false) {
                     resultTest.push("false")
                 }
             }
-
                 if (input.classList.contains("age")) {
                 let test = testAge(input.value.slice(0, -4), input.id);
                 if (test == false) {
@@ -372,10 +308,7 @@ if (formDepart) {
                     resultTest.push("false")
                 }
             }
-
         })
-            
-console.log(resultTest)
         let allTrue = true;
             resultTest.forEach((value) => {
                 if (value !== true) {
@@ -409,22 +342,10 @@ console.log(resultTest)
             // message erreur submit
             let btn_form = document.getElementById("btn-form");
             btn_form.classList.remove("d-none");
-
-
         }
     });
 }
-
 });
-
-
-
-
-
-
-
-
-
 
 // Champ âge
 document.querySelectorAll('.age-field').forEach(function(input) {
@@ -481,7 +402,6 @@ document.querySelectorAll('.taille-field').forEach(function(input) {
         }
     });
 });   
-
 
 // champ poids
 document.querySelectorAll('.poids-field').forEach(function(input) {
