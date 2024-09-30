@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 })
                 .then(response => {
                     if (response.redirected) {
-                        // window.location.href = response.url;
+                        window.location.href = response.url;
                         return;
                     }
                 })
@@ -330,7 +330,7 @@ if (formDepart) {
             })
             .then(response => {
                 if (response.redirected) {
-                    // window.location.href = response.url;
+                    window.location.href = response.url;
                     return;
                 }
             })

@@ -11,6 +11,7 @@
 use App\Modeles\Depart;
 use App\Modeles\Location;
 use App\Modeles\User;
+use App\Services\Bdd;
 
 // attention 
 // il faut faire une verification de tous les tiers pour voir si il exste bien un code client
@@ -83,3 +84,17 @@ function affichageURL_LO($rowidTiers, $rowidBulletinLO) {
     }
 }
 
+/**
+ * role : parametrage base de donnée
+ */
+function parametrageBdd() {
+    global $dolibarr_main_db_user;
+    global $dolibarr_main_db_pass;
+    global $dolibarr_main_db_host;
+    global $dolibarr_main_db_name;
+
+    Bdd::setUserName($dolibarr_main_db_user);
+    Bdd::setPassword($dolibarr_main_db_pass);
+    $host ="mysql:host=$dolibarr_main_db_host;dbname=$dolibarr_main_db_name;charset=UTF8";
+    Bdd::setDsn($host);
+}

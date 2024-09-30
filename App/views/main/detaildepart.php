@@ -7,7 +7,7 @@
 include_once __DIR__ . "/../layout/header.php";
 
 // location
-echo "<h2 id='btn' >" . $langs->trans("intitule-liste-depart") . "</h2>";
+echo "<h2 id='btn' >" . $langs->trans("intitule-detail-depart") . "</h2>";
 echo "<div>";
     echo "<div>" . $depart->get("intituleDepart") . "</div>";
     echo "<div>" . formatDateAffichage ($depart->get("dateDepart")) . "</div>";
@@ -52,4 +52,4 @@ include_once __DIR__ . "/../layout/footer.php";
     };
 </script>
 
-<script src="../../public/js/app.js" defer></script>
+<script type="module" src="../../public/js/app.js" defer></script>
