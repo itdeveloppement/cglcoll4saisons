@@ -1,0 +1,43 @@
+/* generale */
+h2 {
+    margin: 20px 0;
+    padding: 0 10px;
+}
+
+h3 {
+    margin: 0px 0 10px 0;
+    padding: 5px 10px;
+}
+
+/* footer */
+.footer h3 {
+    text-align: center
+}
+
+/* liste depart */
+.liste-depart h3 {
+    margin: 0;
+    padding: 0;
+}
+
+/* detail depart */
+.detail-depart h3 {
+    width: 100%;
+    background-color: var(--deuxiemeColor);
+    border-radius: var(--borderRadius);
+    margin: 10px 0 0 0;
+    color: var(--cinquiemeColor);
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.activite h3{
+    margin: 0 0 10px 0;
+}
+
+.activite p{
+    font-weight: 600 ;
+  
+}
+
+

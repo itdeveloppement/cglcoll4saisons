@@ -1,0 +1,48 @@
+
+/* generale */
+a, button {
+    padding: 10px 20px;
+    background-color: var(--deuxiemeColor);
+    color: var(--cinquiemeColor);
+    transition: background-color 0.3s ease;
+    border-radius: var(--borderRadius);
+    text-align: center;
+    font-weight: 300;
+}
+
+a:hover, button:hover {
+    background-color: var(--troisiemeColor);
+    font-weight: 300;
+}
+
+/* header */
+header a  {
+    width: 32%;
+    gap: 20px;
+    display: block;
+}
+header .btn-container {
+    justify-content: space-between;
+    padding: 0 20px;
+    width: 100%; 
+}
+
+/* liste depart */
+.liste-depart .btn-container {
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.liste-depart .btn-container a{
+    max-width: 230px;
+    width: 100%;
+}
+
+/* detail depart */
+.detail-depart .container-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    
+}

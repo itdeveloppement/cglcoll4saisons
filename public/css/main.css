@@ -1,0 +1,59 @@
+
+@import 'reset.css'; /* Réinitialisation des styles par défaut du navigateur */
+@import 'typo.css'; /* Styles de typographie (polices, tailles, etc.) */
+@import 'root.css'; /* variables */
+@import 'titles.css'; /* titres h1, h2 ... */
+@import 'buttons.css'; /* boutons */
+@import 'header.css'; /* boutons */
+@import 'footer.css'; /* boutons */
+@import 'messages_erreur.css'; /* boutons */
+@import 'img.css'; /* images*/
+@import 'input.css'; /* images*/
+
+/* structure des pages */
+body {
+    font-family: var(--fonte);
+    font-size: 14px;
+    background-color: var( --quatriemeColor);
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: var(--cinquiemeColor);
+}
+
+/* liste activités */
+.liste-depart {
+    padding: 0 20px;
+}
+.card-liste-depart {
+    border-radius: var( --borderRadius);
+    border: 1px solid var(--quatriemeColor);
+    margin-bottom: 10px;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+/* detail depart */
+.detail-depart {
+    padding: 0 20px;
+}
+.detail-depart .activite {
+    flex-direction: column;
+    line-height: 1.5;
+}
+
+.activite p {
+    padding-left: 10px;
+}
+/* detail location */
+
+
+
+
+

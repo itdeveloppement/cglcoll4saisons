@@ -54,12 +54,13 @@ MyWidget = My widget
 MyWidgetDescription = My widget description
 
 # page liste des depart
-intitule-liste-depart = Pour chaque activités, renseigner les informations.
+intitule-liste-depart = Pour chaque activités, compléter les informations.
 
 # page detail des BU et LO
-intitule-detail-depart = Pour chaque participant, renseigner ou modifier les informations puis valider.
+intitule-detail-depart = Compléter ou modifier les informations puis valider.
 participant = Participant
 loc-velo = Location velo.
+activite = Activité
 
 # page a bientot
 intitlule-abientot = Merci de votre visite !
@@ -72,6 +73,12 @@ intitlule-errtech = Une erreur technique est survenue ! Contacter Cigale Aventur
 
 # page infos enregistrées
 intitlule-infos-enregistrees = Vos informations sont enregistrées.
+
+# input
+label-prenom = Prénom
+label-age = Age (en années)
+label-taille = Taille (en cm) 
+label-poids = Poids (en kg)
 
 # boutons
 btn-accueil = Accueil

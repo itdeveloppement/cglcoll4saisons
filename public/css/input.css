@@ -1,0 +1,29 @@
+input {
+    border: none; /* Supprime la bordure */
+    background: transparent; /* Supprime le fond */
+    padding: 0; /* Enlève le padding */
+    margin: 0; /* Enlève la marge */
+    outline: none; /* Supprime le contour au focus */
+    font-family: inherit; /* Utilise la même police que le parent */
+    font-size: inherit; /* Utilise la même taille de police que le parent */
+    color: inherit; /* Utilise la même couleur de texte que le parent */
+}
+input::placeholder {
+    font-style: italic; /* Met le texte du placeholder en italique */
+}
+input {
+    max-width: 100%;
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--quatriemeColor);
+    padding:10px;
+}
+.container-input {
+    font-size: 15px;
+}
+.container-input {
+    flex-direction: column;
+}
+label {
+    margin: 5px 10px;
+    font-weight: 600;
+}

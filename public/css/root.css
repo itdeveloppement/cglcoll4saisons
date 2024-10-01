@@ -1,0 +1,23 @@
+/*VARIABLES*/
+:root {
+    /*variable color*/
+    --premiereColor: rgb(120, 38, 14);
+    --deuxiemeColor: #95C01F;
+    --troisiemeColor:#78270e75;
+    --quatriemeColor: rgb(217, 215, 215);
+    --cinquiemeColor: white;
+
+    /*variable font*/
+    /* --fonte: "Source Sans 3", sans-serif; */
+    --fonte: "Almarai", sans-serif;
+    
+    --fontLuciol: 'Luciole', sans-serif;
+
+    --robotoFont: "Roboto", sans-serif;
+    --tekoFont: "Teko", sans-serif;
+
+    /* border */
+    --borderRadius: 5px;
+    --borderShadow: 0 0 20px rgb(96, 96, 96);  /* box-shadow */
+    --borderHover: 2px solid rgb(255, 200, 54);
+}

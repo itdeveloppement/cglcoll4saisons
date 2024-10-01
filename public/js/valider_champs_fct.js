@@ -1,5 +1,5 @@
 
-import { afficheErreur, enleveErreur } from './errorDisplay.js';
+import { afficheErreur, enleveErreur } from './afficher_erreurs_fct.js';
 
 // fonction
 

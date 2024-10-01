@@ -1,5 +1,5 @@
 
-import {testPrenom, testAge, testTaille, testPoids } from './validation_champs_fct.js';
+import {testPrenom, testAge, testTaille, testPoids } from './valider_champs_fct.js';
 
 // ----- FORMULAIRE PARTICIPANT ------------------
 
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
 
             // Vérification des champs avant la soumission
-            resultTest = [];
+            let resultTest = [];
             document.querySelectorAll("input").forEach((input) => {
                 if (input.classList.contains("prenom")) {
                 let test = testPrenom(input.value, input.id);
@@ -123,7 +123,7 @@ if (formDepart) {
         event.preventDefault();
 
          // Vérification des champs avant la soumission
-        resultTest = [];
+        let resultTest = [];
         document.querySelectorAll("input").forEach((input) => {
             if (input.classList.contains("prenom")) {
             let test = testPrenom(input.value, input.id);

@@ -1,0 +1,27 @@
+/* generale */
+.container-img {
+    height: auto;
+    overflow: hidden;
+}
+
+.container-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* header */
+.header .container-img {
+    max-width: 800px;
+}
+
+/* footer */
+.footer .container-img {
+    max-width: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.footer .container-img img{
+    filter: brightness(0) invert(1); 
+}
+

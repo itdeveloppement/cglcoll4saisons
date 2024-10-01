@@ -1,0 +1,14 @@
+/* message erreur */
+.p-error{
+    width: 100%;
+    text-align: center;
+    color: var(--premiereColor);
+    margin:3px 0;
+    font-style: italic; 
+}
+.d-none{
+    display: none;
+}
+.input-error{
+    border: 1px solid var(--premiereColor);
+}

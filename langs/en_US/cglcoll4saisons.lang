@@ -53,13 +53,14 @@ MyPageName = My page name
 MyWidget = My widget
 MyWidgetDescription = My widget description
 
-# page liste des depart
-intitule-liste-depart = For each activity, fill in the information.
+# page liste des departs
+intitule-liste-depart = For each activity, complete or modify the information.
 
 # page detail des BU et LO
-intitule-detail-depart = For each participant, fill in or change the information and validate.
+intitule-detail-depart = Complete or modify the information and validate.
 participant = Participant
 loc-velo = Bike rental.
+activite = Activity
 
 # page a bientot
 intitlule-abientot = Thank you for visiting!
@@ -79,6 +80,12 @@ err-nombre = Number from 1 to 299.
 err-nombre-age = Number from to 1 to 99.
 err-insert-code = < or > are not allowed.
 err_sumit-form = Error in one of the fields of the form.
+
+# input
+label-prenom = First-name
+label-age = Age (in years)
+label-taille = Size (in centimeters)
+label-poids = Weight (in kilograms)
 
 # boutons
 btn-accueil = Home

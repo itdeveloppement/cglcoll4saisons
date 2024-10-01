@@ -119,7 +119,6 @@ class Location extends Modele {
         $req->execute($param);
         try {
             $result = $req->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($result);
             return $result;
         } catch (PDOException $e) {
             dol_syslog("Message : Classe Location.php - Erreur lors de la recuperation de la liste des locations. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
