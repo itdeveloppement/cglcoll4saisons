@@ -2,7 +2,7 @@
 /* generale */
 a, button {
     padding: 10px 20px;
-    background-color: var(--deuxiemeColor);
+    background-color: var(--premiereColor);
     color: var(--cinquiemeColor);
     transition: background-color 0.3s ease;
     border-radius: var(--borderRadius);
@@ -11,7 +11,7 @@ a, button {
 }
 
 a:hover, button:hover {
-    background-color: var(--troisiemeColor);
+    background-color: var(--deuxiemeColor);
     font-weight: 300;
 }
 
@@ -29,20 +29,31 @@ header .btn-container {
 
 /* liste depart */
 .liste-depart .btn-container {
-    justify-content: center;
+    /* justify-content: center; */
     width: 100%;
     margin-top: 10px;
 }
 
 .liste-depart .btn-container a{
-    max-width: 230px;
+    max-width: 200px;
+    padding: 5px 10px;
     width: 100%;
 }
 
-/* detail depart */
-.detail-depart .container-btn {
+/* detail depart et location */
+.detail-depart .container-btn, .detail-location .container-btn {
     width: 100%;
     justify-content: center;
     margin-top: 20px;
     
+}
+
+/*  a bientot / err tech / err droit / info enregistrées*/
+.message-confirmation a, .message-conf-err {
+    display: block;
+}
+/* a bientot /info enregistrées */
+
+.message-confirmation a{
+    max-width: 220px;
 }

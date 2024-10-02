@@ -8,41 +8,56 @@ include_once __DIR__ . "/../layout/header.php";
 
 echo "<main class='detail-depart'>";
     // depart
-    echo "<h2 id='btn' >" . $langs->trans("intitule-detail-depart") . "</h2>";
+    echo "<h2 id='btn' >" . htmlspecialchars(html_entity_decode($langs->trans("intitule-detail-depart")), ENT_QUOTES, 'UTF-8') . "</h2>";
     echo "<div class='flex activite'>";
         echo "<h3>" . htmlspecialchars(html_entity_decode($langs->trans("activite")), ENT_QUOTES, 'UTF-8') . "</h3>";
-        echo "<p>" . htmlspecialchars($depart->get("intituleDepart")) . "</p>";
-        echo "<p>" . htmlspecialchars(formatDateAffichage ($depart->get("dateDepart"))) . "</p>";
-        echo "<p>" . htmlspecialchars($depart->get("lieuDepart")) . "</p>";
+        echo "<p>" . htmlspecialchars($depart->get("intituleDepart"), ENT_QUOTES, 'UTF-8') . "</p>";
+        echo "<p class='date'>" . htmlspecialchars(formatDateAffichage ($depart->get("dateDepart")), ENT_QUOTES, 'UTF-8') . "</p>";
+        echo "<p class='lieu'>" . htmlspecialchars($depart->get("lieuDepart"), ENT_QUOTES, 'UTF-8') . "</p>";
     echo "</div>";
     // form participants
-    echo '<form id="participantFormDepart">';
+    echo '<form class="formDepart" id="participantFormDepart">';
         foreach ($listeParticipants as $index => $participant) {
             $index=$index+1;
             echo "<h3>" . htmlspecialchars(html_entity_decode($langs->trans("participant")), ENT_QUOTES, 'UTF-8') . " $index</h3>";
             echo "<div class='flex container-input'>";
-                echo "<div class='flex container-input'>";
+                echo "<div class='flex container-input '>";
+
                     echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-prenom")), ENT_QUOTES, 'UTF-8') . '</label>';
-                    echo '<input class="prenom" type="text" id="prenom_depart_' . htmlspecialchars($participant->get("rowid_participant")) . '" name="prenom[' . htmlspecialchars($participant->get("rowid_participant")) . ']" value="' . (htmlspecialchars($participant->get("prenom")) !== null ? htmlspecialchars($participant->get("prenom")) : '' ) . '" placeholder="' . htmlspecialchars(html_entity_decode($langs->trans("label-prenom")), ENT_QUOTES, 'UTF-8') . '">';
-                    echo '<p class="p-error d-none" id="error-prenom" data-id="prenom_depart_' . $participant->get("rowid_participant") . '"></p>';
+                    
+                    echo '<input class="prenom" type="text" id="prenom_depart_' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . '" name="prenom[' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . ']" value="' . (htmlspecialchars($participant->get("prenom"), ENT_QUOTES, 'UTF-8') !== null ? htmlspecialchars($participant->get("prenom"), ENT_QUOTES, 'UTF-8') : '' ) . '" placeholder="' . htmlspecialchars(html_entity_decode($langs->trans("label-prenom")), ENT_QUOTES, 'UTF-8') . '">';
+                    
+                    echo '<p class="p-error d-none" id="error-prenom" data-id="prenom_depart_' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . '"></p>';
+
                 echo "</div>";
 
-                echo "<div class='flex container-input'>";
-                    echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-age")), ENT_QUOTES, 'UTF-8') . '</label>';
-                    echo '<input class="age age-field" type="text" id="age_depart_' . htmlspecialchars($participant->get("rowid_participant")) . '" name="age[' . htmlspecialchars($participant->get("rowid_participant")) . ']" value="' . (htmlspecialchars($participant->get("age")) !== null ? htmlentities($participant->get("age")) : '' ). '" placeholder=' . htmlspecialchars(html_entity_decode($langs->trans("label-age")), ENT_QUOTES, 'UTF-8') . '>';
-                    echo '<p class="p-error d-none" id="error-age" data-id="age_depart_' . htmlspecialchars($participant->get("rowid_participant")) . '"></p>';
+                echo "<div class='flex container-input '>";
+                    
+                echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-age")), ENT_QUOTES, 'UTF-8') . '</label>';
+                    echo '<input class="age age-field" type="text" id="age_depart_' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . '" name="age[' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . ']" value="' . (htmlspecialchars($participant->get("age"), ENT_QUOTES, 'UTF-8') !== null ? htmlentities($participant->get("age"), ENT_QUOTES, 'UTF-8') : '' ). '" placeholder="' . htmlspecialchars(html_entity_decode($langs->trans("label-age")), ENT_QUOTES, 'UTF-8') . '">';
+                    
+                    echo '<p class="p-error d-none" id="error-age" data-id="age_depart_' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . '"></p>';
+                    
                 echo "</div>";
 
-                echo "<div class='flex container-input'>";
+                echo "<div class='flex container-input '>";
+
                     echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-taille")), ENT_QUOTES, 'UTF-8') . '</label>';
-                    echo '<input class="taille taille-field" type="text" id="taille_depart_' . htmlspecialchars($participant->get("rowid_participant")) . '" name="taille[' . htmlspecialchars($participant->get("rowid_participant")) . ']" value="' . (htmlspecialchars($participant->get("taille")) !== null ? htmlentities($participant->get("taille")) : '' ). '" placeholder=' . htmlspecialchars(html_entity_decode($langs->trans("label-taille")), ENT_QUOTES, 'UTF-8') . '>';
-                    echo '<p class="p-error d-none" id="error-taille" data-id="taille_depart_' . htmlspecialchars($participant->get("rowid_participant")) . '"></p>';
+                    
+                    echo '<input class="taille taille-field" type="text" id="taille_depart_' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . '" name="taille[' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . ']" value="' . (htmlspecialchars($participant->get("taille"), ENT_QUOTES, 'UTF-8') !== null ? htmlentities($participant->get("taille"), ENT_QUOTES, 'UTF-8') : '' ). '" placeholder="' . htmlspecialchars(html_entity_decode($langs->trans("label-taille")), ENT_QUOTES, 'UTF-8') . '">';
+                    
+                    echo '<p class="p-error d-none" id="error-taille" data-id="taille_depart_' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . '"></p>';
+
                 echo "</div>";
 
-                echo "<div class='flex container-input'>";
-                    echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-poids"))) . '</label>';
-                    echo '<input class="poids poids-field" type="text" id="poids_depart_' . htmlspecialchars($participant->get("rowid_participant")) . '" name="poids[' . $participant->get("rowid_participant") . ']" value="' . (htmlspecialchars($participant->get("poids")) !== null ? htmlentities($participant->get("poids")) : '' ). '" placeholder=' . htmlspecialchars(html_entity_decode($langs->trans("label-poids"),  ENT_QUOTES)) . '>';
-                    echo '<p class="p-error d-none" id="error-poids" data-id="poids_depart_' . htmlspecialchars($participant->get("rowid_participant")) . '"></p>';
+                echo "<div class='flex container-input '>";
+
+                    echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-poids")), ENT_QUOTES, 'UTF-8') . '</label>';
+                    
+                    echo '<input class="poids poids-field" type="text" id="poids_depart_' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . '" name="poids[' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . ']" value="' . (htmlspecialchars($participant->get("poids"), ENT_QUOTES, 'UTF-8') !== null ? htmlentities($participant->get("poids"), ENT_QUOTES, 'UTF-8') : '' ). '" placeholder="' . htmlspecialchars(html_entity_decode($langs->trans("label-poids"),  ENT_QUOTES)) . '">';
+                    
+                    echo '<p class="p-error d-none" id="error-poids" data-id="poids_depart_' . htmlspecialchars($participant->get("rowid_participant"), ENT_QUOTES, 'UTF-8') . '"></p>';
+
                 echo "</div>";
             echo "</div>";
         }

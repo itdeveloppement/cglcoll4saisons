@@ -27,7 +27,8 @@ body {
     background-color: var(--cinquiemeColor);
 }
 
-/* liste activités */
+
+/* liste des departs*/
 .liste-depart {
     padding: 0 20px;
 }
@@ -39,41 +40,51 @@ body {
     line-height: 1.5;
 }
 
-/* detail depart */
-.detail-depart {
+/* detail depart et detail location */
+.detail-depart, .detail-location {
     padding: 0 20px;
 }
-.detail-depart .activite {
+.activite {
     flex-direction: column;
     line-height: 1.5;
 }
-
 .activite p {
     padding-left: 10px;
+  
 }
-/* detail location */
-
-/* a bientot */
-.abientot .container {
-    position: relative;
+.activite .date, .activite .lieu {
+    font-weight: 300;
 }
-.abientot {
+/* a bientot / infos enregistrees */
+.message-confirmation {
     height: 70vh;
-    flex-direction: column; /* Aligne les enfants verticalement */
-    align-items: center; /* Centre horizontalement */
+    flex-direction: column;
+    align-items: center;
 }
-.abientot .container-abientot {
+.message-confirmation .container-message-confirmation {
     position: fixed;
     top: 250px;
+    max-width: 400px;
+    justify-content: center;
 }
-
-.abientot footer {
+.message-confirmation footer {
     position: fixed;
     bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
     max-width: 600px;
-    
+   
 }
 
+/* errtech / errdroit */
+.message-conf-err {
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+}
 
+.message-conf-text {
+    margin: 100px 0;
+    max-width: 400px;
+    justify-content: center;
+}

@@ -15,11 +15,12 @@
     <link rel="icon" href="/favicon.ico">
 </head>
 <body>
-    <div class="container">
+    <div class="container container-validation">
         <header class="header flex">
             <div class="container-img">
                 <img src="/custom/cglcoll4saisons/public/images/banniere.png" alt="image logo Cigale Aventure">
             </div>
+            
             <?php 
             // contenu du bouton langue et parametre $lang url
             if ( $_SESSION["lang"] == "en_US") {
@@ -32,8 +33,28 @@
         
             ?>
             <div class="flex btn-container">
-                <a href="/custom/cglcoll4saisons/public/index.php"><?= $langs->trans("btn-accueil") ?></a>
-                <a href="/custom/cglcoll4saisons/App/controleurs/changerlangue.php?lang=<?= $lang ?>"><?= $btn ?></a>
-                <a href="/custom/cglcoll4saisons/App/controleurs/afficherabientot.php"><?= $langs->trans("btn-quitter") ?></a>
+            <?php
+            if (isset($langs) && is_object($langs)) {
+                if ($langs->trans("btn-accueil")!= null) {
+                    echo '<a href="/custom/cglcoll4saisons/public/index.php">' . htmlspecialchars(html_entity_decode($langs->trans("btn-accueil")), ENT_QUOTES, 'UTF-8') . '</a>';
+                } else {
+                    echo '';
+                }
+                if ($langs->trans("btn-accueil")!= null) {
+                    echo '<a href="/custom/cglcoll4saisons/App/controleurs/changerlangue.php?lang=' . $lang . '">' . $btn . '</a>';
+                } else {
+                    echo '';
+                }
+            
+                if ($langs->trans("btn-accueil")!= null) {
+                    echo '<a href="/custom/cglcoll4saisons/App/controleurs/afficherabientot.php">' . htmlspecialchars(htmlspecialchars($langs->trans("btn-quitter")), ENT_QUOTES, 'UTF-8') . '</a>';
+                } else {
+                    echo '';
+                }
+            }
+            ?>
+
+
+
             </div>
         </header>

@@ -6,35 +6,61 @@
 
 include_once __DIR__ . "/../layout/header.php";
 
-// location
-echo "<h2 id='btn' >" . $langs->trans("intitule-detail-depart") . "</h2>";
-echo "<div>";
-    echo "</div>" . $langs->trans("loc-velo") . "<div>";
-    echo "<div>" . formatDateAffichage ($location->get("dateRetrait")) . "</div>";
-    echo "<div>" . $location->get("lieuRetrait") . "</div>";
-echo "</div>";
+echo "<main class='detail-location'>";
+    // location
+    echo "<h2 id='btn' >" . htmlspecialchars(html_entity_decode($langs->trans("intitule-detail-depart"))) . "</h2>";
+    echo "<div class='flex activite'>";
+        echo "<h3>" . htmlspecialchars(html_entity_decode($langs->trans("loc-velo"))) . "</h3>";
+        echo "<p>" . htmlspecialchars(html_entity_decode($langs->trans("loc-velo"))) . "</p>";
+        echo "<p class='date'>" . htmlspecialchars(formatDateAffichage ($location->get("dateRetrait"))) . "</p>";
+        echo "<p class='lieu'>" . htmlspecialchars($location->get("lieuRetrait")) . "</p>";
+    echo "</div>";
 
-// form participants
-echo '<form id="participantFormLocation">';
-    foreach ($listeParticipants as $index => $participant) {
-        $index=$index+1;
-        echo "<h3>Participant $index</h3>";
-        echo "<div class='flex'>";
+    // form participants
+    echo '<form class="formLocation" id="participantFormLocation">';
+        foreach ($listeParticipants as $index => $participant) {
+            $index=$index+1;
+            echo "<h3>Participant $index</h3>";
+                echo "<div class='flex container-input'>";
 
-        echo '<input class="prenom" type="text" id="prenom_location_' . $participant->get("rowid_product") . '" name="prenom[' . $participant->get("rowid_product") . ']" value="' . ($participant->get("prenom") !== null ? htmlspecialchars($participant->get("prenom")) : '' ). '" placeholder="Prenom">';
-        echo '<p class="p-error d-none" id="error-prenom" data-id="prenom_location_' . $participant->get("rowid_product") . '"></p>';
+                    echo "<div class='flex container-input'>";
 
-        echo '<input class="age age-field" type="text" id="age_location_' . $participant->get("rowid_product") . '" name="age[' . $participant->get("rowid_product") . ']" value="' . ($participant->get("age") !== null ? htmlentities($participant->get("age")) : '' ). '" placeholder="Age">';
-        echo '<p class="p-error d-none" id="error-age" data-id="age_location_' . $participant->get("rowid_product") . '"></p>';
+                        echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-prenom")), ENT_QUOTES, 'UTF-8') . '</label>';
 
-        echo '<input class="taille taille-field" type="text" id="taille_location_' . $participant->get("rowid_product") . '" name="taille[' . $participant->get("rowid_product") . ']" value="' . ($participant->get("taille") !== null ? htmlentities($participant->get("taille")) : '' ). '" placeholder="Taille en cm">';
-        echo '<p class="p-error d-none" id="error-taille" data-id="taille_location_' . $participant->get("rowid_product") . '"></p>';
+                        echo '<input class="prenom" type="text" id="prenom_location_' . htmlspecialchars($participant->get("rowid_product"), ENT_QUOTES, 'UTF-8') . '" name="prenom[' . htmlspecialchars($participant->get("rowid_product"), ENT_QUOTES, 'UTF-8') . ']" value="' . ($participant->get("prenom") !== null ? htmlspecialchars($participant->get("prenom"), ENT_QUOTES, 'UTF-8') : '' ). '" placeholder="' . htmlspecialchars(html_entity_decode($langs->trans("label-prenom")), ENT_QUOTES, 'UTF-8') . '">';
 
-        echo "</div>";
-    }
-    echo '<p class="p-error d-none" id="btn-form">' .  $langs->trans("err_sumit-form"). '</p>';
-    echo '<button type="submit">' . $langs->trans("btn-valider") . '</button>';
-echo '</form>';
+                        echo '<p class="p-error d-none" id="error-prenom" data-id="prenom_location_' . htmlspecialchars($participant->get("rowid_product"), ENT_QUOTES, 'UTF-8') . '"></p>';
+
+                    echo "</div>";
+
+                    echo "<div class='flex container-input'>";   
+
+                        echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-age")), ENT_QUOTES, 'UTF-8') . '</label>';
+
+                        echo '<input class="age age-field" type="text" id="age_location_' . htmlspecialchars($participant->get("rowid_product")) . '" name="age[' . htmlspecialchars($participant->get("rowid_product")) . ']" value="' . (htmlspecialchars($participant->get("age")) !== null ? htmlentities($participant->get("age")) : '' ). '" placeholder="' . htmlspecialchars(html_entity_decode($langs->trans("label-age")), ENT_QUOTES, 'UTF-8') . '">';
+
+                        echo '<p class="p-error d-none" id="error-age" data-id="age_location_' . htmlspecialchars($participant->get("rowid_product")) . '"></p>';
+
+                    echo "</div>";
+
+                    echo "<div class='flex container-input'>";
+
+                        echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-taille")), ENT_QUOTES, 'UTF-8') . '</label>';
+
+                        echo '<input class="taille taille-field" type="text" id="taille_location_' . htmlspecialchars($participant->get("rowid_product")) . '" name="taille[' . htmlspecialchars($participant->get("rowid_product")) . ']" value="' . (htmlspecialchars($participant->get("taille")) !== null ? htmlentities($participant->get("taille")) : '' ). '" placeholder="' . htmlspecialchars(html_entity_decode($langs->trans("label-taille")), ENT_QUOTES, 'UTF-8') . '">';
+                        
+                        echo '<p class="p-error d-none" id="error-taille" data-id="taille_location_' . htmlspecialchars($participant->get("rowid_product")) . '"></p>';
+                        
+                    echo "</div>";
+
+            echo "</div>";
+        }
+        echo '<div class="flex container-btn">';
+            echo '<p class="p-error d-none" id="btn-form">' .  htmlspecialchars(html_entity_decode($langs->trans("err_sumit-form"))) . '</p>';
+            echo '<button type="submit">' . htmlspecialchars(html_entity_decode($langs->trans("btn-valider"))) . '</button>';
+        echo '</div>';
+    echo '</form>';
+echo '</main>';
 
 include_once __DIR__ . "/../layout/footer.php";
 ?>

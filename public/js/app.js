@@ -41,16 +41,32 @@ document.addEventListener("DOMContentLoaded", function() {
                         resultTest.push("false")
                     }
                 }
-                    if (input.classList.contains("age")) {
+
+                if (input.classList.contains("age")) {
+                    if (input.value.slice(-3) == "ans") {
                     let test = testAge(input.value.slice(0, -4), input.id);
-                    if (test == false) {
-                        resultTest.push("false")
+                        if (test == false) {
+                            resultTest.push("false")
+                        }
+                    } else {
+                        let test = testAge(input.value, input.id);
+                        if (test == false) {
+                            resultTest.push("false")
+                        }
                     }
                 }
-                    if (input.classList.contains("taille")) {
+    
+                if (input.classList.contains("taille")) {
+                    if (input.value.slice(-2) == "cm") { 
                     let test = testTaille(input.value.slice(0, -3), input.id);
-                    if (test == false) {
-                        resultTest.push("false")
+                        if (test == false) {
+                            resultTest.push("false")
+                        }
+                    } else {
+                        let test = testTaille(input.value, input.id);
+                        if (test == false) {
+                            resultTest.push("false")
+                        }
                     }
                 }
             })
@@ -64,8 +80,10 @@ document.addEventListener("DOMContentLoaded", function() {
             if (allTrue) {
                 // Vérifie le contenu de formData
                 let formData = new FormData(formLocation);
+                
                 formData.forEach((value, key) => {
                     console.log(`${key}: ${value}`);
+                    
                 });
 
                 // Modifier les données en BDD
@@ -81,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 })
                 .catch(error => {
                     console.error('Erreur:', error.message);
-                    window.location.href = '../../App/views/error/errtech.php';
+                    // window.location.href = '../../App/views/error/errtech.php';
                 });
             } else {
                 // message erreur submit
@@ -126,27 +144,50 @@ if (formDepart) {
         let resultTest = [];
         document.querySelectorAll("input").forEach((input) => {
             if (input.classList.contains("prenom")) {
-            let test = testPrenom(input.value, input.id);
+                let test = testPrenom(input.value, input.id);
                 if (test == false) {
                     resultTest.push("false")
                 }
             }
-                if (input.classList.contains("age")) {
+            if (input.classList.contains("age")) {
+                if (input.value.slice(-3) == "ans") {
                 let test = testAge(input.value.slice(0, -4), input.id);
-                if (test == false) {
-                    resultTest.push("false")
+                    if (test == false) {
+                        resultTest.push("false")
+                    }
+                } else {
+                    let test = testAge(input.value, input.id);
+                    if (test == false) {
+                        resultTest.push("false")
+                    }
                 }
             }
-                if (input.classList.contains("taille")) {
+
+            if (input.classList.contains("taille")) {
+                if (input.value.slice(-2) == "cm") { 
                 let test = testTaille(input.value.slice(0, -3), input.id);
-                if (test == false) {
-                    resultTest.push("false")
+                    if (test == false) {
+                        resultTest.push("false")
+                    }
+                } else {
+                    let test = testTaille(input.value, input.id);
+                    if (test == false) {
+                        resultTest.push("false")
+                    }
                 }
             }
-                if (input.classList.contains("poids")) {
+
+            if (input.classList.contains("poids")) {
+                if (input.value.slice(-2) == "kg") { 
                     let test = testPoids(input.value.slice(0, -3), input.id);
-                if (test == false) {
-                    resultTest.push("false")
+                    if (test == false) {
+                        resultTest.push("false")
+                    }
+                } else {
+                    let test = testPoids(input.value, input.id);
+                    if (test == false) {
+                        resultTest.push("false")
+                    }
                 }
             }
         })
@@ -160,8 +201,10 @@ if (formDepart) {
         if (allTrue) {
             // Vérifie le contenu de formData
             let formData = new FormData(formDepart);
+            
             formData.forEach((value, key) => {
                 console.log(`${key}: ${value}`);
+                
             });
 
             // Modifier les données en BDD
@@ -179,6 +222,7 @@ if (formDepart) {
                 console.error('Erreur:', error.message);
                 window.location.href = '../../App/views/error/errtech.php';
             });
+            
         } else {
             // message erreur submit
             let btn_form = document.getElementById("btn-form");

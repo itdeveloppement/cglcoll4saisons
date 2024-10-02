@@ -5,7 +5,6 @@
  * @param {string} messageErreur - le message a afficher
  */
 export function afficheErreur(idInput, messageErreur){
-    console.log(messageErreur)
     let input = document.getElementById(idInput);
     input.classList.add("input-error");
     let p = document.querySelector(`.p-error[data-id="${idInput}"]`);
@@ -18,7 +17,6 @@ export function afficheErreur(idInput, messageErreur){
  * @param {string} idInput - id l'id de l'input dans le quel il y a une erreur
  */
 export function enleveErreur(idInput){
-    console.log(idInput)
     let input = document.getElementById(idInput);
     input.classList.remove("input-error");
     let p = document.querySelector(`.p-error[data-id="${idInput}"]`);

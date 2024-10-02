@@ -6,32 +6,10 @@
     margin-top: 20px;
 }
 .footer .container-texte {
+    flex-direction: column;
     justify-content: space-between;
 }
 .footer p {
+    line-height: 1.5;
    margin: 0 10px;
-}
-.footer .container-telephone {
-    align-items: center;
-    height: 30px;
-}
-.footer .container-telephone p{
-   font-size: 20px;
-}
-.footer .container-email {
-    align-items: center;
-    height: 30px;
-}
-.footer .container-email p {
-    font-size: 20px;
-}
-.footer .container-adresse {
-    width: 100%;
-    height: 30px;
-    justify-content: center; 
-    align-items: center;
-}
-
-.indicatif-telepehone {
-    font-size: 20px;
 }
