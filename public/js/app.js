@@ -1,9 +1,10 @@
 
 import {testPrenom, testAge, testTaille, testPoids } from './valider_champs_fct.js';
-
+import {logErrorToServer } from './erreurs_fct.js';
 // ----- FORMULAIRE PARTICIPANT ------------------
 
 document.addEventListener("DOMContentLoaded", function() {
+    logErrorToServer("Test erreur");
     // formulaire LO
     let formLocation = document.getElementById("participantFormLocation");
 
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // à la soumission du formulaire
         formLocation.addEventListener("submit", function(event) {
             event.preventDefault();
-
+            logErrorToServer("Soumission form loc : entre dans controle js location");
             // Vérification des champs avant la soumission
             let resultTest = [];
             document.querySelectorAll("input").forEach((input) => {
@@ -99,7 +100,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 })
                 .catch(error => {
                     console.error('Erreur:', error.message);
-                    // window.location.href = '../../App/views/error/errtech.php';
+                    logErrorToServer("Erreur lors de la soumission form Location. Fetch." . error.message)
+                    window.location.href = '../../App/views/error/errtech.php';
                 });
             } else {
                 // message erreur submit
@@ -139,10 +141,11 @@ if (formDepart) {
     // à la soumission du formulaire
     formDepart.addEventListener("submit", function(event) {
         event.preventDefault();
-
+        logErrorToServer("Soumission depart : entre dans le controle depart");
          // Vérification des champs avant la soumission
         let resultTest = [];
         document.querySelectorAll("input").forEach((input) => {
+            
             if (input.classList.contains("prenom")) {
                 let test = testPrenom(input.value, input.id);
                 if (test == false) {
@@ -220,6 +223,7 @@ if (formDepart) {
             })
             .catch(error => {
                 console.error('Erreur:', error.message);
+                logErrorToServer("Erreur lors de la soumission form Depart. Fetch." . error.messsage);
                 window.location.href = '../../App/views/error/errtech.php';
             });
             
