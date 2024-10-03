@@ -37,12 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérifier si les tableaux sont vides
     if (empty($prenom) || empty($age) || empty($taille)) {
         dol_syslog("Message : updatparticipant.php - Parametre ct1 url GET non valide  - Url : " . $_SERVER['REQUEST_URI'], LOG_ERR, 0, "_cglColl4Saisons" );
-        header('Location: ../views/error/errtech.php');
+        echo json_encode(["status" => "error", "message" => "Paramètres manquants."]);
         exit;
     }
 } else {
     dol_syslog("Message : updatparticipant.php - La methode n'est pas POST - Url : " . $_SERVER['REQUEST_URI'], LOG_ERR, 0, "_cglColl4Saisons" );
-    header('Location: ../views/error/errtech.php');
+    echo json_encode(["status" => "error", "message" => "Méthode invalide."]);
     exit;
 }
 
@@ -60,7 +60,7 @@ foreach($prenom as $idBullDet => $value) {
         ($valueTaille !== null && !is_numeric($valueTaille) || ($valueTaille !== null && !comprisEntre($valueTaille, 0, 300)))
     ) {
         dol_syslog("Message : updatparticipant.php - Parametre ct3 POST non valide. Le format des données est incorecte  - Url : " . $_SERVER['REQUEST_URI'], LOG_ERR, 0, "_cglColl4Saisons" );
-        header('Location: ../views/error/errtech.php');
+        echo json_encode(["status" => "error", "message" => "Données invalides."]);
         exit;
     }
 
@@ -73,17 +73,22 @@ foreach($prenom as $idBullDet => $value) {
             $participant->set("age", $valueAge);
             $participant->set("taille", $valueTaille);
             $participant->updateParticipants();
+            
         } catch (PDOException $e) {
             dol_syslog("Message : updatparticipant.php - Erreur lors du cchargement de l'objet participant. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
-            header('Location: ../views/error/errtech.php');
+            echo json_encode(["status" => "error", "message" => "Erreur lors de la mise à jour."]);
             exit;
         }
     } else {
          dol_syslog("Message : updatparticipant.php - Erreur lors du cchargement de l'objet participant. id utilisateur ou id bull det inexistant", LOG_ERR, 0, "_cglColl4Saisons" );
-         header('Location: ../views/error/errtech.php');
+         echo json_encode(["status" => "error", "message" => "Erreur lors de la mise à jour."]);
          exit;
     }
 
-    header('Location: ./afficherinfosenregistrees.php');
 }
 
+echo json_encode([
+    "status" => "success",
+    "redirect" => true,
+    "url" => "../../App/controleurs/afficherinfosenregistrees.php"
+]);

@@ -24,7 +24,7 @@ if (!$session->isConnected()) {
 
 // verifier les données GET
 if(empty($_GET['product'])) {
-    dol_syslog("Message : afficherdetaillocation.php - Parametre ct1 url GET non valide  - Url : " . $_SERVER['REQUEST_URI'], LOG_ERR, 0, "_cglColl4Saisons" );
+    dol_syslog("Message : afficherdetaillocation.php - Parametre ct1 url GET non valide  - Url : " . $_GET['product'], LOG_ERR, 0, "_cglColl4Saisons" );
     require_once __DIR__ . "/../views/error/errtech.php";
     exit;
 }

@@ -132,5 +132,6 @@ $now = dol_now("tzuser");
 session_start();
 ?>
 
-<!-- debug -->
- <!--   <div id="console"></div>  -->
+
+
+

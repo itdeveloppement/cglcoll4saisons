@@ -4,11 +4,11 @@ import {logErrorToServer, afficherErreursEcran } from './erreurs_fct.js';
 // ----- FORMULAIRE PARTICIPANT ------------------
 
 document.addEventListener("DOMContentLoaded", function() {
-   
+
     // debug ---------------------------------------------------------
-    // afficherErreursEcran("Entrée dans la page");
-    // logErrorToServer("test log entrée de la page");
- 
+    logErrorToServer("Chargement page js");
+    afficherErreursEcran("Chargement page js");
+    
     // formulaire LO
     let formLocation = document.getElementById("participantFormLocation");
 
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
 
             // debug ---------------------------------------------------
-            // afficherErreursEcran("Entrée dans la soumission form loc");
+            logErrorToServer("Entrée dans la soumission form loc");
 
             // Vérification des champs avant la soumission
             let resultTest = [];
@@ -100,30 +100,23 @@ document.addEventListener("DOMContentLoaded", function() {
                     body: formData
                 })
                 .then(response => {
-                    // Vérifiez le statut de la réponse
                     if (!response.ok) {
+                        logErrorToServer("Fichier : app.js. Network response was not ok: " + response.statusText);
                         throw new Error('Network response was not ok: ' + response.statusText);
                     }
-                    return response.json();  // Essayez de parser la réponse en JSON
+                    return response.json();
                 })
-                .then(data => {
-                    console.log("Réponse reçue :", data);
-                    console.log("Réponse reçue :", data.redirect);
-                    console.log("Réponse reçue :", data.url);
-
-                    if (data.redirect) {  // Vérifie si une redirection est nécessaire
-                        console.log("Redirection vers :", data.url);
-                        window.location.href = data.url;  // Redirige vers l'URL reçue du serveur
+                .then(response => {
+                    if (response.redirect) { 
+                        window.location.href = response.url;  
                     } else {
-                        console.error("Erreur lors de la mise à jour:", data.message);
+                        logErrorToServer("Fichier : app.js - Erreur lors du retour de la reponse fetch location. Message : ", + response.message)
+                        window.location.href = response.url;  
                     }
-
-    
                 })
                 .catch(error => {
-                    console.error('Erreur:', error.message);
-                    // logErrorToServer("Erreur lors de la soumission form Location. Fetch." . error.message)
-                    // window.location.href = '../../App/views/error/errtech.php';
+                    logErrorToServer("Fichier : app.js. Erreur lors de la soumission du formulaire location. Message : " + error.messsage);
+                    window.location.href = '../../App/views/error/errtech.php';
                 });
             } else {
                 // message erreur submit
@@ -131,7 +124,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 btn_form.classList.remove("d-none");
             }
         });
-
     }
 
 // formulaire BU
@@ -234,28 +226,28 @@ if (formDepart) {
                 console.log(`${key}: ${value}`);
                 
             });
-
             // Modifier les données en BDD
             fetch('../controleurs/updateparticipantdepart.php', {
                 method: 'POST',
                 body: formData
             })
             .then(response => {
-                console.log(response)
-                console.log("test")
-                console.log(response.redirect)
-                if (response.redirected) {
-                    window.location.href = response.url;
-                    console.log(response.url)
-                    // afficherErreursEcran(response.url);
-                    return;
+                if (!response.ok) {
+                    logErrorToServer("Fichier : app.js. Network response was not ok: " + response.statusText);
+                    throw new Error('Network response was not ok: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(response => {
+                if (response.redirect) { 
+                    window.location.href = response.url;  
                 } else {
-                    logErrorToServer("Erreur : l'url de redirection n'a pas était trouvée. Fetch depart.");
+                    logErrorToServer("Fichier : app.js - Erreur lors du retour de la reponse fetch depart. Message : ", + response.message)
+                    window.location.href = response.url;  
                 }
             })
             .catch(error => {
-                console.error('Erreur:', error.message);
-                logErrorToServer("Erreur lors de la soumission form Depart. Fetch." . error.messsage);
+                logErrorToServer("Fichier : app.js. Erreur lors de la soumission du formulaire depart. Message : " + error.messsage);
                 window.location.href = '../../App/views/error/errtech.php';
             });
             

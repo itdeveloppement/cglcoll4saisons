@@ -48,14 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Vérifier si les tableaux sont vides
     if (empty($prenom) || empty($age) || empty($taille) || empty($poids)) {
-        dol_syslog("Message : updatparticipantdepart.php - Parametre ct1 POST non valide", LOG_ERR, 0, "_cglColl4Saisons" );
-        header('Location: ../views/error/errtech.php');
+        dol_syslog("Message : updateparticipantdepar.php. Tableau des données POST. Données invalide", LOG_ERR, 0, "_cglColl4Saisons" );
+        echo json_encode(["status" => "error", "message"=>"updateparticipantdepar.php. Tableau des données POST. Données invalide", "url" => "../../App/views/error/errtech.php"]);
         exit;
     }
 
 } else {
-    dol_syslog("Message : updatparticipantdepart.php - Parametre ct2 POST non valide", LOG_ERR, 0, "_cglColl4Saisons" );
-    header('Location: ../views/error/errtech.php');
+    dol_syslog("Message : upsdateparticipantdepart.php. La methode POST n'est valide", LOG_ERR, 0, "_cglColl4Saisons" );
+    json_encode(["status"=>"error", "message" => " Message : upsdateparticipantdepart.php. La methode POST n'est valide", "url" => "../../App/views/error/errtech.php"]);
     exit;
 }
 
@@ -76,7 +76,7 @@ foreach($prenom as $idBullDet => $value) {
         ($valuePoids !== null && !is_numeric($valuePoids) || ($valuePoids !== null && !comprisEntre($valuePoids, 0, 200)))
     ) {
         dol_syslog("Message : updatparticipantdepart.php - Parametre ct3 POST non valide. Le format des données est incorecte  - Url : " . $_SERVER['REQUEST_URI'], LOG_ERR, 0, "_cglColl4Saisons" );
-        header('Location: ../views/error/errtech.php');
+        json_encode(["status" =>"error", "message" => "updateparticipantdepart.php. Données prenom, age, taille ou poids non valide.", "url" => "../../App/views/error/errtech.php"]);
         exit;
     }
 
@@ -92,15 +92,21 @@ foreach($prenom as $idBullDet => $value) {
             $participant->updateParticipantsDepart();
            
         } catch (PDOException $e) {
-            dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
-            header('Location: ../views/error/errtech.php');
+            dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant depart. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
+            json_encode(["status" => "error", "message"=> " Message : updateparticipant.php. Erreur lors du chargement de lobjet participant depart", "url" => "../../App/views/error/errtech.php"]);
             exit;
         }
     } else {
-         dol_syslog("Message : updatparticipantdepart.php - Erreur lors du cchargement de l'objet participant. id utilisateur ou id bull det inexistant", LOG_ERR, 0, "_cglColl4Saisons" );
-         header('Location: ../views/error/errtech.php');
+         dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant. id utilisateur ou id bull det inexistant", LOG_ERR, 0, "_cglColl4Saisons" );
+         json_encode(["satus" =>"error", "message" =>"Message : updateparticipantdepart.php. Erreur donnée invalide : age, taille ou poids selon un id bull det", "url" => "../../App/views/error/errtech.php"]);
          exit;
     }
 
-    header('Location: ./afficherinfosenregistrees.php');
 }
+
+echo json_encode(([
+"status" => "succes",
+"redirect" => true,
+"url" => "../../App/controleurs/afficherinfosenregistrees.php"
+
+]));
