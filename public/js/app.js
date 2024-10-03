@@ -1,10 +1,14 @@
 
 import {testPrenom, testAge, testTaille, testPoids } from './valider_champs_fct.js';
-import {logErrorToServer } from './erreurs_fct.js';
+import {logErrorToServer, afficherErreursEcran } from './erreurs_fct.js';
 // ----- FORMULAIRE PARTICIPANT ------------------
 
 document.addEventListener("DOMContentLoaded", function() {
-    logErrorToServer("Test erreur");
+   
+    // debug ---------------------------------------------------------
+    // afficherErreursEcran("Entrée dans la page");
+    // logErrorToServer("test log entrée de la page");
+ 
     // formulaire LO
     let formLocation = document.getElementById("participantFormLocation");
 
@@ -32,7 +36,10 @@ document.addEventListener("DOMContentLoaded", function() {
         // à la soumission du formulaire
         formLocation.addEventListener("submit", function(event) {
             event.preventDefault();
-            logErrorToServer("Soumission form loc : entre dans controle js location");
+
+            // debug ---------------------------------------------------
+            // afficherErreursEcran("Entrée dans la soumission form loc");
+
             // Vérification des champs avant la soumission
             let resultTest = [];
             document.querySelectorAll("input").forEach((input) => {
@@ -93,15 +100,30 @@ document.addEventListener("DOMContentLoaded", function() {
                     body: formData
                 })
                 .then(response => {
-                    if (response.redirected) {
-                        window.location.href = response.url;
-                        return;
+                    // Vérifiez le statut de la réponse
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.statusText);
                     }
+                    return response.json();  // Essayez de parser la réponse en JSON
+                })
+                .then(data => {
+                    console.log("Réponse reçue :", data);
+                    console.log("Réponse reçue :", data.redirect);
+                    console.log("Réponse reçue :", data.url);
+
+                    if (data.redirect) {  // Vérifie si une redirection est nécessaire
+                        console.log("Redirection vers :", data.url);
+                        window.location.href = data.url;  // Redirige vers l'URL reçue du serveur
+                    } else {
+                        console.error("Erreur lors de la mise à jour:", data.message);
+                    }
+
+    
                 })
                 .catch(error => {
                     console.error('Erreur:', error.message);
-                    logErrorToServer("Erreur lors de la soumission form Location. Fetch." . error.message)
-                    window.location.href = '../../App/views/error/errtech.php';
+                    // logErrorToServer("Erreur lors de la soumission form Location. Fetch." . error.message)
+                    // window.location.href = '../../App/views/error/errtech.php';
                 });
             } else {
                 // message erreur submit
@@ -141,7 +163,10 @@ if (formDepart) {
     // à la soumission du formulaire
     formDepart.addEventListener("submit", function(event) {
         event.preventDefault();
-        logErrorToServer("Soumission depart : entre dans le controle depart");
+
+        // debug -------------------------------------------------------
+        // afficherErreursEcran("Entrée dans la soumission form depart");
+
          // Vérification des champs avant la soumission
         let resultTest = [];
         document.querySelectorAll("input").forEach((input) => {
@@ -216,9 +241,16 @@ if (formDepart) {
                 body: formData
             })
             .then(response => {
+                console.log(response)
+                console.log("test")
+                console.log(response.redirect)
                 if (response.redirected) {
                     window.location.href = response.url;
+                    console.log(response.url)
+                    // afficherErreursEcran(response.url);
                     return;
+                } else {
+                    logErrorToServer("Erreur : l'url de redirection n'a pas était trouvée. Fetch depart.");
                 }
             })
             .catch(error => {

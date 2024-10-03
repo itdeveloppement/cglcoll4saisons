@@ -64,6 +64,7 @@ html
     </style>
 </head>
 <body>
+    <!-- debug -->
     <h1>Test de la Console</h1>
     <div id="console"></div>
 

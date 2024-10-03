@@ -10,6 +10,23 @@
 @import 'img.css'; /* images*/
 @import 'input.css'; /* images*/
 
+/* console ercran pour debug smartphone */
+
+
+#console {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 150px;
+    overflow-y: scroll;
+    font-family: monospace;
+    background-color: rgba(240, 240, 240, 0.5);
+}
+
+
 /* structure des pages */
 body {
     font-family: var(--fonte);
@@ -31,7 +48,6 @@ body {
 /* liste des departs*/
 .liste-depart {
     padding: 0 20px;
-    background-color: rgb(255, 127, 238);
 }
 .card-liste-depart {
     border-radius: var( --borderRadius);

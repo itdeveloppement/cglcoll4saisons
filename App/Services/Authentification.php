@@ -47,6 +47,7 @@ use App\Modeles\User;
         // si user connecté est vide
         if (empty($user->get("rowid")) || empty($user->get("code_client")) || empty($user->get("datec"))){
             return false;
+            
         // autentification user connecté
         } else if(
             $user->get("rowid") == $this->rowid &&

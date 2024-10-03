@@ -29,7 +29,7 @@ function createURL ($rowidTiers){
     $listeDeparts = $user->get("liste_departs");
     $listeLocations = $user->get("liste_locations");
     if (!empty($listeDeparts) || !empty($listeLocations)) {
-        $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "date=" . $user->get("datec") ."";
+        $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "&date=" . $user->get("datec") ."";
         return $url;
    } else { 
         $url ='';
@@ -54,7 +54,7 @@ function affichageURL_BU($rowidTiers, $rowidBulletinBU) {
         // parcourir le tableau de tableau
         foreach ($depart as $value) {
             if (isset($value["id_session"])) {
-            $arrayUrl[$value["id_session"]] = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "date=" . $user->get("datec") ."";
+            $arrayUrl[$value["id_session"]] = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "&date=" . $user->get("datec") ."";
             }
         }
         return $arrayUrl;
@@ -76,7 +76,7 @@ function affichageURL_LO($rowidTiers, $rowidBulletinLO) {
     $bulletinObj = new Location($rowidTiers, null, $rowidBulletinLO);
     $bulletin = $bulletinObj->loadLocations();
     if (!empty($bulletin)) {
-       $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "date=" . $user->get("datec") ."";
+       $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "&date=" . $user->get("datec") ."";
        return $url;
     } else {
         $url ='';

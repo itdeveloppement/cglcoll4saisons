@@ -16,10 +16,12 @@ error_reporting(E_ALL); // Toutes les erreurs
 // header("Cache-Control: max-age=6000"); // limiter le temps de durée du cache par defaut 12h
 header("Cache-Control: no-cache"); // ne pas mettre en cache 
 
+/*
 // ne pas mettre en cache pour cette page
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Expires: Sat, 01 Jan 2000 00:00:00 GMT"); // Date passée
 header("Pragma: no-cache"); // Pour les anciens navigateurs
+*/
 
 // ------------------------- INIT ACCES EXTERIEUR A DOLIBARR--------------------------------
 
@@ -128,3 +130,7 @@ $now = dol_now("tzuser");
 
 // ------------------------- INIT SESSION -------------------------------- 
 session_start();
+?>
+
+<!-- debug -->
+ <!--   <div id="console"></div>  -->

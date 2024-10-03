@@ -17,3 +17,13 @@ export function logErrorToServer(errorMessage) {
     .then(data => console.log('Erreur enregistrée côté serveur :', data))
     .catch(error => console.error('Erreur lors de l\'envoi de l\'erreur au serveur :', error));
 }
+
+/**
+ * role : afficher les eereur en console / ecran
+ */
+
+export function afficherErreursEcran(message) {
+    let consoleDiv = document.getElementById('console');
+    consoleDiv.innerHTML += message + '<br>';
+}
+
