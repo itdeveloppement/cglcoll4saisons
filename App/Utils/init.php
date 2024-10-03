@@ -114,7 +114,9 @@ $now = dol_now("tzuser");
     require_once __DIR__ . '/../Utils/affichage_fct.php';
     require_once __DIR__ . '/../Utils/langs_fct.php';
     require_once __DIR__ . '/../Utils/verification_champs.php';
-    require_once __DIR__ . '/../../vendor/autoload.php';
+    require_once __DIR__ . '/../Utils/url_publique_fct.php';
+
+ 
 
 // ------------------------- INIT VARIABLES ENVIRONNEMENT .ENV --------------------------------  
     // $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);

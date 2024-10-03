@@ -43,3 +43,19 @@ function formatDateAffichage ($date) {
     }
     return $formattedDate;
 }
+
+/**
+ * role : transforme une date au format Y-m-d H:i:s en entier
+ * @param : $format Y-m-d H:i:s
+ * @param : $date : date au format Y-m-d H:i:s
+ * @return : la date au format entier
+ */
+function formatDateEntier ($date, $format = "Y-m-d H:i:s"){
+    
+    $dateTime = DateTime::createFromFormat($format, $date);
+    if ($dateTime !== false){
+    return $dateTime->getTimestamp();
+    } else {
+        return false;
+    }
+}
