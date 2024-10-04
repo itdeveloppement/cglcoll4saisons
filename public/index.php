@@ -17,11 +17,18 @@ use App\Services\Session;
     $session = new Session();
     // session connectée
     if ($session->isConnected()) {
-        // chargement liste depart et location
+
         $listeDeparts = afficherListeDeparts($session->getIdConnected());
         $listeLocations = afficherListeLocations($session->getIdConnected());
-        require_once __DIR__ . "/../App/views/main/listedeparts.php";
-        exit;
+
+        // si liste des activites vide ou pleine
+        if (empty($listeLocations) && empty($listeDeparts)) {
+            require_once __DIR__ . "/../App/views/main/aucuneactivite.php";
+            exit;
+        } else {
+            require_once __DIR__ . "/../App/views/main/listedeparts.php";
+            exit;
+        }
         
     // session non connectée
     } else {
@@ -45,8 +52,16 @@ use App\Services\Session;
             // chargement liste depart et location
             $listeDeparts = afficherListeDeparts($session->getIdConnected());
             $listeLocations = afficherListeLocations($session->getIdConnected());
-            require_once __DIR__ . "/../App/views/main/listedeparts.php";
-            exit;
+            
+            // si liste des activites vide ou pleine
+            if (empty($listeLocations) && empty($listeDeparts)) {
+                require_once __DIR__ . "/../App/views/main/aucuneactivite.php";
+                exit;
+            } else {
+                require_once __DIR__ . "/../App/views/main/listedeparts.php";
+                exit;
+            }
+
         } else {
             dol_syslog("Message : index.php - Échec de l'authentification pour client ID: $rowid", LOG_ERR, 0, "_cglColl4Saisons");
             require_once __DIR__ . "/../App/views/error/errdroit.php";

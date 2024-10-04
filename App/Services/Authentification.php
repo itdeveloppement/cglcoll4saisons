@@ -55,10 +55,6 @@ use App\Modeles\User;
 
         // si user connecté est vide
         if (empty($user->get("rowid")) || empty($user->get("code_client")) || empty($dateUser)){
-            
-            var_dump($user->get("rowid"));
-            var_dump($user->get("code_client"));
-            var_dump($dateUser);
             return false;
             
         // autentification user connecté (user == user url)
