@@ -36,7 +36,7 @@ function createURL ($rowidTiers){
         } else {
             $date = '';
         }
-    $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "date=" . $date ."";
+    $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "&date=" . $date ."";
     return $url;
    } else { 
         $url ='';
