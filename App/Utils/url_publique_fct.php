@@ -28,9 +28,16 @@ function createURL ($rowidTiers){
     $user->listeLocations();
     $listeDeparts = $user->get("liste_departs");
     $listeLocations = $user->get("liste_locations");
+
+
     if (!empty($listeDeparts) || !empty($listeLocations)) {
-        $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "&date=" . $user->get("datec") ."";
-        return $url;
+         if (formatDateEntier($user->get("datec"))) {
+            $date = formatDateEntier($user->get("datec"));
+        } else {
+            $date = '';
+        }
+    $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "date=" . $date ."";
+    return $url;
    } else { 
         $url ='';
         return $url;
@@ -53,8 +60,15 @@ function affichageURL_BU($rowidTiers, $rowidBulletinBU) {
         $arrayUrl = [];
         // parcourir le tableau de tableau
         foreach ($depart as $value) {
+
+            if (formatDateEntier($user->get("datec"))) {
+                $date = formatDateEntier($user->get("datec"));
+            } else {
+                $date = '';
+            }
+
             if (isset($value["id_session"])) {
-            $arrayUrl[$value["id_session"]] = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "&date=" . $user->get("datec") ."";
+            $arrayUrl[$value["id_session"]] = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "&date=" . $date ."";
             }
         }
         return $arrayUrl;
@@ -75,8 +89,15 @@ function affichageURL_LO($rowidTiers, $rowidBulletinLO) {
     $user = new User($rowidTiers);
     $bulletinObj = new Location($rowidTiers, null, $rowidBulletinLO);
     $bulletin = $bulletinObj->loadLocations();
+
+    if (formatDateEntier($user->get("datec"))) {
+        $date = formatDateEntier($user->get("datec"));
+    } else {
+        $date = '';
+    }
+
     if (!empty($bulletin)) {
-       $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "&date=" . $user->get("datec") ."";
+       $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "&date=" . $date ."";
        return $url;
     } else {
         $url ='';

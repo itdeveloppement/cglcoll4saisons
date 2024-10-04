@@ -26,7 +26,7 @@ use App\Services\Session;
     // session non connectée
     } else {
         // recuperation des donnes de l'url et verification format et type
-        if(empty($_GET["client"]) ||  !filter_var($_GET["client"], FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]])  || empty ($_GET["code"]) || !validationDate($_GET["date"], $format = 'Y-m-d H:i:s')) {
+        if(empty($_GET["client"]) ||  !filter_var($_GET["client"], FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]])  || empty ($_GET["code"]) || !filter_var($_GET["date"], FILTER_VALIDATE_INT)) {
             dol_syslog("Message : index.php - Parametre url GET non valide  - Url : " . $_SERVER['REQUEST_URI'], LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../App/views/error/errdroit.php";
             exit;
@@ -38,6 +38,7 @@ use App\Services\Session;
 
         // authentification
         $auth = new Authentification($rowid, $code_client, $datec);
+        
         if ($auth->authentification()) {
             // connexion session
             $session->connect($rowid);

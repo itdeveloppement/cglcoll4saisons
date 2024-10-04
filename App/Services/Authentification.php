@@ -27,9 +27,9 @@ use App\Modeles\User;
     /**
      * role : charge les proprietes de l'objet autentifciation et verifie l'autentification
      * param : 
-     *  $rowid {string} : id de l'utilisateur
-     *  $code_client {string} : code unique de l'utilisateur
-     *  $datec {string} : date de creation de l'utilisateur
+     *  $rowid {string} : id de l'utilisateur dans url de connexion
+     *  $code_client {string} : code unique de l'utilisateur dans url de connexion
+     *  $datec {string} : date de creation de l'utilisateur dans url de connexion
      */
     function __construct($rowid, $code_client, $datec) {
         $this->rowid = $rowid;
@@ -43,19 +43,34 @@ use App\Modeles\User;
      * role : verifier l'autenification de l'utilisateur
      */
     function authentification () {
-        $user = new User($this->rowid);   
+        
+        $user = new User($this->rowid); 
+        
+        // date user => au format entier
+        if (formatDateEntier($user->get("datec"))) {
+            $dateUser = formatDateEntier($user->get("datec"));
+        } else {
+            $dateUser = '';
+        }
+
         // si user connecté est vide
-        if (empty($user->get("rowid")) || empty($user->get("code_client")) || empty($user->get("datec"))){
+        if (empty($user->get("rowid")) || empty($user->get("code_client")) || empty($dateUser)){
+            
+            var_dump($user->get("rowid"));
+            var_dump($user->get("code_client"));
+            var_dump($dateUser);
             return false;
             
-        // autentification user connecté
+        // autentification user connecté (user == user url)
         } else if(
             $user->get("rowid") == $this->rowid &&
             $user->get("code_client") == $this->code_client &&
-            $user->get("datec") == $this->datec
+            $dateUser == $this->datec
         ){
+            echo "true";
             return true;
          } else {
+            echo "false";
             return false;
          }      
     }
