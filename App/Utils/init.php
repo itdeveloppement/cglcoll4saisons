@@ -132,7 +132,7 @@ $now = dol_now("tzuser");
     }
 
 // ------------------------- INIT SESSION -------------------------------- 
-// verification si une session est deja active
+
 // Vérification si une session est déjà active
 if (session_status() == PHP_SESSION_NONE) {
     // Définir un nom de cookie unique pour la session
@@ -149,8 +149,13 @@ if (session_status() == PHP_SESSION_NONE) {
 
  
 
-    session_start();
+    // session_start();
 }
+
+// Afficher le contenu de la variable de session
+// echo '<pre>';
+// print_r($_SESSION);
+// echo '</pre>';
 
 // Pour debugage session
 
