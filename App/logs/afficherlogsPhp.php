@@ -1,4 +1,7 @@
 <?php
+// fichier log
+// le fichier de log est dans /fourmitest2.cigaleaventure.com/dolibarr_documents/dolibarr_cglColl4Saisons.log
+// l'editer avec par exemple note pad pour le lire
 
 // require_once __DIR__ . "/../App/Utils/init.php";
 header("Cache-Control: no-cache");
