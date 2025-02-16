@@ -6,15 +6,13 @@ namespace App\Services;
 
 class Session {
 
-    private $prefix = 'FORM_4_SAISONS_';
-
     /** 
      * rôle : verifier si la session est connectée
      * @param : no
      * @return : si la session est connectée return true, sion false 
      */
     public function isConnected () {
-        return !empty($_SESSION[$this->prefix . "ID"]) ? true : false;
+        return !empty($_SESSION["id"]) ? true : false;
     }
 
     /** 
@@ -23,7 +21,7 @@ class Session {
      * @return: 
     */
     public function connect($id) {
-        $_SESSION[$this->prefix . "ID"] = $id;
+        $_SESSION["id"] = $id;
     }
 
     /** 
@@ -32,7 +30,7 @@ class Session {
      * @return : si la session est connectée retourne l'id de la session sinon retourne 0
      */
     public function getIdConnected() {
-        return $this->isConnected() ? $_SESSION[$this->prefix . "ID"] : 0;
+        return $this->isConnected() ? $_SESSION["id"] : 0;
     }
 
     /** 
@@ -41,7 +39,7 @@ class Session {
      * @return : true si la session est deconectée
      */
     public function deconnect() {
-        $_SESSION[$this->prefix . "ID"] = 0;
+        $_SESSION["id"] = 0;
         return true;
     }
     /**
@@ -50,12 +48,8 @@ class Session {
      * @return : void
      */
     public function destroySession() {
-        // Détruire uniquement les variables de session spécifiques à votre module
-        unset($_SESSION[$this->prefix . "ID"]);
-        // Optionnel : détruire la session complète si nécessaire
-        // session_unset();
-        // session_destroy();
-        // Supprimer le cookie de session spécifique à votre module
-        setcookie($this->prefix . 'SESSION', '', time() - 3600, '/');
+        session_unset();
+        session_destroy();
+        setcookie('DOLSESSID_6222daf8f5c957bc5c8c254858cb5beb618526ec', '', time() - 3600, '/');
     }
 }

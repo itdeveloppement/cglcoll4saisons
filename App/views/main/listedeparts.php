@@ -6,6 +6,8 @@
  */
 
 include_once __DIR__ . "/../layout/header.php";
+clearstatcache();
+$conf->global->USE_CACHE = 0;// Désactiver le cache
 
 echo '<main class="liste-depart">';
     // verif données

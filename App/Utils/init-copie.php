@@ -131,10 +131,9 @@ $now = dol_now("tzuser");
     }
 
 // ------------------------- INIT SESSION -------------------------------- 
-// verification si une session est deja active
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+
+session_start();
+
 // Pour debugage session
 
 // Lire les paramètres d'URL
@@ -152,11 +151,7 @@ if ($client && $code && $date) {
 
 // Détruire la session après l'envoi du contenu
 register_shutdown_function(function() {
-     $session = new Session();
-     $session->destroySession();
+    $session = new Session();
+    $session->destroySession();
 });
 ?>
-
-
-
-
