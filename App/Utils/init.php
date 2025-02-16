@@ -150,11 +150,11 @@ if (session_status() == PHP_SESSION_NONE) {
 //     echo "Paramètres manquants";
 // }
 
-// Détruire la session après l'envoi du contenu
-register_shutdown_function(function() {
-     $session = new Session();
-     $session->destroySession();
-});
+// // Détruire la session après l'envoi du contenu
+// register_shutdown_function(function() {
+//      $session = new Session();
+//      $session->destroySession();
+// });
 ?>
 
 
