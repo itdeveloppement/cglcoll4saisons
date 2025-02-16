@@ -16,6 +16,7 @@ echo "<main class='detail-depart'>";
         echo "<p class='lieu'>" . htmlspecialchars($depart->get("lieuDepart"), ENT_QUOTES, 'UTF-8') . "</p>";
     echo "</div>";
     // form participants
+    // pour chaque champ age, taille et depart integrer une condition d'affichage si $participant->get(saisie_xxx) 1 = affichage
     echo '<form class="formDepart" id="participantFormDepart">';
         foreach ($listeParticipants as $index => $participant) {
             $index=$index+1;

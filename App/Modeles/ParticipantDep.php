@@ -76,7 +76,10 @@ class ParticipantDep extends Modele {
             par.NomPrenom AS prenom,
             par.age AS age,
             par.taille AS taille,
-            par.poids AS poids
+            par.poids AS poids,
+            cat_act.saisie_age AS saisie_age,
+            cat_act.saisie_taille AS saisie_taille,
+            cat_act.saisie_poids AS saisie_poids
         FROM 
             llx_cglinscription_bull as bul
         LEFT JOIN 

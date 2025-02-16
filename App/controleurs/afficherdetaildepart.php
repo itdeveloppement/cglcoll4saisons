@@ -56,7 +56,7 @@ if (!in_array($id_session, $id_sessions)) {
     exit;
 }
 
-// charger la liste des particpants location
+// charger la liste des particpants depart
 $listeParticipants = new ParticipantDep($id_societe, $id_session);
 $listeParticipantsDep = $listeParticipants->listeParticipantsDep();
 if(empty($listeParticipantsDep) || !is_array($listeParticipantsDep)) {
@@ -64,6 +64,9 @@ if(empty($listeParticipantsDep) || !is_array($listeParticipantsDep)) {
     require_once __DIR__ . "/../views/error/errtech.php";
     exit;
 }
+
+// recuperer les information des champs saise_age, saisie, taille, saisie_poids via la requette sql participant participant-set
+// voir fichier wiew  / main / detaildepart
 $participantsList = [];
 foreach ($listeParticipantsDep as $data) {
     $participant = new ParticipantDep($id_societe, $id_session);
