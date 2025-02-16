@@ -19,6 +19,7 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 header("Expires: 0");
 
+
 // ------------------------- INIT ACCES EXTERIEUR A DOLIBARR--------------------------------
 
 // define('NOTOKENRENEWAL', 1); // Pour éviter de renouveler le token
@@ -131,10 +132,31 @@ $now = dol_now("tzuser");
     }
 
 // ------------------------- INIT SESSION -------------------------------- 
-// verification si une session est deja active
+
+// Vérification si une session est déjà active
 if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+    // Définir un nom de cookie unique pour la session
+    session_name('FORM_4_SAISONS_SESSION');
+    // Définir les paramètres du cookie de session
+    session_set_cookie_params([
+        'lifetime' => 0, // Le cookie expire à la fin de la session
+        'path' => '/', // Le cookie est valide pour tout le domaine
+        'domain' => '', // Le cookie est valide pour le domaine courant
+        'secure' => true, // Le cookie est envoyé uniquement via HTTPS
+        'httponly' => true, // Le cookie est accessible uniquement via HTTP
+        'samesite' => 'Strict', // Le cookie est envoyé uniquement dans des requêtes de même site
+    ]);
+
+ 
+
+    // session_start();
 }
+
+// Afficher le contenu de la variable de session
+// echo '<pre>';
+// print_r($_SESSION);
+// echo '</pre>';
+
 // Pour debugage session
 
 // // Lire les paramètres d'URL
