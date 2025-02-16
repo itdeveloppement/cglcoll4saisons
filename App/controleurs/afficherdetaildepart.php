@@ -69,15 +69,26 @@ if(empty($listeParticipantsDep) || !is_array($listeParticipantsDep)) {
 // voir fichier wiew  / main / detaildepart
 $participantsList = [];
 foreach ($listeParticipantsDep as $data) {
+  
     $participant = new ParticipantDep($id_societe, $id_session);
     $participant->set('rowid_participant', $data['id_participant']);
     $participant->set('prenom', $data['prenom']);
+
+    // recup dnnées age
     $age = comprisEntre($data['age'], 0, 99) ? $data['age'] : null;
     $participant->set('age', $age);
+    $participant->set('saisie_age', $data['saisie_age']);
+
+    // recup dnnées taille
     $taille = comprisEntre($data['taille'], 0, 300) ? $data['taille'] : null;
     $participant->set('taille',  $taille);
+    $participant->set('saisie_taille', $data['saisie_taille']);
+
+    // recup dnnées poids
     $poids = comprisEntre($data['poids'], 0, 200) ? $data['poids'] : null;
     $participant->set('poids',$poids);
+    $participant->set('saisie_poids', $data['saisie_poids']);
+
     $participantsList[] = $participant;
 }
 $depart->set("listeParticipants", $participantsList);

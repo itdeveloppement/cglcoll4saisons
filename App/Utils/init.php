@@ -8,6 +8,11 @@
 use App\Services\Bdd;
 use App\Services\Session;
 
+// Activer l'affichage des erreurs
+ini_set('display_errors', 1);   // Afficher les erreurs
+ini_set('display_startup_errors', 1); // Afficher les erreurs de démarrage
+error_reporting(E_ALL); // Afficher toutes les erreurs
+
 // DEVELOPPEMENT : Affichage des erreurs
 ini_set('display_errors', 1);// Aficher les erreurs
 ini_set('display_startup_errors', 1);

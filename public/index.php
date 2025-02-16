@@ -5,9 +5,8 @@ use App\Services\Session;
     require_once __DIR__ . "/../App/Utils/init.php";
 
     // require_once __DIR__ . "/../App/Utils/email.php";
+   
     ?>
-
-    
 
     <?php
     // var_dump($_SESSION["lang"]);

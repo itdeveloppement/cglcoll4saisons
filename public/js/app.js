@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 // formulaire BU
+
 let formDepart = document.getElementById("participantFormDepart");
 if (formDepart) {
     // ajouter des écouteurs d'événements
@@ -154,6 +155,7 @@ if (formDepart) {
 
     // à la soumission du formulaire
     formDepart.addEventListener("submit", function(event) {
+ 
         event.preventDefault();
 
         // debug -------------------------------------------------------
@@ -221,11 +223,7 @@ if (formDepart) {
         if (allTrue) {
             // Vérifie le contenu de formData
             let formData = new FormData(formDepart);
-            
-            formData.forEach((value, key) => {
-                console.log(`${key}: ${value}`);
-                
-            });
+           
             // Modifier les données en BDD
             fetch('../controleurs/updateparticipantdepart.php', {
                 method: 'POST',

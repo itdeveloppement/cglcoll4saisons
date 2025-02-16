@@ -29,6 +29,7 @@ if (!$session->isConnected()) {
     exit;
 }
 
+
 // verifier et recuperer les données
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   /*
@@ -47,11 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $poids = isset($_POST['poids']) ? $_POST['poids'] : [];  
 
     // Vérifier si les tableaux sont vides
-    if (empty($prenom) || empty($age) || empty($taille) || empty($poids)) {
-        dol_syslog("Message : updateparticipantdepar.php. Tableau des données POST. Données invalide", LOG_ERR, 0, "_cglColl4Saisons" );
-        echo json_encode(["status" => "error", "message"=>"updateparticipantdepar.php. Tableau des données POST. Données invalide", "url" => "../../App/views/error/errtech.php"]);
-        exit;
-    }
+    // if (empty($prenom) || empty($age) || empty($taille) || empty($poids)) { // CE CONTROLE
+    //      dol_syslog("Message : updateparticipantdepar.php. Tableau des données POST. Données invalide", LOG_ERR, 0, "_cglColl4Saisons" );
+    //     echo json_encode(["status" => "error", "message"=>"updateparticipantdepar.php. Tableau des données POST. Données invalide", "url" => "../../App/views/error/errtech.php"]);
+    //      exit;
+    // }
 
 } else {
     dol_syslog("Message : upsdateparticipantdepart.php. La methode POST n'est valide", LOG_ERR, 0, "_cglColl4Saisons" );
@@ -67,7 +68,7 @@ foreach($prenom as $idBullDet => $value) {
     $valueAge = !empty($age[$idBullDet]) ? htmlentities(extractNumber($age[$idBullDet]), ENT_QUOTES, 'UTF-8') : null;
     $valueTaille = !empty($taille[$idBullDet]) ? htmlentities(extractNumber($taille[$idBullDet]), ENT_QUOTES, 'UTF-8') : null;
     $valuePoids = !empty($poids[$idBullDet]) ? htmlentities(extractNumber($poids[$idBullDet]), ENT_QUOTES, 'UTF-8') : null;
-
+    
     // Validation du type des données
     if (
         ($valuePrenom !==null && !is_string($valuePrenom) || (is_string($valuePrenom) && strlen($valuePrenom)>40 )) ||
@@ -81,27 +82,43 @@ foreach($prenom as $idBullDet => $value) {
     }
 
     // charger et inserer l'objet participant
-    if (isset($age[$idBullDet]) && isset($taille[$idBullDet]) && isset($poids[$idBullDet])) {
-        try {
-            $participant = new ParticipantDep(null, null);
-            $participant->set("rowid_participant", $idBullDet);
-            $participant->set("prenom",  $valuePrenom);
-            $participant->set("age", $valueAge);
-            $participant->set("taille", $valueTaille);
-            $participant->set("poids", $valuePoids);
-            $participant->updateParticipantsDepart();
-           
-        } catch (PDOException $e) {
-            dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant depart. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
-            json_encode(["status" => "error", "message"=> " Message : updateparticipant.php. Erreur lors du chargement de lobjet participant depart", "url" => "../../App/views/error/errtech.php"]);
-            exit;
-        }
-    } else {
-         dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant. id utilisateur ou id bull det inexistant", LOG_ERR, 0, "_cglColl4Saisons" );
-         json_encode(["satus" =>"error", "message" =>"Message : updateparticipantdepart.php. Erreur donnée invalide : age, taille ou poids selon un id bull det", "url" => "../../App/views/error/errtech.php"]);
-         exit;
+    try {
+        $participant = new ParticipantDep(null, null);
+        $participant->set("rowid_participant", $idBullDet);
+        $participant->set("prenom",  $valuePrenom);
+        $participant->set("age", $valueAge);
+        $participant->set("taille", $valueTaille);
+        $participant->set("poids", $valuePoids);
+        $participant->updateParticipantsDepart();
+
+    } catch (PDOException $e) {
+        dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant depart. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
+        json_encode(["status" => "error", "message"=> " Message : updateparticipant.php. Erreur lors du chargement de lobjet participant depart", "url" => "../../App/views/error/errtech.php"]);
+        exit;
     }
 
+
+    // charger et inserer l'objet participant
+    // if (isset($age[$idBullDet]) && isset($taille[$idBullDet]) && isset($poids[$idBullDet])) { // CE CONTROLE
+    //     try {
+    //         $participant = new ParticipantDep(null, null);
+    //         $participant->set("rowid_participant", $idBullDet);
+    //         $participant->set("prenom",  $valuePrenom);
+    //         $participant->set("age", $valueAge);
+    //         $participant->set("taille", $valueTaille);
+    //         $participant->set("poids", $valuePoids);
+    //         $participant->updateParticipantsDepart();
+           
+    //     } catch (PDOException $e) {
+    //         dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant depart. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
+    //         json_encode(["status" => "error", "message"=> " Message : updateparticipant.php. Erreur lors du chargement de lobjet participant depart", "url" => "../../App/views/error/errtech.php"]);
+    //         exit;
+    //     }
+    // } else {
+    //     dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant. id utilisateur ou id bull det inexistant", LOG_ERR, 0, "_cglColl4Saisons" );
+    //     json_encode(["satus" =>"error", "message" =>"Message : updateparticipantdepart.php. Erreur donnée invalide : age, taille ou poids selon un id bull det", "url" => "../../App/views/error/errtech.php"]);
+    //     exit;
+    // }
 }
 
 echo json_encode(([

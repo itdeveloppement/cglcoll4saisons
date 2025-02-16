@@ -45,15 +45,29 @@ class ParticipantDep extends Modele {
      * $prenom = valeur du champ taille de la table llx_cglinscription_bull_det
     */
     protected $taille;
+     /**
+     * {boolean} : 0 ou 1
+     * $saisie_taille = valeur du champ saisie_taille de la table llx_cfqs_c_categorieactivite (cat_act)
+    */
+    protected $saisie_taille;
+     /**
+     * {boolean} : 0 ou 1
+     * $saisie_taille = valeur du champ saisie_poids de la table llx_cfqs_c_categorieactivite (cat_act)
+    */
+    protected $saisie_poids;
+     /**
+     * {boolean} : 0 ou 1
+     * $saisie_taille = valeur du champ saisie_age de la table llx_cfqs_c_categorieactivite (cat_act)
+    */
+    protected $saisie_age;
    
    /**
-     * role : initialise l'aubjet à l'intentiation
+     * role : initialise l'objet à l'intentiation
      */
     public function __construct ($rowid_societe, $rowidSession) {
         $this->rowid_societe = $rowid_societe;
         $this->rowid_session = $rowidSession;
     }
-
 
     /**
      * role : selectionner la liste des participants d'un depart
@@ -126,7 +140,7 @@ class ParticipantDep extends Modele {
 
 
     /**
-     * modifier un participant
+     * modifier un participant d'un depart
      */
     public function updateParticipantsDepart() {
         $sql ="UPDATE
