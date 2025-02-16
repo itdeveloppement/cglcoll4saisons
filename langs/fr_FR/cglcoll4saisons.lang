@@ -90,7 +90,7 @@ btn-francais = French
 btn-quitter = Sortir
 btn-info = Compléter les informations
 btn-valider = Valider les informations
-btn-retour = Retour à la liste des activités
+btn-retour = Modifier vos informations
 
 # message erreur
 err-longueur-prenom = 40 caracteres maximum.

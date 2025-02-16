@@ -97,7 +97,7 @@ btn-francais = French
 btn-quitter = Exit
 btn-info = Complete the information
 btn-valider = Validate the information
-btn-retour = Back to list of activities
+btn-retour = Modify your information
 
 # footer
 text-footer = Cigale Aventure is at your service.
