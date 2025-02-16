@@ -137,18 +137,18 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 // Pour debugage session
 
-// Lire les paramètres d'URL
-$client = isset($_GET['client']) ? $_GET['client'] : null;
-$code = isset($_GET['code']) ? $_GET['code'] : null;
-$date = isset($_GET['date']) ? $_GET['date'] : null;
+// // Lire les paramètres d'URL
+// $client = isset($_GET['client']) ? $_GET['client'] : null;
+// $code = isset($_GET['code']) ? $_GET['code'] : null;
+// $date = isset($_GET['date']) ? $_GET['date'] : null;
 
-// Utilisez ces variables pour générer le contenu spécifique
-if ($client && $code && $date) {
-    // Générer le contenu en fonction des paramètres
-    echo "Client: $client, Code: $code, Date: $date";
-} else {
-    echo "Paramètres manquants";
-}
+// // Utilisez ces variables pour générer le contenu spécifique
+// if ($client && $code && $date) {
+//     // Générer le contenu en fonction des paramètres
+//     echo "Client: $client, Code: $code, Date: $date";
+// } else {
+//     echo "Paramètres manquants";
+// }
 
 // Détruire la session après l'envoi du contenu
 register_shutdown_function(function() {
