@@ -139,23 +139,20 @@ $now = dol_now("tzuser");
 // ------------------------- INIT SESSION -------------------------------- 
 
 // Vérification si une session est déjà active
-if (session_status() == PHP_SESSION_NONE) {
-    // Définir un nom de cookie unique pour la session
-    session_name('FORM_4_SAISONS_SESSION');
-    // Définir les paramètres du cookie de session
-    session_set_cookie_params([
-        'lifetime' => 0, // Le cookie expire à la fin de la session
-        'path' => '/', // Le cookie est valide pour tout le domaine
-        'domain' => '', // Le cookie est valide pour le domaine courant
-        'secure' => true, // Le cookie est envoyé uniquement via HTTPS
-        'httponly' => true, // Le cookie est accessible uniquement via HTTP
-        'samesite' => 'Strict', // Le cookie est envoyé uniquement dans des requêtes de même site
-    ]);
-
- 
-
-    // session_start();
-}
+// if (session_status() == PHP_SESSION_NONE) {
+//     // Définir un nom de cookie unique pour la session
+//     session_name('FORM_4_SAISONS_SESSION');
+//     // Définir les paramètres du cookie de session
+//     session_set_cookie_params([
+//         'lifetime' => 0, // Le cookie expire à la fin de la session
+//         'path' => '/', // Le cookie est valide pour tout le domaine
+//         'domain' => '', // Le cookie est valide pour le domaine courant
+//         'secure' => true, // Le cookie est envoyé uniquement via HTTPS
+//         'httponly' => true, // Le cookie est accessible uniquement via HTTP
+//         'samesite' => 'Strict', // Le cookie est envoyé uniquement dans des requêtes de même site
+//     ]);
+// session_start();
+// }
 
 // Afficher le contenu de la variable de session
 // echo '<pre>';
