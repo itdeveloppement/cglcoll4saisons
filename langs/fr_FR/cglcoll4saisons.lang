@@ -54,10 +54,12 @@ MyWidget = My widget
 MyWidgetDescription = My widget description
 
 # page liste des depart
-intitule-liste-depart = Pour chaque activités, compléter les informations.
+bonjour = Bonjour 
+civilite = M./Mme
+intitule-liste-depart = , pour chaque activités, complétez les informations.
 
 # page detail des BU et LO
-intitule-detail-depart = Compléter ou modifier les informations puis valider.
+intitule-detail-depart = , complétez ou modifiez les informations puis valider.
 participant = Participant
 loc-velo = Location velo.
 activite = Activité

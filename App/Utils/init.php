@@ -154,7 +154,7 @@ $now = dol_now("tzuser");
 // session_start();
 // }
 
-// Afficher le contenu de la variable de session
+// Afficher le contenu de la variable de session pour debug
 // echo '<pre>';
 // print_r($_SESSION);
 // echo '</pre>';

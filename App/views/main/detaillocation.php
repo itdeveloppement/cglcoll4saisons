@@ -4,11 +4,15 @@
  * param : {array objet} : liste des participants d'une prestation de location
  */
 
+use App\Modeles\User;
+
 include_once __DIR__ . "/../layout/header.php";
+
+$user = new User($_SESSION['FORM_4_SAISONS_ID']);
 
 echo "<main class='detail-location'>";
     // location
-    echo "<h2 id='btn' >" . htmlspecialchars(html_entity_decode($langs->trans("intitule-detail-depart"))) . "</h2>";
+    echo "<h2 id='btn' >" . $langs->trans("civilite") . " " . $user->get("nom") . htmlspecialchars(html_entity_decode($langs->trans("intitule-detail-depart")), ENT_QUOTES, 'UTF-8') . "</h2>";
     echo "<div class='flex activite'>";
         echo "<h3>" . htmlspecialchars(html_entity_decode($langs->trans("loc-velo"))) . "</h3>";
         echo "<p>" . htmlspecialchars(html_entity_decode($langs->trans("loc-velo"))) . "</p>";
