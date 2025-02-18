@@ -27,6 +27,17 @@ header .btn-container {
     width: 100%; 
 }
 
+/* footer */
+footer p a {
+    background-color: none;
+    width: 100%;
+    gap: 20px;
+    display: block;
+}
+footer p a:hover {
+    background-color: none;
+}
+
 /* liste depart */
 .liste-depart .btn-container {
     /* justify-content: center; */
