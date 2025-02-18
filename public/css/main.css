@@ -30,7 +30,7 @@
 /* structure des pages */
 body {
     font-family: var(--fonte);
-    font-size: 14px;
+    font-size: 15px;
     background-color: var( --quatriemeColor);
 }
 .flex {

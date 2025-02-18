@@ -11,7 +11,8 @@ h3 {
 /* footer */
 .footer h3 {
     width: 100%;
-    text-align: center
+    text-align: center;
+    margin: 10px 0 20px 0;
 }
 
 /* detail depart */

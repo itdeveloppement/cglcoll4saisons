@@ -2,17 +2,17 @@
 /* generale */
 a, button {
     padding: 10px 20px;
-    background-color: var(--premiereColor);
+    background-color: var(--deuxiemeColor);
     color: var(--cinquiemeColor);
     transition: background-color 0.3s ease;
     border-radius: var(--borderRadius);
     text-align: center;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 a:hover, button:hover {
-    background-color: var(--deuxiemeColor);
-    font-weight: 300;
+    background-color: var(--premiereColor);
+    font-weight: 500;
 }
 
 /* header */
@@ -27,20 +27,8 @@ header .btn-container {
     width: 100%; 
 }
 
-/* footer */
-footer p a {
-    background-color: none;
-    width: 100%;
-    gap: 20px;
-    display: block;
-}
-footer p a:hover {
-    background-color: none;
-}
-
 /* liste depart */
 .liste-depart .btn-container {
-    /* justify-content: center; */
     width: 100%;
     margin-top: 10px;
 }
