@@ -16,7 +16,7 @@ h3 {
 }
 
 /* detail depart */
-.detail-depart h3, .detail-location h3 {
+.detail-depart h3, .detail-location h3, .h3detaildepart {
     width: 100%;
     background-color: var(--deuxiemeColor);
     border-radius: var(--borderRadius);
@@ -25,7 +25,7 @@ h3 {
     font-weight: 300;
     font-size: 14px;
 }
-.activite h3 {
+.activite h3, .h3detaildepart {
     margin: 0 0 10px 0;
     padding: 3px 9px;
 }

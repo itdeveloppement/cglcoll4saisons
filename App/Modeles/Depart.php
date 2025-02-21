@@ -148,7 +148,7 @@ class Depart extends Modele {
                     AND par.type = 0
                     /* seulement les inscriptions dont le champ action est différent de X et S (table participant) */
                     AND par.action NOT IN ('X', 'S')
-        ";
+            ORDER BY cal.heured ASC";
 
         $param = [ ":id_societe" => $this->rowidTiers, ":intitule" => $intitule]; // Ajout de ":intitule" comme paramètre pour sécuriser la requête
 
