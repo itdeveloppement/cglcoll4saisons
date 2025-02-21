@@ -14,9 +14,8 @@ echo "<main class='detail-location'>";
     // location
     echo "<h2 id='btn' >" . $langs->trans("civilite") . " " . $user->get("nom") . htmlspecialchars(html_entity_decode($langs->trans("intitule-detail-depart")), ENT_QUOTES, 'UTF-8') . "</h2>";
     echo "<div class='flex activite'>";
-        // echo "<h3>" . htmlspecialchars(html_entity_decode($langs->trans("loc-velo"))) . "</h3>";
-        // echo "<p>" . htmlspecialchars(html_entity_decode($langs->trans("loc-velo"))) . "</p>";
         echo "<h3>" . htmlspecialchars($location->get("ref")) . "</h3>";
+        echo "<p>" . htmlspecialchars($location->get("ref")) . "</p>";
         echo "<p class='date'>" . htmlspecialchars(formatDateAffichage ($location->get("dateRetrait"))) . "</p>";
         echo "<p class='lieu'>" . htmlspecialchars($location->get("lieuRetrait")) . "</p>";
     echo "</div>";
