@@ -12,12 +12,12 @@ $user = new User($_SESSION['FORM_4_SAISONS_ID']);
 
 echo "<main class='detail-depart'>";
     // depart
-    echo "<h2 id='btn' >" . $langs->trans("civilite") . " " . $user->get("nom") . htmlspecialchars(html_entity_decode($langs->trans("intitule-detail-depart")), ENT_QUOTES, 'UTF-8') . "</h2>";
+    echo "<h2 id='btn' >" . $langs->trans("civilite") . " " . formatString($user->get("nom")) . htmlspecialchars(html_entity_decode($langs->trans("intitule-detail-depart")), ENT_QUOTES, 'UTF-8') . "</h2>";
     echo "<div class='flex activite'>";
         echo "<h3>" . htmlspecialchars(html_entity_decode($langs->trans("activite")), ENT_QUOTES, 'UTF-8') . "</h3>";
         echo "<p>" . htmlspecialchars($depart->get("intituleDepart"), ENT_QUOTES, 'UTF-8') . "</p>";
         echo "<p class='date'>" . htmlspecialchars(formatDateAffichage ($depart->get("dateDepart")), ENT_QUOTES, 'UTF-8') . "</p>";
-        echo "<p class='lieu'>" . htmlspecialchars($depart->get("lieuDepart"), ENT_QUOTES, 'UTF-8') . "</p>";
+        // echo "<p class='lieu'>" . htmlspecialchars($depart->get("lieuDepart"), ENT_QUOTES, 'UTF-8') . "</p>";
     echo "</div>";
     // form participants
     // pour chaque champ age, taille et depart integrer une condition d'affichage si $participant->get(saisie_xxx) 1 = affichage

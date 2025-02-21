@@ -75,7 +75,7 @@ class Location extends Modele {
      * conditions :
         * seulement les bulletins de type LO ( typebull = Loc  dans table bulletin)
         * seulement les LO avec un statut actif c a dire inferieur ou égale à 1 (table bulletin)
-        * seulement le materiel loué  de aujourd'hui à j+1 (dateretrait table bull_det)
+        * seulement le materiel loué de aujourd'hui à j+1 (dateretrait table bull_det)
         * seulement le materiel loué de type = 0 (type dans bull_det)
         * seulement le materiel loué dont le champ action est different de X et different de S (action - bull det)
         * seulement le materiel loué affichable c a dire necessitant un champ taille et age (s_status = valeur 1 dans llx_product_extrafields)

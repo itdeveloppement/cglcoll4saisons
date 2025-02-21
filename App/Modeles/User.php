@@ -63,7 +63,12 @@ class User extends Modele {
         // charger les données dans les propriété
     public function loadUser() {
 
-        $sql = "SELECT `nom`, `datec`, `code_client`, `default_lang` FROM `llx_societe` WHERE `rowid` = :id";
+        $sql = "SELECT
+        `nom`,
+        `datec`,
+        `code_client`,
+        `default_lang`
+        FROM `llx_societe` WHERE `rowid` = :id";
         $param = [ ":id" => $this->rowid];
 
         $bdd = Bdd::connexion();

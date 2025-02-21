@@ -13,7 +13,7 @@ $user = new User($_SESSION['FORM_4_SAISONS_ID']);
 
 echo '<main class="liste-depart">';
     // verif données
-    echo "<h2>" . $langs->trans("bonjour") . " " . $langs->trans("civilite") . " " . $user->get("nom") . $langs->trans("intitule-liste-depart")  . "</h2>";
+    echo "<h2>" . $langs->trans("bonjour") . " " . $langs->trans("civilite") . " " . formatString($user->get("nom")) . $langs->trans("intitule-liste-depart")  . "</h2>";
     foreach ($listeDeparts as $depart) {
         if ($depart->get('affichageActivite')==1) {
         echo "<article class='card-liste-depart'>";

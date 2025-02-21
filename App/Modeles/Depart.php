@@ -32,7 +32,7 @@ class Depart extends Modele {
      */
     protected $intituleDepart;
     /**
-     * {datetime} : date de debut de la session (depart). 
+     * {datetime} : date de debut de la session (depart).
      * $dateDepart = valeur du champ heured de la table llx_agefodd_session_calendrier
      */
     protected $dateDepart;
