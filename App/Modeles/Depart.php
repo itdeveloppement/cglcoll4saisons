@@ -100,7 +100,7 @@ class Depart extends Modele {
                     ses.rowid AS id_session,
                     /* nom de la session/depart */
                     CASE
-                        WHEN cat.rowid = $intitule THEN ses.intitule_custo
+                        WHEN cat.rowid = :intitule THEN ses.intitule_custo
                         ELSE cat.intitule
                     END AS intituleDepart,
                     /* date de debut de la session/depart */
@@ -110,12 +110,12 @@ class Depart extends Modele {
                     /* affichage de l'activité grisée ou pas */
                     CASE
                         WHEN (HOUR(NOW()) >= 16 AND cal.heured < DATE_ADD(CURDATE(), INTERVAL 1 DAY))
-                        OR (HOUR(NOW()) < 16 AND cal.heured < CURDATE())
+                             OR (HOUR(NOW()) < 16 AND cal.heured < CURDATE())
                         THEN 0
                         ELSE 1
                     END AS affichageActivite
                 FROM
-                    llx_cglinscription_bull as bul
+                    llx_cglinscription_bull AS bul
                 LEFT JOIN
                     llx_societe AS soc ON bul.fk_soc = soc.rowid
                 LEFT JOIN
@@ -132,36 +132,37 @@ class Depart extends Modele {
                     llx_cfqs_c_categorieactivite AS cat_act ON ses.fk_categorieactivites = cat_act.rowid
           
                 WHERE
-                    /*seulement les BU du client*/
+                    /* seulement les BU du client */
                     soc.rowid = :id_societe
-                    /* seulement les bulletins les BU / table bulletin -> typebull = Insc */
+                    /* seulement les bulletins les BU / table bulletin -> typebull = 'Insc' */
                     AND bul.typebull = 'Insc'
-                    /* seulement les BU au statut actif c a dire inferieur à la valeur 9 (table bulletin -> statut) */
+                    /* seulement les BU au statut actif, c'est-à-dire inférieur à 9 (table bulletin -> statut) */
                     AND bul.statut < 9
-                    /* seulement les departs actifs (non annulés) (status = 1 dans table session ) */
+                    /* seulement les départs actifs (non annulés) (status = 1 dans table session ) */
                     AND ses.status = 1
-                    /*seulement les activités du depart affichable (table categorie -> affichage == 1) */
+                    /* seulement les activités du départ affichable (table catégorie -> affichage == 1) */
                     AND cat_act.affichage = 1
-                     /* seulement les départs à partir de hier c'est a dire j-1 d'aujourd'hui)  (table session calendar -> dated)*/
+                    /* seulement les départs à partir de hier, c'est-à-dire J-1 d'aujourd'hui (table session calendar -> dated) */
                     AND cal.heured >= DATE_ADD(CURDATE(), INTERVAL -1 DAY)
                     /* seulement les inscriptions de type = 0 (dans table participant) */
                     AND par.type = 0
-                    /* seulement les inscriptions dont le champ action est different de X et different de S (table particpant) */
+                    /* seulement les inscriptions dont le champ action est différent de X et S (table participant) */
                     AND par.action NOT IN ('X', 'S')
         ";
 
-        $param = [ ":id_societe" => $this->rowidTiers];
-        // verification si $rowidBulletinn'est pas null
-        if (!is_null($this->rowidBulletin)){
-            $sql .=" AND bul.rowid = :id_bulletin";
-            $param [":id_bulletin"] = $this->rowidBulletin;
+        $param = [ ":id_societe" => $this->rowidTiers, ":intitule" => $intitule]; // Ajout de ":intitule" comme paramètre pour sécuriser la requête
+
+        // Vérification si $rowidBulletin n'est pas null
+        if (!is_null($this->rowidBulletin)) {
+            $sql .= " AND bul.rowid = :id_bulletin";
+            $param[":id_bulletin"] = $this->rowidBulletin;
         }
 
-        // preparation et execution requette
-       
+        // Préparation et exécution de la requête
         $bdd = Bdd::connexion();
         $req = $bdd->prepare($sql);
         $req->execute($param);
+
         try {
             $result = $req->fetchAll(PDO::FETCH_ASSOC);
             return $result;
