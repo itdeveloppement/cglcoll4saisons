@@ -26,12 +26,12 @@ function formatDateAffichage ($date) {
     $date = new DateTime($date);
     // Crée un formateur de date en français
     $formatter = new IntlDateFormatter(
-    'fr_FR', 
+    'fr_FR',
     IntlDateFormatter::FULL,
-    IntlDateFormatter::NONE, 
-    'Europe/Paris',
+    IntlDateFormatter::NONE,
+    null,
     IntlDateFormatter::GREGORIAN,
-    'EEEE dd MMMM HH:mm' 
+    'EEEE dd MMMM HH:mm'
 );
     // Formater la date
     $formattedDate = $formatter->format($date);
