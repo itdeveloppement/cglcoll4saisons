@@ -21,7 +21,6 @@ echo '<main class="liste-depart">';
     foreach ($listeDeparts as $depart) {
         if ($depart->get('affichageActivite')==1) {
         echo "<article class='card-liste-depart'>";
-            // echo "<div>" . $depart->get("rowidDepart") . "</div>";
             echo "<p>" . formatDateAffichage ($depart->get("dateDepart")) . "</p>";
             echo "<h3>" . $depart->get("intituleDepart") . "</h3>";
             // echo "<p>" . $depart->get("lieuDepart") . "</p>";
@@ -29,7 +28,6 @@ echo '<main class="liste-depart">';
         echo "</article>";
         } else {
             echo "<article class='card-liste-depart bagroudGrise'>";
-                // echo "<div>" . $depart->get("rowidDepart") . "</div>";
                 echo "<p>" . formatDateAffichage ($depart->get("dateDepart")) . "</p>";
                 echo "<h3>" . $depart->get("intituleDepart") . "</h3>";
                 // echo "<p>" . $depart->get("lieuDepart") . "</p>";
@@ -43,7 +41,6 @@ echo '<main class="liste-depart">';
     foreach ($listeLocations as $location) {
         if ($location->get('affichageActivite')==1) {
             echo "<article class='card-liste-depart'>";
-                // echo "<div>" . $location->get("rowidBulDet") . "</div>";
                 echo "<p>" . formatDateAffichage ($location->get("dateRetrait")) . "</p>";
                 echo "<h3>" . $location->get("ref") . "</h3>";
                 // echo "<p>" . $location->get("lieuRetrait") . "</p>";
@@ -51,7 +48,6 @@ echo '<main class="liste-depart">';
             echo "</article>";
         } else {
             echo "<article class='card-liste-depart bagroudGrise'>";
-                // echo "<div>" . $location->get("rowidBulDet") . "</div>";
                 echo "<p>" . formatDateAffichage ($location->get("dateRetrait")) . "</p>";
                 echo "<h3>" . $location->get("ref") . "</h3>";
                 // echo "<p>" . $location->get("lieuRetrait") . "</p>";

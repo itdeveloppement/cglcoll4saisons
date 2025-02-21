@@ -17,7 +17,7 @@ changeLang ($db, $conf,  $lang);
 
 // verifier la connexion session
 $session = new Session();
-if (!$session->isConnected()) { 
+if (!$session->isConnected()) {
     require_once __DIR__ . "/../views/error/errdroit.php";
     exit;
 }

@@ -73,7 +73,6 @@ foreach($prenom as $idBullDet => $value) {
         http_response_code(400); // mauvaise requette
         echo json_encode (['redirect' => '../views/error/errtech.php']);
         exit;
-        
     }
 
     // charger et inserer l'objet participant
@@ -101,6 +100,7 @@ foreach($prenom as $idBullDet => $value) {
          exit;
     }
 }
+
 
 
 

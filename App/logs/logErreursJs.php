@@ -2,7 +2,7 @@
 // Récupérer les données de la requête POST
 $data = file_get_contents('php://input');
 $request = json_decode($data, true);
-var_dump($request);
+// var_dump($request);
 // Extraire le message d'erreur
 if (isset($request['error'])) {
     $errorMessage = $request['error'];
@@ -17,4 +17,4 @@ if (isset($request['error'])) {
 } else {
     echo "Aucune erreur à enregistrer";
 }
-?>
+

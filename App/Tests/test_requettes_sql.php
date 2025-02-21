@@ -30,18 +30,18 @@ require_once __DIR__ . "/../Utils/init.php";
             par.taille AS taille
 
 
-        FROM 
+        FROM
             llx_cglinscription_bull as bul
-        LEFT JOIN 
+        LEFT JOIN
             llx_societe AS soc ON bul.fk_soc = soc.rowid
-        LEFT JOIN 
+        LEFT JOIN
             llx_cglinscription_bull_det AS par ON bul.rowid = par.fk_bull
-        LEFT JOIN 
+        LEFT JOIN
             llx_product AS pro ON par.fk_produit = pro.rowid
         LEFT JOIN
             llx_product_extrafields AS pro_extra ON pro.rowid = pro_extra.fk_object
         
-        WHERE 
+        WHERE
             /*seulement les LO du client*/
             soc.rowid = :id_societe
             /* seulement les bulletins les BU / table bulletin -> typebull = Insc */
@@ -115,7 +115,7 @@ require_once __DIR__ . "/../Utils/init.php";
             return $result;
         } catch (PDOException $e) {
             echo "Erreur lors de la recuperation de la liste des participant d'une location : " . $e->getMessage();
-        } 
+        }
     }
 
     // var_dump(listeParticipantLocProduct());
@@ -170,7 +170,7 @@ require_once __DIR__ . "/../Utils/init.php";
             return $result;
         } catch (PDOException $e) {
             echo "Erreur lors de la recuperation de la liste des participant d'une location : " . $e->getMessage();
-        } 
+        }
     }
 
     // var_dump(listeParticipantLocBull());
@@ -192,7 +192,7 @@ require_once __DIR__ . "/../Utils/init.php";
             
             ";
         // preparation et execution requette
-        $param = 
+        $param =
         [
             ":id_participant" => 17
         ];
@@ -219,7 +219,7 @@ require_once __DIR__ . "/../Utils/init.php";
 
         $sql ="UPDATE
             llx_cglinscription_bull_det AS bul
-        SET 
+        SET
             NomPrenom = :id_prenom,
             age = :id_age,
             taille = :id_taille
@@ -240,7 +240,7 @@ require_once __DIR__ . "/../Utils/init.php";
             return $result;
         } catch (PDOException $e) {
             echo "Erreur lors l'insertion d'un participant dans la base : " . $e->getMessage();
-        } 
+        }
     }
 
     // updateParticipants();
@@ -266,24 +266,24 @@ function loadDeparts() {
                 /* lieu de depart de la session/depart */
                 pla.ref_interne AS lieuDepart
 
-            FROM 
+            FROM
                 llx_cglinscription_bull as bul
-            LEFT JOIN 
+            LEFT JOIN
                 llx_societe AS soc ON bul.fk_soc = soc.rowid
-            LEFT JOIN 
+            LEFT JOIN
                 llx_cglinscription_bull_det AS par ON bul.rowid = par.fk_bull
-            LEFT JOIN 
+            LEFT JOIN
                 llx_agefodd_session AS ses ON par.fk_activite = ses.rowid
             LEFT JOIN
                 llx_agefodd_place AS pla ON ses.fk_session_place = pla.rowid
-            LEFT JOIN 
+            LEFT JOIN
                 llx_agefodd_session_calendrier AS cal ON ses.rowid = cal.fk_agefodd_session
             LEFT JOIN
                 llx_agefodd_formation_catalogue AS cat ON ses.fk_formation_catalogue = cat.rowid
             LEFT JOIN
                 llx_cfqs_c_categorieactivite AS cat_act ON ses.fk_categorieactivites = cat_act.rowid
       
-            WHERE 
+            WHERE
                 /*seulement les BU du client*/
                 soc.rowid = :id_societe
                 /* seulement les bulletins les BU / table bulletin -> typebull = Insc */
@@ -322,9 +322,9 @@ function loadListeParticipantsDep() {
     $rowid_session = 5021;
     $rowid_societe = 15007;
 
-    $sql = "SELECT 
+    $sql = "SELECT
             /* intitule du depart */
-            CASE 
+            CASE
                 WHEN cat.intitule = 'AUTRES' THEN ses.intitule_custo
                 ELSE cat.intitule
             END AS intituleDepart,
@@ -335,17 +335,17 @@ function loadListeParticipantsDep() {
             par.NomPrenom AS prenom,
             par.age AS age,
             par.taille AS taille
-        FROM 
+        FROM
             llx_cglinscription_bull as bul
-        LEFT JOIN 
+        LEFT JOIN
             llx_societe AS soc ON bul.fk_soc = soc.rowid
-        LEFT JOIN 
+        LEFT JOIN
             llx_cglinscription_bull_det AS par ON bul.rowid = par.fk_bull
-        LEFT JOIN 
+        LEFT JOIN
             llx_agefodd_session AS ses ON par.fk_activite = ses.rowid
         LEFT JOIN
             llx_agefodd_place AS pla ON ses.fk_session_place = pla.rowid
-        LEFT JOIN 
+        LEFT JOIN
             llx_agefodd_session_calendrier AS cal ON ses.rowid = cal.fk_agefodd_session
         LEFT JOIN
             llx_agefodd_formation_catalogue AS cat ON ses.fk_formation_catalogue = cat.rowid
@@ -374,7 +374,7 @@ function loadListeParticipantsDep() {
             return $result;
         } catch (PDOException $e) {
             echo "Erreur lors de la recuperation de la liste des participant d'une location : " . $e->getMessage();
-        } 
+        }
 
     }
 
@@ -396,7 +396,7 @@ function loadListeParticipantsDep() {
             cal.heured AS dateDepart,
             /* lieu de depart de la session/depart */
             pla.ref_interne AS lieuDepart
-        FROM 
+        FROM
                 llx_agefodd_session  as ses
             LEFT JOIN
                 llx_agefodd_place AS pla ON ses.fk_session_place = pla.rowid
@@ -406,7 +406,7 @@ function loadListeParticipantsDep() {
                 llx_agefodd_formation_catalogue AS cat ON ses.fk_formation_catalogue = cat.rowid
             LEFT JOIN
                 llx_cfqs_c_categorieactivite AS cat_act ON ses.fk_categorieactivites = cat_act.rowid
-        WHERE 
+        WHERE
             /*seulement les BU du client*/
             ses.rowid = :id_session
             

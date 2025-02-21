@@ -102,13 +102,12 @@ class ParticipantLoc extends Modele {
             $bdd = Bdd::connexion();
             $req = $bdd->prepare($sql);
             $req->execute($param);
-            $result = $req->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            return $req->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             dol_syslog("Message : ParticipantLoc.php - Erreur SQL liste des participant loacation. Requette : " . $sql, LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";
             exit;
-        } 
+        }
     }
 
     /**
@@ -117,7 +116,7 @@ class ParticipantLoc extends Modele {
     public function updateParticipants() {
         $sql ="UPDATE
             llx_cglinscription_bull_det AS bul
-        SET 
+        SET
             NomPrenom = :id_prenom,
             age = :id_age,
             taille = :id_taille
@@ -134,12 +133,11 @@ class ParticipantLoc extends Modele {
             $bdd = Bdd::connexion();
             $req = $bdd->prepare($sql);
             $req->execute($param);
-            $result = $req->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            return $req->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             dol_syslog("Message : ParticipantLoc.php - Erreur SQL liste des participant location. Requette : " . $sql, LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";
             exit;
-        } 
+        }
     }
 }

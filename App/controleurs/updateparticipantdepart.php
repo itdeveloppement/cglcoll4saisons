@@ -1,7 +1,7 @@
 <?php
 /**
  * Role : inserer les modificatons des participants d'un depart en bdd
- * POST : 
+ * POST :
  *  $prenom {array} tableau des prenoms des particpants indexé par l'id du participant
  *  $age {array} tableau des ages des particpants indexé par l'id du participant
  *  $taille {array} tableau des taille des particpants indexé par l'id du participant
@@ -24,36 +24,18 @@ changeLang ($db, $conf,  $lang);
 
 // verifier la connexion
 $session = new Session();
-if (!$session->isConnected()) { 
+if (!$session->isConnected()) {
     header('Location: ../views/error/errdroit.php');
     exit;
 }
 
-
 // verifier et recuperer les données
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  /*
-    dol_syslog(
-        " id prenom : " . $_POST['prenom'][38632] .
-        " id prenom : " . $prenom[38633] .
-        " id prenom : " . $prenom[38634] .
-        " id prenom : " . $prenom[38635] .
-        " id prenom : " . $prenom[38636]
-        , LOG_ERR, 0, "_cglColl4Saisons" );
-*/
     // Initialiser les tableaux pour stocker les données
     $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : [];
     $age = isset($_POST['age']) ? $_POST['age'] : [];
     $taille = isset($_POST['taille']) ? $_POST['taille'] : [];
-    $poids = isset($_POST['poids']) ? $_POST['poids'] : [];  
-
-    // Vérifier si les tableaux sont vides
-    // if (empty($prenom) || empty($age) || empty($taille) || empty($poids)) { // CE CONTROLE
-    //      dol_syslog("Message : updateparticipantdepar.php. Tableau des données POST. Données invalide", LOG_ERR, 0, "_cglColl4Saisons" );
-    //     echo json_encode(["status" => "error", "message"=>"updateparticipantdepar.php. Tableau des données POST. Données invalide", "url" => "../../App/views/error/errtech.php"]);
-    //      exit;
-    // }
-
+    $poids = isset($_POST['poids']) ? $_POST['poids'] : [];
 } else {
     dol_syslog("Message : upsdateparticipantdepart.php. La methode POST n'est valide", LOG_ERR, 0, "_cglColl4Saisons" );
     json_encode(["status"=>"error", "message" => " Message : upsdateparticipantdepart.php. La methode POST n'est valide", "url" => "../../App/views/error/errtech.php"]);
@@ -96,34 +78,10 @@ foreach($prenom as $idBullDet => $value) {
         json_encode(["status" => "error", "message"=> " Message : updateparticipant.php. Erreur lors du chargement de lobjet participant depart", "url" => "../../App/views/error/errtech.php"]);
         exit;
     }
-
-
-    // charger et inserer l'objet participant
-    // if (isset($age[$idBullDet]) && isset($taille[$idBullDet]) && isset($poids[$idBullDet])) { // CE CONTROLE
-    //     try {
-    //         $participant = new ParticipantDep(null, null);
-    //         $participant->set("rowid_participant", $idBullDet);
-    //         $participant->set("prenom",  $valuePrenom);
-    //         $participant->set("age", $valueAge);
-    //         $participant->set("taille", $valueTaille);
-    //         $participant->set("poids", $valuePoids);
-    //         $participant->updateParticipantsDepart();
-           
-    //     } catch (PDOException $e) {
-    //         dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant depart. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
-    //         json_encode(["status" => "error", "message"=> " Message : updateparticipant.php. Erreur lors du chargement de lobjet participant depart", "url" => "../../App/views/error/errtech.php"]);
-    //         exit;
-    //     }
-    // } else {
-    //     dol_syslog("Message : updatparticipantdepart.php - Erreur lors du chargement de l'objet participant. id utilisateur ou id bull det inexistant", LOG_ERR, 0, "_cglColl4Saisons" );
-    //     json_encode(["satus" =>"error", "message" =>"Message : updateparticipantdepart.php. Erreur donnée invalide : age, taille ou poids selon un id bull det", "url" => "../../App/views/error/errtech.php"]);
-    //     exit;
-    // }
 }
 
 echo json_encode(([
 "status" => "succes",
 "redirect" => true,
 "url" => "../../App/controleurs/afficherinfosenregistrees.php"
-
 ]));

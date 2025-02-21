@@ -1,7 +1,6 @@
 <?php
 /**
  * role : se connecter à la base de données
- * 
  */
 
 namespace App\Services;
@@ -10,15 +9,13 @@ use PDO;
 use PDOException;
 
 class Bdd {
-
-
+    
     // attributs
     protected static $dsn;
     protected static $userName;
     protected static $password;
     protected static $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING];
     protected static $bdd = null;
-
 
     // ---------- setter et getter --------------------------
     public static function setUserName($name) {
@@ -31,10 +28,7 @@ class Bdd {
         self::$dsn = $dsn;
     }
 
-   
-
-
-    /** 
+    /**
      * Role : connecter la base de donnée
      * @param {string} : $userName - nom d'utilisateur
      * @param {string} : $password -  password de connexion à la base
@@ -44,10 +38,8 @@ class Bdd {
      */
 
      public static function connexion() {
-        // var_dump(self::$userName);
-        // var_dump( self::$password);
-        try 
-        { 
+        try
+        {
         self::$bdd = new PDO (self::$dsn, self::$userName, self::$password, self::$options); 
         self::$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return  self::$bdd;

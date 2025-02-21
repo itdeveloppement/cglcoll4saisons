@@ -1,7 +1,7 @@
 <?php
 /**
  * Role : inserer les modificatons des participants d'une loication en bdd
- * POST : 
+ * POST :
  *  $prenom {array} tableau des prenoms des particpants indexé par l'id du participant
  *  $age {array} tableau des ages des particpants indexé par l'id du participant
  *  $taille {array} tableau des taille des particpants indexé par l'id du participant
@@ -84,7 +84,6 @@ foreach($prenom as $idBullDet => $value) {
          echo json_encode(["status" => "error", "message" => "Erreur lors de la mise à jour."]);
          exit;
     }
-
 }
 
 echo json_encode([
@@ -92,3 +91,4 @@ echo json_encode([
     "redirect" => true,
     "url" => "../../App/controleurs/afficherinfosenregistrees.php"
 ]);
+

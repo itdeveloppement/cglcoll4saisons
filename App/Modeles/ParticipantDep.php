@@ -75,11 +75,11 @@ class ParticipantDep extends Modele {
      */
     public function listeParticipantsDep() {
 
-        $sql = "SELECT 
+        $sql = "SELECT
             /* id session */
             par.rowid AS id_participant,
             /* intitule du depart */
-            CASE 
+            CASE
                 WHEN cat.intitule = 'AUTRES' THEN ses.intitule_custo
                 ELSE cat.intitule
             END AS intituleDepart,
@@ -94,17 +94,17 @@ class ParticipantDep extends Modele {
             cat_act.saisie_age AS saisie_age,
             cat_act.saisie_taille AS saisie_taille,
             cat_act.saisie_poids AS saisie_poids
-        FROM 
+        FROM
             llx_cglinscription_bull as bul
-        LEFT JOIN 
+        LEFT JOIN
             llx_societe AS soc ON bul.fk_soc = soc.rowid
-        LEFT JOIN 
+        LEFT JOIN
             llx_cglinscription_bull_det AS par ON bul.rowid = par.fk_bull
-        LEFT JOIN 
+        LEFT JOIN
             llx_agefodd_session AS ses ON par.fk_activite = ses.rowid
         LEFT JOIN
             llx_agefodd_place AS pla ON ses.fk_session_place = pla.rowid
-        LEFT JOIN 
+        LEFT JOIN
             llx_agefodd_session_calendrier AS cal ON ses.rowid = cal.fk_agefodd_session
         LEFT JOIN
             llx_agefodd_formation_catalogue AS cat ON ses.fk_formation_catalogue = cat.rowid
@@ -129,14 +129,13 @@ class ParticipantDep extends Modele {
             $bdd = Bdd::connexion();
             $req = $bdd->prepare($sql);
             $req->execute($param);
-            $result = $req->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            return $req->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             dol_syslog("Message : ParticipantDep.php - Erreur SQL liste des participant depart. Requette : " . $sql, LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";
             exit;
         }
-    } 
+    }
 
 
     /**
@@ -164,12 +163,11 @@ class ParticipantDep extends Modele {
             $bdd = Bdd::connexion();
             $req = $bdd->prepare($sql);
             $req->execute($param);
-            $result = $req->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            return$req->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             dol_syslog("Message : ParticipantDep.php - Erreur SQL update participant depart. Requette : " . $sql, LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";
             exit;
-        } 
+        }
     }
 }

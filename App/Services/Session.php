@@ -28,7 +28,6 @@ class Session {
         $sessionId = uniqid($this->prefix, true);
         // Stocker l'identifiant unique dans la session
         $_SESSION[$this->prefix . "SESSION_ID"] = $sessionId;
-      
     }
 
     /**

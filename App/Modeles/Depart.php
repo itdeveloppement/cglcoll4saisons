@@ -164,10 +164,9 @@ class Depart extends Modele {
         $req->execute($param);
 
         try {
-            $result = $req->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            return $req->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            dol_syslog("Message : Classe Depart.php - Erreur lors de la recuperation de la liste des departs. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );  
+            dol_syslog("Message : Classe Depart.php - Erreur lors de la recuperation de la liste des departs. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";
             exit;
         }
@@ -213,13 +212,11 @@ class Depart extends Modele {
         $req = $bdd->prepare($sql);
         $req->execute($param);
         try {
-            $result = $req->fetch(PDO::FETCH_ASSOC);
-            return $result;
+            return $req->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             dol_syslog("Message : Classe Depart.php - Erreur lors de la recuperation dd'un departs. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";
             exit;
         }
     }
-
     }

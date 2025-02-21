@@ -56,13 +56,12 @@ class User extends Modele {
         $this->loadUser();
     }
     
-     // ------------------ LOADING -----------------------------------
+    // ------------------ LOADING -----------------------------------
 
     // loading user
         // recuperer les données de la table user : id / nom / datec / code client
         // charger les données dans les propriété
     public function loadUser() {
-
         $sql = "SELECT
         `nom`,
         `datec`,
@@ -70,7 +69,6 @@ class User extends Modele {
         `default_lang`
         FROM `llx_societe` WHERE `rowid` = :id";
         $param = [ ":id" => $this->rowid];
-
         $bdd = Bdd::connexion();
         $req = $bdd->prepare($sql);
         try {
@@ -82,7 +80,6 @@ class User extends Modele {
                     $this->datec = $result[0]['datec'];
                     $this->code_client = $result[0]['code_client'];
                     $this->default_lang = $result[0]['default_lang'];
-              
             } else {
                 $this->nom = '';
                 $this->datec = '';
@@ -102,7 +99,6 @@ class User extends Modele {
     public function listeDeparts() {
         $departObj = new Depart($this->rowid, null, null);
         $departData = $departObj->loadDeparts();
-
         $departList = [];
         foreach ($departData as $data) {
             $depart = new Depart($this->rowid, null, null);
@@ -113,7 +109,6 @@ class User extends Modele {
             $depart->set('affichageActivite', $data['affichageActivite']);
             $departList[] = $depart;
         }
-        
         $this->liste_departs = $departList;
     }
     
@@ -123,7 +118,6 @@ class User extends Modele {
         public function listeLocations() {
             $locationObj = new Location ($this->rowid, null, null);
             $locationData = $locationObj->loadLocations();
-
             $locationList = [];
             foreach ($locationData as $data) {
                 $location = new Location($this->rowid, null, null);

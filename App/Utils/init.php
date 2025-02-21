@@ -6,7 +6,6 @@
  */
 
 use App\Services\Bdd;
-use App\Services\Session;
 
 // Activer l'affichage des erreurs
 ini_set('display_errors', 1);   // Afficher les erreurs
@@ -24,7 +23,6 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 header("Expires: 0");
 
-
 // ------------------------- INIT ACCES EXTERIEUR A DOLIBARR--------------------------------
 
 // define('NOTOKENRENEWAL', 1); // Pour éviter de renouveler le token
@@ -35,7 +33,6 @@ define('NOLOGIN', 1);        // Pour bypasser la vérification de login
 // define('NOREQUIREAJAX', 1);  // Pour désactiver AJAX
 
 // ------------------------- INIT MAIN DOLIBARR --------------------------------
-
 
 // Load Dolibarr environment
 $res = 0;
@@ -95,16 +92,6 @@ $action = GETPOST('action', 'aZ09');
 $max = 5;
 $now = dol_now("tzuser");
 
-// Security check (enable the most restrictive one)
-//if (!isModEnabled('cglcoll4saisons')) {
-//	accessforbidden('Module not enabled');
-//}
-//if (! $user->hasRight('cglcoll4saisons', 'myobject', 'read')) {
-//	accessforbidden();
-//}
-//restrictedArea($user, 'cglcoll4saisons', 0, 'cglcoll4saisons_myobject', 'myobject', '', 'rowid');
-// $db->close();
-
 // ------------------------- INIT CLASSES ET FONCTIONS ----------------
 
     require_once __DIR__ . '/../Services/Bdd.php';
@@ -123,8 +110,6 @@ $now = dol_now("tzuser");
     require_once __DIR__ . '/../Utils/verification_champs.php';
     require_once __DIR__ . '/../Utils/url_publique_fct.php';
 
- 
-
 // ------------------------- INIT VARIABLES ENVIRONNEMENT .ENV --------------------------------  
     // $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     try {
@@ -136,52 +121,3 @@ $now = dol_now("tzuser");
     } catch (PDOException $e) {
         dol_syslog("Message : init.php - Erreur lors du chargement des variable d'environnement. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
     }
-
-// ------------------------- INIT SESSION -------------------------------- 
-
-// Vérification si une session est déjà active
-// if (session_status() == PHP_SESSION_NONE) {
-//     // Définir un nom de cookie unique pour la session
-//     session_name('FORM_4_SAISONS_SESSION');
-//     // Définir les paramètres du cookie de session
-//     session_set_cookie_params([
-//         'lifetime' => 0, // Le cookie expire à la fin de la session
-//         'path' => '/', // Le cookie est valide pour tout le domaine
-//         'domain' => '', // Le cookie est valide pour le domaine courant
-//         'secure' => true, // Le cookie est envoyé uniquement via HTTPS
-//         'httponly' => true, // Le cookie est accessible uniquement via HTTP
-//         'samesite' => 'Strict', // Le cookie est envoyé uniquement dans des requêtes de même site
-//     ]);
-// session_start();
-// }
-
-// Afficher le contenu de la variable de session pour debug
-// echo '<pre>';
-// print_r($_SESSION);
-// echo '</pre>';
-
-// Pour debugage session
-
-// // Lire les paramètres d'URL
-// $client = isset($_GET['client']) ? $_GET['client'] : null;
-// $code = isset($_GET['code']) ? $_GET['code'] : null;
-// $date = isset($_GET['date']) ? $_GET['date'] : null;
-
-// // Utilisez ces variables pour générer le contenu spécifique
-// if ($client && $code && $date) {
-//     // Générer le contenu en fonction des paramètres
-//     echo "Client: $client, Code: $code, Date: $date";
-// } else {
-//     echo "Paramètres manquants";
-// }
-
-// // Détruire la session après l'envoi du contenu
-// register_shutdown_function(function() {
-//      $session = new Session();
-//      $session->destroySession();
-// });
-?>
-
-
-
-

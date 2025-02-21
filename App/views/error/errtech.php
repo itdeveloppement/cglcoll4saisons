@@ -13,4 +13,3 @@ include __DIR__ . "/../layout/header.php";
 <?php
 // Template de page : footer
 include __DIR__ . "/../layout/footer.php";
- ?>
