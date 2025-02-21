@@ -29,7 +29,7 @@ class Location extends Modele {
      */
     protected $rowidBulletin;
     /**
-     * {datetime} : date de debut de la prestation de location. 
+     * {datetime} : date de debut de la prestation de location.
      * $dateRetrait = valeur du champ dateretrait de la table llx_cglinscription_bull
      */
     protected $dateRetrait;
@@ -38,16 +38,21 @@ class Location extends Modele {
      */
     protected $intituleDepart;
     /**
-     * {string} : lieu de retrait du materiel. 
+     * {string} : lieu de retrait du materiel.
      * $lieuRetrait = valeur du champ lieuretrait de la table llx_agefodd_session_calendrier
      */
     protected $lieuRetrait;
-       
+    /**
+     * {string} : reference de l'activité - type de materiel loué.
+     * $ref = valeur du champ ref de la table llx_product
+     */
+    protected $ref;
     /**
     * {array d'objet} : liste de tous les participants pour la location
     */
     protected $listeParticipants =[];
-
+    
+    
 
     // ---------------- CONSTRUCT ---------------------------
     /**
@@ -64,7 +69,7 @@ class Location extends Modele {
     /**
      * role :  slectionne la liste des location LO d'un tiers
      * return : {array} liste des locations
-     * conditions : 
+     * conditions :
         * seulement les bulletins de type LO ( typebull = Loc  dans table bulletin)
         * seulement les LO avec un statut actif c a dire inferieur ou égale à 1 (table bulletin)
         * seulement le materiel loué  de aujourd'hui à j+1 (dateretrait table bull_det)
@@ -78,18 +83,20 @@ class Location extends Modele {
             /* date de debut de la prestation de location */
             bul.dateretrait AS dateRetrait,
             /* lieu de depart la prestation de location */
-            bul.lieuretrait AS lieuRetrait
-        FROM 
+            bul.lieuretrait AS lieuRetrait,
+            /* refrerence de la location = type de materiel loué, avec suppression des underscores et mise en minuscule sauf le premier caractère */
+            CONCAT(UPPER(SUBSTRING(REPLACE(pro.ref, '_', ''), 1, 1)), LOWER(SUBSTRING(REPLACE(pro.ref, '_', ' '), 2))) AS ref
+        FROM
             llx_cglinscription_bull as bul
-        LEFT JOIN 
+        LEFT JOIN
             llx_societe AS soc ON bul.fk_soc = soc.rowid
-        LEFT JOIN 
+        LEFT JOIN
             llx_cglinscription_bull_det AS par ON bul.rowid = par.fk_bull
-        LEFT JOIN 
+        LEFT JOIN
             llx_product AS pro ON par.fk_produit = pro.rowid
         LEFT JOIN
             llx_product_extrafields AS pro_extra ON pro.rowid = pro_extra.fk_object
-        WHERE 
+        WHERE
             /*seulement les LO du client*/
             soc.rowid = :id_societe
             /* seulement les bulletins les BU / table bulletin -> typebull = Insc */
@@ -131,7 +138,7 @@ class Location extends Modele {
     /**
      * role :  slectionne le LO d'un tiers pour une prestation de location
      * return : {objet} LO
-     * conditions : 
+     * conditions :
         * seulement les bulletins de type LO ( typebull = Loc  dans table bulletin)
         * seulement les LO avec un statut actif c a dire inferieur ou égale à 1 (table bulletin)
         * seulement le materiel loué  de aujourd'hui à j+1 (dateretrait table bull_det)
@@ -143,18 +150,20 @@ class Location extends Modele {
         $sql = "SELECT distinct
             pro.rowid AS id_product, /* date de debut de la prestation de location */
             bul.dateretrait AS dateRetrait, /* lieu de depart la prestation de location */
-            bul.lieuretrait AS lieuRetrait
-        FROM 
+            bul.lieuretrait AS lieuRetrait,
+            /* refrerence de la location = type de materiel loué, avec suppression des underscores et mise en minuscule sauf le premier caractère */
+            CONCAT(UPPER(SUBSTRING(REPLACE(pro.ref, '_', ''), 1, 1)), LOWER(SUBSTRING(REPLACE(pro.ref, '_', ' '), 2))) AS ref
+        FROM
             llx_cglinscription_bull as bul
-        LEFT JOIN 
+        LEFT JOIN
             llx_societe AS soc ON bul.fk_soc = soc.rowid
-        LEFT JOIN 
+        LEFT JOIN
             llx_cglinscription_bull_det AS par ON bul.rowid = par.fk_bull
-        LEFT JOIN 
+        LEFT JOIN
             llx_product AS pro ON par.fk_produit = pro.rowid
         LEFT JOIN
             llx_product_extrafields AS pro_extra ON pro.rowid = pro_extra.fk_object
-        WHERE 
+        WHERE
             /*seulement les LO du client*/
             par.fk_produit = :id_societe
             /* seulement les bulletins les BU / table bulletin -> typebull = Insc */

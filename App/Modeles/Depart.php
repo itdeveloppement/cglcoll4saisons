@@ -90,7 +90,7 @@ class Depart extends Modele {
                     /* id de la session/depart */
                     ses.rowid AS id_session,
                     /* nom de la session/depart */
-                    CASE 
+                    CASE
                         WHEN cat.rowid = $intitule THEN ses.intitule_custo
                         ELSE cat.intitule
                     END AS intituleDepart,
@@ -99,24 +99,24 @@ class Depart extends Modele {
                     /* lieu de depart de la session/depart */
                     pla.ref_interne AS lieuDepart
 
-                FROM 
+                FROM
                     llx_cglinscription_bull as bul
-                LEFT JOIN 
+                LEFT JOIN
                     llx_societe AS soc ON bul.fk_soc = soc.rowid
-                LEFT JOIN 
+                LEFT JOIN
                     llx_cglinscription_bull_det AS par ON bul.rowid = par.fk_bull
-                LEFT JOIN 
+                LEFT JOIN
                     llx_agefodd_session AS ses ON par.fk_activite = ses.rowid
                 LEFT JOIN
                     llx_agefodd_place AS pla ON ses.fk_session_place = pla.rowid
-                LEFT JOIN 
+                LEFT JOIN
                     llx_agefodd_session_calendrier AS cal ON ses.rowid = cal.fk_agefodd_session
                 LEFT JOIN
                     llx_agefodd_formation_catalogue AS cat ON ses.fk_formation_catalogue = cat.rowid
                 LEFT JOIN
                     llx_cfqs_c_categorieactivite AS cat_act ON ses.fk_categorieactivites = cat_act.rowid
           
-                WHERE 
+                WHERE
                     /*seulement les BU du client*/
                     soc.rowid = :id_societe
                     /* seulement les bulletins les BU / table bulletin -> typebull = Insc */

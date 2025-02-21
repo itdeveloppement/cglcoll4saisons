@@ -83,7 +83,7 @@ class User extends Modele {
                 $this->datec = '';
                 $this->code_client = '';
                 $this->default_lang = '';
-            }    
+            }
         } catch (PDOException $e) {
             dol_syslog("Message : Class User.php - Erreur SQL select user. Requette : " . $sql, LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";
@@ -122,9 +122,10 @@ class User extends Modele {
             foreach ($locationData as $data) {
                 $location = new Location($this->rowid, null, null);
                 $location->set('rowidBulDet', $data['id_product']);
-                $location->set('intituleDepart', "Location de vélo");
+                $location->set('intituleDepart', "Location de vélo (user.php ligne 125)");
                 $location->set('dateRetrait', $data['dateRetrait']);
                 $location->set('lieuRetrait', $data['lieuRetrait']);
+                $location->set('ref', $data['ref']);
                 $locationList[] = $location;
             }
             $this->liste_locations = $locationList;

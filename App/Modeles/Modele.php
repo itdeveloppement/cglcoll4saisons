@@ -21,6 +21,4 @@ class Modele {
     public function set($field, $value) {
         $this->$field = $value;
     }
-
-
 }

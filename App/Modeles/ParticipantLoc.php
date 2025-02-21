@@ -43,7 +43,7 @@ class ParticipantLoc extends Modele {
     protected $taille;
     /**
      * {string} : label de la location
-     * 
+     *
     */
     protected $label;
    
@@ -54,16 +54,14 @@ class ParticipantLoc extends Modele {
         $this->rowid_societe = $rowid_societe;
         $this->rowid_product = $rowidBulDet;
     }
-
-
+  
     /**
      * role : selectionner la liste des participants d'une prestation de location de velo
      * return : {array objet} : $result liste des participants
      */
     public function listeParticipantsLoc() {
 
-        $sql = "SELECT 
-            
+        $sql = "SELECT
             /* date de debut de la prestation de location */
             bul.dateretrait AS dateRetrait,
             /* lieu de depart la prestation de location */

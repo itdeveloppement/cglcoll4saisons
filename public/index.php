@@ -51,7 +51,7 @@ use App\Services\Session;
             // chargement liste depart et location
             $listeDeparts = afficherListeDeparts($session->getIdConnected());
             $listeLocations = afficherListeLocations($session->getIdConnected());
-            
+       
             // si liste des activites vide ou pleine
             if (empty($listeLocations) && empty($listeDeparts)) {
                 require_once __DIR__ . "/../App/views/main/aucuneactivite.php";
