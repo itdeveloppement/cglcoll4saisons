@@ -48,12 +48,15 @@ class Location extends Modele {
      */
     protected $ref;
     /**
+     * {boolean} : 0 - non affichage grisé, 1 - affichage grisé.
+     */
+    protected $affichageActivite;
+    /**
     * {array d'objet} : liste de tous les participants pour la location
     */
     protected $listeParticipants =[];
     
     
-
     // ---------------- CONSTRUCT ---------------------------
     /**
      * role : initialise l'aubjet à l'intentiation
@@ -76,6 +79,11 @@ class Location extends Modele {
         * seulement le materiel loué de type = 0 (type dans bull_det)
         * seulement le materiel loué dont le champ action est different de X et different de S (action - bull det)
         * seulement le materiel loué affichable c a dire necessitant un champ taille et age (s_status = valeur 1 dans llx_product_extrafields)
+     
+     * conditions  CASE affichage de l'activité grisée ou pas:
+        * Si l'heure de la date courante est âpres 16h ET si la date du départ est inférieure à j+1 minuit il faut griser
+        * OU si l'heure de la date courante est avant 16h ET si la date du départ est inférieur à la date du jour minuit il faut griser
+        * return : {$activité} valeur 0 si doit etre grisé sinon 1
     */
     public function loadLocations () {
         $sql = "SELECT distinct
@@ -85,7 +93,14 @@ class Location extends Modele {
             /* lieu de depart la prestation de location */
             bul.lieuretrait AS lieuRetrait,
             /* refrerence de la location = type de materiel loué, avec suppression des underscores et mise en minuscule sauf le premier caractère */
-            CONCAT(UPPER(SUBSTRING(REPLACE(pro.ref, '_', ''), 1, 1)), LOWER(SUBSTRING(REPLACE(pro.ref, '_', ' '), 2))) AS ref
+            CONCAT(UPPER(SUBSTRING(REPLACE(pro.ref, '_', ''), 1, 1)), LOWER(SUBSTRING(REPLACE(pro.ref, '_', ' '), 2))) AS ref,
+            /* affichage de l'activité grisée ou pas */
+            CASE
+                WHEN (HOUR(NOW()) >= 16 AND bul.dateretrait < DATE_ADD(CURDATE(), INTERVAL 1 DAY))
+                OR (HOUR(NOW()) < 16 AND bul.dateretrait < CURDATE())
+                THEN 0
+                ELSE 1
+            END AS affichageActivite
         FROM
             llx_cglinscription_bull as bul
         LEFT JOIN
@@ -105,8 +120,8 @@ class Location extends Modele {
             AND bul.statut <= 1
             /*seulement les activités de la location affichable (table llx_product_extrafields -> affichage == 1) */
             AND pro_extra.s_status = 1
-            /* seulement les départs à partir d'aujourd'hui  (table session calendar -> dated)  supprimer et triter en php (à j+1)*/ 
-            AND par.dateretrait >= CONCAT(CURDATE(), ' 00:00:00')
+            /* seulement les départs à partir de hier c'est a dire j-1 d'aujourd'hui)  (table session calendar -> dated)*/
+            AND par.dateretrait >= DATE_ADD(CURDATE(), INTERVAL -1 DAY)
             /* seulement les inscriptions de type = 0 (dans table participant) */
             AND par.type = 0
             /* seulement les inscriptions dont le champ action est different de X et different de S (table particpant) */
@@ -126,7 +141,6 @@ class Location extends Modele {
         $req->execute($param);
         try {
             $result = $req->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($result);
             return $result;
         } catch (PDOException $e) {
             dol_syslog("Message : Classe Location.php - Erreur lors de la recuperation de la liste des locations. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
@@ -173,8 +187,8 @@ class Location extends Modele {
             AND bul.statut <= 1
             /*seulement les activités de la location affichable (table llx_product_extrafields -> affichage == 1) */
             AND pro_extra.s_status = 1
-            /* seulement les départs à partir d'aujourd'hui  (table session calendar -> dated)  supprimer et triter en php (à j+1)*/ 
-            AND par.dateretrait >= CONCAT(CURDATE(), ' 00:00:00')
+           /* seulement les départs à partir de hier c'est a dire j-1 d'aujourd'hui)  (table session calendar -> dated)*/
+            AND par.dateretrait >= DATE_ADD(CURDATE(), INTERVAL -1 DAY)
             /* seulement les inscriptions de type = 0 (dans table participant) */
             AND par.type = 0
             /* seulement les inscriptions dont le champ action est different de X et different de S (table particpant) */

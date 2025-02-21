@@ -56,6 +56,13 @@ body {
     padding: 10px;
     line-height: 1.5;
 }
+/* activité grisé */
+.messageGrise{
+    color: var(--premiereColor);
+}
+.bagroudGrise{
+    background-color: var(--quatriemeColor);
+}
 
 /* detail depart et detail location */
 .detail-depart, .detail-location {

@@ -105,6 +105,7 @@ class User extends Modele {
             $depart->set('intituleDepart', $data['intituleDepart']);
             $depart->set('dateDepart', $data['dateDepart']);
             $depart->set('lieuDepart', $data['lieuDepart']);
+            $depart->set('affichageActivite', $data['affichageActivite']);
             $departList[] = $depart;
         }
         
@@ -126,6 +127,7 @@ class User extends Modele {
                 $location->set('dateRetrait', $data['dateRetrait']);
                 $location->set('lieuRetrait', $data['lieuRetrait']);
                 $location->set('ref', $data['ref']);
+                $location->set('affichageActivite', $data['affichageActivite']);
                 $locationList[] = $location;
             }
             $this->liste_locations = $locationList;

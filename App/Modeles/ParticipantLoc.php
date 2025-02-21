@@ -85,8 +85,8 @@ class ParticipantLoc extends Modele {
         AND soc.rowid = :id_societe
         /*seulement les activités de la location affichable (table llx_product_extrafields -> affichage == 1) */
         AND pro_extra.s_status = 1
-        /* seulement les départs à partir d'aujourd'hui  (table session calendar -> dated)  supprimer et triter en php (à j+1)*/ 
-        AND par.dateretrait >= CONCAT(CURDATE(), ' 00:00:00')
+        /* seulement les départs à partir de hier c'est a dire j-1 d'aujourd'hui)  (table session calendar -> dated)*/
+        AND par.dateretrait >= DATE_ADD(CURDATE(), INTERVAL -1 DAY)
         /* seulement les inscriptions de type = 0 (dans table participant) */
         AND par.type = 0
         /* seulement les inscriptions dont le champ action est different de X et different de S (table particpant) */

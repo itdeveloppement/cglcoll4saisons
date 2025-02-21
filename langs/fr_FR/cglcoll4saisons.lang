@@ -57,6 +57,7 @@ MyWidgetDescription = My widget description
 bonjour = Bonjour 
 civilite = M./Mme
 intitule-liste-depart = , pour chaque activités, complétez les informations.
+messageContact = Contactez Cigale Aventure.
 
 # page detail des BU et LO
 intitule-detail-depart = , complétez ou modifiez les informations puis valider.
