@@ -126,7 +126,7 @@ class Location extends Modele {
             AND par.type = 0
             /* seulement les inscriptions dont le champ action est different de X et different de S (table particpant) */
             AND par.action NOT IN ('X', 'S')
-        ORDER BY bul.dateretrait ASC";
+        ";
 
         $param = [":id_societe" => $this->rowidTiers];
         // verification si $rowidBulletinn'est pas null
@@ -134,6 +134,8 @@ class Location extends Modele {
             $sql .=" AND bul.rowid = :id_bulletin";
             $param [":id_bulletin"] = $this->rowidBulletin;
         }
+        
+        $sql .= " ORDER BY bul.dateretrait ASC ";
         
         // preparation et execution requette
         $bdd = Bdd::connexion();

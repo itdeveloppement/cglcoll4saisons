@@ -148,7 +148,8 @@ class Depart extends Modele {
                     AND par.type = 0
                     /* seulement les inscriptions dont le champ action est différent de X et S (table participant) */
                     AND par.action NOT IN ('X', 'S')
-            ORDER BY cal.heured ASC";
+                ";
+
 
         $param = [ ":id_societe" => $this->rowidTiers, ":intitule" => $intitule]; // Ajout de ":intitule" comme paramètre pour sécuriser la requête
 
@@ -158,12 +159,16 @@ class Depart extends Modele {
             $param[":id_bulletin"] = $this->rowidBulletin;
         }
 
+        $sql .= " ORDER BY cal.heured ASC ";
+
+     
         // Préparation et exécution de la requête
         $bdd = Bdd::connexion();
         $req = $bdd->prepare($sql);
         $req->execute($param);
 
         try {
+
             return $req->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             dol_syslog("Message : Classe Depart.php - Erreur lors de la recuperation de la liste des departs. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );

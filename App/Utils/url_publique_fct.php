@@ -13,10 +13,6 @@ use App\Modeles\Location;
 use App\Modeles\User;
 use App\Services\Bdd;
 
-// attention
-// il faut faire une verification de tous les tiers pour voir si il exste bien un code client
-// modifier les tiers dont le code cleint contient le rowid
-
 /**
  * rôle : creer l'url du formulaire avec les parametres et les valeurs des parametres pour un tiers
  * @param : {integer} : $rowid : rowid tiers
