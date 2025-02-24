@@ -17,7 +17,7 @@ echo "<main class='detail-depart'>";
         echo "<h3>" . htmlspecialchars(html_entity_decode($langs->trans("activite")), ENT_QUOTES, 'UTF-8') . "</h3>";
         echo "<p>" . htmlspecialchars($depart->get("intituleDepart"), ENT_QUOTES, 'UTF-8') . "</p>";
         echo "<p class='date'>" . htmlspecialchars(formatDateAffichage ($depart->get("dateDepart")), ENT_QUOTES, 'UTF-8') . "</p>";
-        // echo "<p class='lieu'>" . htmlspecialchars($depart->get("lieuDepart"), ENT_QUOTES, 'UTF-8') . "</p>";
+        echo "<p class='lieu'>" . htmlspecialchars($depart->get("lieuDepart"), ENT_QUOTES, 'UTF-8') . "</p>";
     echo "</div>";
     // form participants
     // pour chaque champ age, taille et depart integrer une condition d'affichage si $participant->get(saisie_xxx) 1 = affichage

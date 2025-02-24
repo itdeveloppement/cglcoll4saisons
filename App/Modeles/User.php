@@ -123,7 +123,7 @@ class User extends Modele {
             foreach ($locationData as $data) {
                 $location = new Location($this->rowid, null, null);
                 $location->set('rowidBulDet', $data['id_product']);
-                $location->set('intituleDepart', "Location de vélo (user.php ligne 125)");
+                $location->set('intituleDepart', "Location de vélo");
                 $location->set('dateRetrait', $data['dateRetrait']);
                 $location->set('lieuRetrait', $data['lieuRetrait']);
                 $location->set('ref', $data['ref']);

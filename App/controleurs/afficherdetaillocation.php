@@ -80,6 +80,7 @@ if (!in_array($id_product, $id_products)) {
    
 // charger le detail (lieu de depart, date, activité/type de materiel loué) du LO
 $bul = $location->loadLocation();
+$location->set("intituleDepart", "Location de vélo");
 $location->set("dateRetrait", $bul["dateRetrait"]);
 $location->set("lieuRetrait", $bul["lieuRetrait"]);
 $location->set("ref", $bul["ref"]);

@@ -92,7 +92,6 @@ class Depart extends Modele {
         */
     public function loadDeparts () {
         global $conf;
-      
         $intitule = $conf->global->CGL_ACTIVITE_INDETERMINE;
 
         $sql = "SELECT distinct
@@ -150,8 +149,9 @@ class Depart extends Modele {
                     AND par.action NOT IN ('X', 'S')
                 ";
 
-
-        $param = [ ":id_societe" => $this->rowidTiers, ":intitule" => $intitule]; // Ajout de ":intitule" comme paramètre pour sécuriser la requête
+        $param = [
+            ":id_societe" => $this->rowidTiers,
+            ":intitule" => $intitule]; // Ajout de ":intitule" comme paramètre pour sécuriser la requête
 
         // Vérification si $rowidBulletin n'est pas null
         if (!is_null($this->rowidBulletin)) {

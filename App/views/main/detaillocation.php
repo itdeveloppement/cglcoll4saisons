@@ -9,17 +9,15 @@ use App\Modeles\User;
 include_once __DIR__ . "/../layout/header.php";
 
 $user = new User($_SESSION['FORM_4_SAISONS_ID']);
-
 echo "<main class='detail-location'>";
     // location
     echo "<h2 id='btn' >" . $langs->trans("civilite") . " " . formatString($user->get("nom")) . htmlspecialchars(html_entity_decode($langs->trans("intitule-detail-depart")), ENT_QUOTES, 'UTF-8') . "</h2>";
     echo "<div class='flex activite'>";
-        echo "<h3>" . htmlspecialchars($location->get("ref")) . "</h3>";
-        echo "<p>" . htmlspecialchars($location->get("ref")) . "</p>";
-        echo "<p class='date'>" . htmlspecialchars(formatDateAffichage ($location->get("dateRetrait"))) . "</p>";
-        // echo "<p class='lieu'>" . htmlspecialchars($location->get("lieuRetrait")) . "</p>";
+        echo "<h3>" . htmlspecialchars($location->get("intituleDepart")) . "</h3>";
+        // echo "<p>" . htmlspecialchars($location->get("ref")) . "</p>";
+        echo "<p>" . htmlspecialchars(formatDateAffichage ($location->get("dateRetrait"))) . "</p>";
+        echo "<p class='lieu'>" . htmlspecialchars($location->get("lieuRetrait")) . "</p>";
     echo "</div>";
-
     // form participants
     echo '<form class="formLocation" id="participantFormLocation">';
         foreach ($listeParticipants as $index => $participant) {
