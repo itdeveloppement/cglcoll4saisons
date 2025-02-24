@@ -89,7 +89,7 @@ class Depart extends Modele {
             * Si l'heure de la date courante est âpres 16h ET si la date du départ est inférieure à j+1 minuit il faut griser
             * OU si l'heure de la date courante est avant 16h ET si la date du départ est inférieur à la date du jour minuit il faut griser
             * return : {$activité} valeur 0 si doit etre grisé sinon 1
-     */
+        */
     public function loadDeparts () {
         global $conf;
       
@@ -109,10 +109,10 @@ class Depart extends Modele {
                     pla.ref_interne AS lieuDepart,
                     /* affichage de l'activité grisée ou pas */
                     CASE
-                        WHEN (HOUR(NOW()) >= 16 AND cal.heured < DATE_ADD(CURDATE(), INTERVAL 1 DAY))
-                             OR (HOUR(NOW()) < 16 AND cal.heured < CURDATE())
-                        THEN 0
-                        ELSE 1
+                        WHEN ((HOUR(NOW()) >= 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(cal.heured), INTERVAL -2 DAY), ' 00:00:00') AS DATETIME))
+                        OR (HOUR(NOW()) < 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(cal.heured), INTERVAL -1 DAY), ' 00:00:00') AS DATETIME)))
+                        THEN 1
+                        ELSE 0
                     END AS affichageActivite
                 FROM
                     llx_cglinscription_bull AS bul
@@ -161,7 +161,8 @@ class Depart extends Modele {
 
         $sql .= " ORDER BY cal.heured ASC ";
 
-     
+        dol_syslog($sql);
+
         // Préparation et exécution de la requête
         $bdd = Bdd::connexion();
         $req = $bdd->prepare($sql);
@@ -169,7 +170,8 @@ class Depart extends Modele {
 
         try {
 
-            return $req->fetchAll(PDO::FETCH_ASSOC);
+           $test = $req->fetchAll(PDO::FETCH_ASSOC);
+           return $test;
         } catch (PDOException $e) {
             dol_syslog("Message : Classe Depart.php - Erreur lors de la recuperation de la liste des departs. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";

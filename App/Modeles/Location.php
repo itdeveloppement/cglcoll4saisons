@@ -96,10 +96,10 @@ class Location extends Modele {
             CONCAT(UPPER(SUBSTRING(REPLACE(pro.ref, '_', ''), 1, 1)), LOWER(SUBSTRING(REPLACE(pro.ref, '_', ' '), 2))) AS ref,
             /* affichage de l'activité grisée ou pas */
             CASE
-                WHEN (HOUR(NOW()) >= 16 AND bul.dateretrait < DATE_ADD(CURDATE(), INTERVAL 1 DAY))
-                OR (HOUR(NOW()) < 16 AND bul.dateretrait < CURDATE())
-                THEN 0
-                ELSE 1
+                WHEN ((HOUR(NOW()) >= 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(bul.dateretrait), INTERVAL -2 DAY), ' 00:00:00') AS DATETIME))
+                OR (HOUR(NOW()) < 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(bul.dateretrait), INTERVAL -1 DAY), ' 00:00:00') AS DATETIME)))
+                THEN 1
+                ELSE 0
             END AS affichageActivite
         FROM
             llx_cglinscription_bull as bul
@@ -136,7 +136,7 @@ class Location extends Modele {
         }
         
         $sql .= " ORDER BY bul.dateretrait ASC ";
-        
+        dol_syslog($sql);
         // preparation et execution requette
         $bdd = Bdd::connexion();
         $req = $bdd->prepare($sql);

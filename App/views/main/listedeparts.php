@@ -16,7 +16,7 @@ echo '<main class="liste-depart">';
     echo "<h2>" . $langs->trans("bonjour") . " " . $langs->trans("civilite") . " " . formatString($user->get("nom")) . $langs->trans("intitule-liste-depart")  . "</h2>";
    
     if (!empty($listeDeparts)) {
-        echo "<h3 class='h3detaildepart'>Activités accompagnées</h3>";
+        echo "<h3 class='h3detaildepart'>Activités accompagnées (obs : a formater pour anglais)</h3>";
     }
     foreach ($listeDeparts as $depart) {
         if ($depart->get('affichageActivite')==1) {
@@ -36,8 +36,9 @@ echo '<main class="liste-depart">';
         }
     }
     if (!empty($listeDeparts)) {
-        echo "<h3 class='h3detaildepart'>Location de vélos</h3>";
+        echo "<h3 class='h3detaildepart'>Location de vélos (obs : a formater pour anglais)</h3>";
     }
+   
     foreach ($listeLocations as $location) {
         if ($location->get('affichageActivite')==1) {
             echo "<article class='card-liste-depart'>";

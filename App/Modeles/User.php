@@ -118,6 +118,7 @@ class User extends Modele {
         public function listeLocations() {
             $locationObj = new Location ($this->rowid, null, null);
             $locationData = $locationObj->loadLocations();
+            
             $locationList = [];
             foreach ($locationData as $data) {
                 $location = new Location($this->rowid, null, null);
