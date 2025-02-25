@@ -26,7 +26,7 @@ use App\Modeles\User;
 
     /**
      * role : charge les proprietes de l'objet autentifciation et verifie l'autentification
-     * param : 
+     * param :
      *  $rowid {string} : id de l'utilisateur dans url de connexion
      *  $code_client {string} : code unique de l'utilisateur dans url de connexion
      *  $datec {string} : date de creation de l'utilisateur dans url de connexion
@@ -44,7 +44,7 @@ use App\Modeles\User;
      */
     function authentification () {
         
-        $user = new User($this->rowid); 
+        $user = new User($this->rowid);
         
         // date user => au format entier
         if (formatDateEntier($user->get("datec"))) {
