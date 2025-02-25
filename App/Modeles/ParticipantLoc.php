@@ -68,7 +68,7 @@ class ParticipantLoc extends Modele {
             bul.lieuretrait AS lieuRetrait,
             par.rowid AS rowidBulDet,
             par.NomPrenom AS prenom,
-            par.age AS age,
+            par.agereel AS age,
             par.taille AS taille
         FROM
             llx_cglinscription_bull AS bul
@@ -118,7 +118,7 @@ class ParticipantLoc extends Modele {
             llx_cglinscription_bull_det AS bul
         SET
             NomPrenom = :id_prenom,
-            age = :id_age,
+            agereel = :id_age,
             taille = :id_taille
         WHERE rowid = :rowid
         ";
