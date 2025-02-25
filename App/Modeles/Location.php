@@ -73,12 +73,7 @@ class Location extends Modele {
      * role :  slectionne la liste des location LO d'un tiers
      * return : {array} liste des locations
      * conditions :
-        * seulement les bulletins de type LO ( typebull = Loc  dans table bulletin)
-        * seulement les LO avec un statut actif c a dire inferieur ou égale à 1 (table bulletin)
-        * seulement le materiel loué de aujourd'hui à j+1 (dateretrait table bull_det)
-        * seulement le materiel loué de type = 0 (type dans bull_det)
-        * seulement le materiel loué dont le champ action est different de X et different de S (action - bull det)
-        * seulement le materiel loué affichable c a dire necessitant un champ taille et age (s_status = valeur 1 dans llx_product_extrafields)
+        * voir dans la requette
      
      * conditions  CASE affichage de l'activité grisée ou pas:
         * Si l'heure de la date courante est âpres 16h ET si la date du départ est inférieure à j+1 minuit il faut griser
@@ -122,7 +117,7 @@ class Location extends Modele {
             AND bul.statut > 0
             /*seulement les activités de la location affichable (table llx_product_extrafields -> affichage == 1) */
             AND pro_extra.s_status = 1
-            /* seulement les départs à partir de hier c'est a dire j-1 d'aujourd'hui)  (table session calendar -> dated)*/
+            /* seulement les départs de aujourd'hui à partir de l'heure courante (table session calendar -> dated) */
             AND par.dateretrait >= NOW()
             /* seulement les inscriptions de type = 0 (dans table participant) */
             AND par.type = 0
@@ -157,12 +152,7 @@ class Location extends Modele {
      * role :  slectionne le LO d'un tiers pour une prestation de location
      * return : {objet} LO
      * conditions :
-        * seulement les bulletins de type LO ( typebull = Loc  dans table bulletin)
-        * seulement les LO avec un statut actif c a dire inferieur ou égale à 1 (table bulletin)
-        * seulement les départs de aujourd'hui  à partir de l'heure courante (table session calendar -> dated)
-        * seulement le materiel loué de type = 0 (type dans bull_det)
-        * seulement le materiel loué dont le champ action est different de X et different de S (action - bull det)
-        * seulement le materiel loué affichable c a dire necessitant un champ taille et age (s_status = valeur 1 dans llx_product_extrafields)
+        * voir dans la requette
     */
     public function loadLocation() {
         $sql = "SELECT distinct
@@ -186,6 +176,10 @@ class Location extends Modele {
             par.fk_produit = :id_societe
             /* seulement les bulletins les BU / table bulletin -> typebull = Insc */
             AND bul.typebull = 'Loc'
+            /* seulement les LO au statut actif et qui ne sont pas archivé ou abandonné (table bulletin -> statut) */
+            AND bul.statut < 9
+            /* seulement les LO au statut actif et qui ne sont pas brouillon (table bulletin -> statut) */
+            AND bul.statut > 0
             /* seulement les LO au statut actif et qui ne sont pas archivé ou abandonné (table bulletin -> statut) */
             AND bul.statut < 9
             /* seulement les LO au statut actif et qui ne sont pas brouillon (table bulletin -> statut) */
