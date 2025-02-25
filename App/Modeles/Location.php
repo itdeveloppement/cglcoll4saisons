@@ -75,7 +75,7 @@ class Location extends Modele {
      * conditions :
         * seulement les bulletins de type LO ( typebull = Loc  dans table bulletin)
         * seulement les LO avec un statut actif c a dire inferieur ou égale à 1 (table bulletin)
-        * seulement les départs de aujourd'hui  à partir de l'heure courante (table session calendar -> dated)
+        * seulement le materiel loué de aujourd'hui à j+1 (dateretrait table bull_det)
         * seulement le materiel loué de type = 0 (type dans bull_det)
         * seulement le materiel loué dont le champ action est different de X et different de S (action - bull det)
         * seulement le materiel loué affichable c a dire necessitant un champ taille et age (s_status = valeur 1 dans llx_product_extrafields)
@@ -116,12 +116,14 @@ class Location extends Modele {
             soc.rowid = :id_societe
             /* seulement les bulletins les BU / table bulletin -> typebull = Insc */
             AND bul.typebull = 'Loc'
-            /* seulement les departs actifs (non annulés) (status = 1 dans table session ) */
-            AND bul.statut <= 1
+            /* seulement les LO au statut actif et qui ne sont pas archivés ou abandonnés (table bulletin -> statut) */
+            AND bul.statut < 9
+            /* seulement les LO au statut actif et qui ne sont pas brouillons (table bulletin -> statut) */
+            AND bul.statut > 0
             /*seulement les activités de la location affichable (table llx_product_extrafields -> affichage == 1) */
             AND pro_extra.s_status = 1
-            /* seulement les LO de aujourd'hui  à partir de l'heure courante (table session calendar -> dated) */
-            AND cal.heured >= NOW()
+            /* seulement les départs à partir de hier c'est a dire j-1 d'aujourd'hui)  (table session calendar -> dated)*/
+            AND par.dateretrait >= NOW()
             /* seulement les inscriptions de type = 0 (dans table participant) */
             AND par.type = 0
             /* seulement les inscriptions dont le champ action est different de X et different de S (table particpant) */

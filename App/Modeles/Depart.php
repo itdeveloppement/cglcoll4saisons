@@ -131,8 +131,10 @@ class Depart extends Modele {
                     soc.rowid = :id_societe
                     /* seulement les bulletins les BU / table bulletin -> typebull = 'Insc' */
                     AND bul.typebull = 'Insc'
-                    /* seulement les BU au statut actif, c'est-à-dire inférieur à 9 (table bulletin -> statut) */
+                    /* seulement les BU au statut actif et qui ne sont pas archivé ou abandonné (table bulletin -> statut) */
                     AND bul.statut < 9
+                    /* seulement les BU au statut actif et qui ne sont pas brouillon (table bulletin -> statut) */
+                    AND bul.statut > 0
                     /* seulement les départs actifs (non annulés) (status = 1 dans table session ) */
                     AND ses.status = 1
                     /* seulement les activités du départ affichable (table catégorie -> affichage == 1) */
