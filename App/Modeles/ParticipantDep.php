@@ -88,7 +88,7 @@ class ParticipantDep extends Modele {
             /* lieu de depart de la session/depart */
             pla.ref_interne AS lieuDepart,
             par.NomPrenom AS prenom,
-            par.age AS age,
+            par.agereel AS age,
             par.taille AS taille,
             par.poids AS poids,
             cat_act.saisie_age AS saisie_age,
@@ -144,9 +144,9 @@ class ParticipantDep extends Modele {
     public function updateParticipantsDepart() {
         $sql ="UPDATE
             llx_cglinscription_bull_det AS bul
-        SET 
+        SET
             NomPrenom = :id_prenom,
-            age = :id_age,
+            agereel = :id_age,
             taille = :id_taille,
             poids = :id_poids
         WHERE rowid = :rowid
