@@ -66,19 +66,7 @@ class Depart extends Modele {
      * role : slectionne la liste des departs des BU d'un tiers
      * return : {array} liste des daparts
      * conditions :
-        * table bulletin
-            * - seulement les BU du client :
-            * - seulement les bulletins detype Insc/ table bulletin -> typebull = Insc :
-            * - seulement les BU au statut actif c a dire inferieur à la valeur 9 (table bulletin -> statut) :
-        * table session
-            * - seulement les departs actifs (non annulés) (status = 1 dans table session )
-        * table categorie
-            * - seulement les activités du depart affichable (table categorie -> affichage)
-        * table session calendar
-            * seulement les départs de aujourd'hui  à partir de l'heure courante (table session calendar -> dated)
-        * table participant
-            * - seulement les inscriptions de type = 0 (dans table participant)
-            * - seulement les inscriptions dont le champ action est different de X et different de S (table particpant)
+        * * voir dans la requette
             
         * {string} : nom de la session (depart). Condition :
             * si valeur du champ intitule de la table llx_agefodd_formation_catalogue == AUTRES
