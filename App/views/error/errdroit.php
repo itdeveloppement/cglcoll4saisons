@@ -7,7 +7,7 @@ include __DIR__ . "/../layout/header.php";
 ?>
     <main class="flex message-conf-err">
         <div class="flex message-conf-text">
-            <h2>Vous ne pouvez pas acceder à ce contenu ! Contacter Cigale Aventure.</h2>
+            <h2>Vous ne pouvez pas acceder à ce contenu. Contactez Cigale Aventure.</h2>
             <a href="/custom/cglcoll4saisons/public/index.php">Retour à la liste des activités</a>
         </div>
     </main>
