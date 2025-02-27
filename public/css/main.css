@@ -29,10 +29,11 @@
 
 /* structure des pages */
 body {
-    font-family: var(--fonte);
-    font-size: 15px;
+    /* font-family: var(--fonte); */
+    font-family: var(--lato);
+    font-size: 14px;
     background-color: var( --quatriemeColor);
-}
+  }
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -50,7 +51,7 @@ body {
 }
 .card-liste-depart {
     border-radius: var( --borderRadius);
-    border: 1px solid var(--quatriemeColor);
+    /*border: 1px solid var(--quatriemeColor);*/
     margin-bottom: 10px;
     padding: 10px;
     line-height: 1.5;
@@ -60,7 +61,7 @@ body {
     color: var(--premiereColor);
 }
 .bagroudGrise{
-    background-color: var(--quatriemeColor);
+    background-color: var(--sixiemeColor);
 }
 
 /* detail depart et detail location */

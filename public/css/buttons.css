@@ -1,18 +1,19 @@
 
 /* generale */
 a, button {
-    padding: 10px 20px;
-    background-color: var(--deuxiemeColor);
     color: var(--cinquiemeColor);
+    padding: 10px 20px;
+    font-weight: 600;
+    background-color: var(--deuxiemeColor);
     transition: background-color 0.3s ease;
     border-radius: var(--borderRadius);
     text-align: center;
-    font-weight: 500;
 }
 
 a:hover, button:hover {
     background-color: var(--premiereColor);
-    font-weight: 500;
+    color: var(--cinquiemeColor);
+    font-weight: 600;
 }
 
 /* header */
@@ -34,7 +35,7 @@ header .btn-container {
 }
 
 .liste-depart .btn-container a{
-    max-width: 200px;
+    max-width: 220px;
     padding: 5px 10px;
     width: 100%;
 }
@@ -55,4 +56,18 @@ header .btn-container {
 
 .message-confirmation a{
     max-width: 220px;
+}
+
+@media (max-width: 450px) {
+    .card-liste-depart .btn-container {
+        width: 100%;
+        display: flex;          /* Utilise Flexbox pour l'alignement */
+        justify-content: center; /* Centre le contenu si nécessaire */
+    }
+    
+    .card-liste-depart .btn-container a {
+        display: block;         /* Faire en sorte que le lien occupe toute la largeur */
+        width: 100%;            /* S'assurer que le lien prend 100% de la largeur du parent */
+        text-align: center; 
+    }    
 }

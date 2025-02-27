@@ -1,11 +1,10 @@
 /* generale */
 h2 {
-    margin: 20px 0;
+    margin: 15px 0;
     padding: 0 10px;
 }
 h3 {
     margin: 0 0 5px 0;
-    /* padding: 5px 10px; */
 }
 
 /* footer */
@@ -18,16 +17,16 @@ h3 {
 /* detail depart */
 .detail-depart h3, .detail-location h3, .h3detaildepart {
     width: 100%;
-    background-color: var(--deuxiemeColor);
+    background-color: var( --sixiemeColor);
     border-radius: var(--borderRadius);
-    margin: 10px 0 0 0;
-    color: var(--cinquiemeColor);
-    font-weight: 300;
-    font-size: 14px;
+    margin: 10px 0 10px 0;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-size: 16px;
 }
-.activite h3, .h3detaildepart {
+.activite h3 {
     margin: 0 0 10px 0;
-    padding: 3px 9px;
+    padding: 10px 10px;
 }
 .formLocation h3, .formDepart h3 {
     margin: 10px 0;
@@ -37,5 +36,15 @@ h3 {
     font-weight: 600 ;
 }
 
+.bagroudGrise p {
+    color: var(--septiemeColor);
+}
 
+.bagroudGrise h3{
+    color: var(--septiemeColor);
+}
 
+.formDepart h3 {
+    padding: 10px;
+
+}
