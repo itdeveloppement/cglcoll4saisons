@@ -133,7 +133,12 @@ class Location extends Modele {
         }
         
         $sql .= " ORDER BY bul.dateretrait ASC ";
+         // log stocker dans dolibar_document/dolibar_.log
+        dol_syslog("Module form4saison - Requette sql SELECT -  Classe Location - Methode loadLocations : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+        dol_syslog("------------------------------------------------------------------------------------------------------------------", LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+        
         dol_syslog($sql);
+
         // preparation et execution requette
         $bdd = Bdd::connexion();
         $req = $bdd->prepare($sql);
@@ -180,19 +185,20 @@ class Location extends Modele {
             AND bul.statut < 9
             /* seulement les LO au statut actif et qui ne sont pas brouillon (table bulletin -> statut) */
             AND bul.statut > 0
-            /* seulement les LO au statut actif et qui ne sont pas archivé ou abandonné (table bulletin -> statut) */
-            AND bul.statut < 9
-            /* seulement les LO au statut actif et qui ne sont pas brouillon (table bulletin -> statut) */
-            AND bul.statut > 0
             /*seulement les activités de la location affichable (table llx_product_extrafields -> affichage == 1) */
             AND pro_extra.s_status = 1
-           /* seulement les départs de aujourd'hui  à partir de l'heure courante (table session calendar -> dated) */
+            /* seulement les départs de aujourd'hui  à partir de l'heure courante (table session calendar -> dated) */
             AND par.dateretrait >= NOW()
             /* seulement les inscriptions de type = 0 (dans table participant) */
             AND par.type = 0
             /* seulement les inscriptions dont le champ action est different de X et different de S (table particpant) */
             AND par.action NOT IN ('X', 'S')
         ";
+
+        // log stocker dans dolibar_document/dolibarreq_Sql_CglColl4Saisons.log
+        dol_syslog("Module form4saison - Requette sql SELECT -  Classe Location - Methode loadLocation : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+        dol_syslog("------------------------------------------------------------------------------------------------------------------", LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+         dol_syslog($sql);
         // preparation et execution requette
         $param = [":id_societe" => $this->rowidProduct];
         $bdd = Bdd::connexion();
