@@ -29,8 +29,9 @@
 
 /* structure des pages */
 body {
-    font-family: var(--fonte);
-    font-size: 15px;
+    /* font-family: var(--fonte); */
+    font-family: var(--lato);
+    font-size: 14px;
     background-color: var( --quatriemeColor);
   }
 .flex {
@@ -50,7 +51,7 @@ body {
 }
 .card-liste-depart {
     border-radius: var( --borderRadius);
-    border: 1px solid var(--quatriemeColor);
+    /*border: 1px solid var(--quatriemeColor);*/
     margin-bottom: 10px;
     padding: 10px;
     line-height: 1.5;

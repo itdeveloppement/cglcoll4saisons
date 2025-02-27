@@ -1,6 +1,6 @@
 /* generale */
 h2 {
-    margin: 20px 0;
+    margin: 15px 0;
     padding: 0 10px;
 }
 h3 {
@@ -16,14 +16,13 @@ h3 {
 
 /* detail depart */
 .detail-depart h3, .detail-location h3, .h3detaildepart {
-    color: var(--cinquiemeColor);
     width: 100%;
-    background-color: var(--deuxiemeColor);
+    background-color: var( --sixiemeColor);
     border-radius: var(--borderRadius);
     margin: 10px 0 10px 0;
     padding: 10px 10px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px;
 }
 .activite h3 {
     margin: 0 0 10px 0;
@@ -43,10 +42,6 @@ h3 {
 
 .bagroudGrise h3{
     color: var(--septiemeColor);
-}
-
-.h3detaildepart {
-    
 }
 
 .formDepart h3 {
