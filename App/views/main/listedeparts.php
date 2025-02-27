@@ -35,7 +35,7 @@ echo '<main class="liste-depart">';
             echo "</article>";
         }
     }
-    if (!empty($listeDeparts)) {
+    if (!empty($listeLocations)) {
         echo "<h3 class='h3detaildepart'>Location de vélos (obs : a formater pour anglais)</h3>";
     }
    
