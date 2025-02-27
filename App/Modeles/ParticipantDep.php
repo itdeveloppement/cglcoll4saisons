@@ -137,7 +137,6 @@ class ParticipantDep extends Modele {
         }
     }
 
-
     /**
      * modifier un participant d'un depart
      */
