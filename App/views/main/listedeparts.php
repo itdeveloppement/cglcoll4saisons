@@ -31,7 +31,8 @@ echo '<main class="liste-depart">';
                 echo "<p>" . formatDateAffichage ($depart->get("dateDepart")) . "</p>";
                 echo "<h3>" . $depart->get("intituleDepart") . "</h3>";
                 // echo "<p>" . $depart->get("lieuDepart") . "</p>";
-                echo '<div class="messageGrise">'. $langs->trans("messageContact") .'</a></div>';
+                echo '<div class="messageGrise">'. $langs->trans("messageContact") .'</div>';
+                echo '<div class="messageGrise">'. $langs->trans("messageContact2") .'</div>';
             echo "</article>";
         }
     }
@@ -52,7 +53,8 @@ echo '<main class="liste-depart">';
                 echo "<p>" . formatDateAffichage ($location->get("dateRetrait")) . "</p>";
                 echo "<h3>" . $location->get("ref") . "</h3>";
                 // echo "<p>" . $location->get("lieuRetrait") . "</p>";
-                echo '<div class="messageGrise">'. $langs->trans("messageContact") .'</a></div>';
+                echo '<div class="messageGrise">'. $langs->trans("messageContact") .'</div>';
+                echo '<div class="messageGrise">'. $langs->trans("messageContact2") .'</div>';
             echo "</article>";
         }
     }

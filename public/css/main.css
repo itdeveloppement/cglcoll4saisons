@@ -32,7 +32,7 @@ body {
     font-family: var(--fonte);
     font-size: 15px;
     background-color: var( --quatriemeColor);
-}
+  }
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -60,7 +60,7 @@ body {
     color: var(--premiereColor);
 }
 .bagroudGrise{
-    background-color: var(--quatriemeColor);
+    background-color: var(--sixiemeColor);
 }
 
 /* detail depart et detail location */

@@ -5,7 +5,6 @@ h2 {
 }
 h3 {
     margin: 0 0 5px 0;
-    /* padding: 5px 10px; */
 }
 
 /* footer */
@@ -17,17 +16,18 @@ h3 {
 
 /* detail depart */
 .detail-depart h3, .detail-location h3, .h3detaildepart {
+    color: var(--cinquiemeColor);
     width: 100%;
     background-color: var(--deuxiemeColor);
     border-radius: var(--borderRadius);
-    margin: 10px 0 0 0;
-    color: var(--cinquiemeColor);
-    font-weight: 300;
+    margin: 10px 0 10px 0;
+    padding: 10px 10px;
+    font-weight: 600;
     font-size: 14px;
 }
-.activite h3, .h3detaildepart {
+.activite h3 {
     margin: 0 0 10px 0;
-    padding: 3px 9px;
+    padding: 10px 10px;
 }
 .formLocation h3, .formDepart h3 {
     margin: 10px 0;
@@ -37,5 +37,19 @@ h3 {
     font-weight: 600 ;
 }
 
+.bagroudGrise p {
+    color: var(--septiemeColor);
+}
 
+.bagroudGrise h3{
+    color: var(--septiemeColor);
+}
 
+.h3detaildepart {
+    
+}
+
+.formDepart h3 {
+    padding: 10px;
+
+}
