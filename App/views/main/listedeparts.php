@@ -57,7 +57,5 @@ echo '<main class="liste-depart">';
         }
     }
 echo '</main>';
-?>
 
-<?php
 include_once __DIR__ . "/../layout/footer.php";
