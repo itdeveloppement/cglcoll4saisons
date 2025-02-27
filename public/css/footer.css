@@ -1,8 +1,9 @@
 .footer {
+    background-color: var(--sixiemeColor);
     width: 100%;
-    /* background-color: var(--deuxiemeColor);*/
     padding: 20px;
-    color: var(--cinquiemeColor);
+    margin-top: 20px;
+  
     
 }
 .container-texte {
@@ -14,7 +15,6 @@
 
 .footer-p {
     flex: 1 1 calc(50% - 10px); /* 50% moins l'espace */
-    min-width: 200px;
     box-sizing: border-box;
     text-align: center;
 }

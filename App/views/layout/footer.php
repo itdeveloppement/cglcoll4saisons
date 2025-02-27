@@ -7,8 +7,8 @@ Template de page : pied de page
                 <div class = "flex container-texte">
                         <p class = "footer-p">
                             <?php
-                            $telephone = "+330980363784";
-                            echo '<a href="tel:' . $telephone . '">(+33) 09 80 36 37 84</a>';
+                            $telephone = "(0)9 80 36 67 84";
+                            echo '<a href="tel:' . $telephone . '">(0)9 80 36 67 84</a>';
                             ?>
                         </p>
                         <p class = "footer-p">
@@ -20,10 +20,9 @@ Template de page : pied de page
                         <p class = "footer-p">
                             <?php
                             $url = "https://www.cigaleaventure.com";
-                            echo '<a href="' . $url . '" target="_blank">Web site</a>';
+                            echo '<a href="' . $url . '" target="_blank">www.cigaleaventure.com</a>';
                             ?>
                         </p>
-                        <p class = "footer-p"><a href="https://www.google.com/maps?q=Cigale+Aventure,+3+rue+de+l'horloge+30120+Le+Vigan" target="_blank">Maps</a></p>
                 </div>
             </footer>
         <!-- div container -->
