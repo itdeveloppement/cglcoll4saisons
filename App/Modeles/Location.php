@@ -184,10 +184,10 @@ class Location extends Modele {
             /* seulement les LO au statut actif et qui ne sont pas archivé ou abandonné (table bulletin -> statut) */
             AND bul.statut < 9
             /* seulement les LO au statut actif et qui ne sont pas brouillon (table bulletin -> statut) */
-            /* AND bul.statut > 0 */
+            AND bul.statut > 0
             /*seulement les activités de la location affichable (table llx_product_extrafields -> affichage == 1) */
             AND pro_extra.s_status = 1
-            /* seulement les départs de aujourd'hui à partir de l'heure courante (table session calendar -> dated) */
+            /* seulement les départs de aujourd'hui  à partir de l'heure courante (table session calendar -> dated) */
             AND par.dateretrait >= NOW()
             /* seulement les inscriptions de type = 0 (dans table participant) */
             AND par.type = 0
