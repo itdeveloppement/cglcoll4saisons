@@ -61,9 +61,11 @@ messageContact = Contact Cigale Aventure.
 
 # page detail des BU et LO
 intitule-detail-depart = , complete or modify the information and validate.
-participant = Participant
+participant = Member
 loc-velo = Bike rental.
 activite = Activity
+activite-accompagnee = Guided outdoor activitie
+activite-location = Bicycle rental
 
 # page a bientot
 intitlule-abientot = Thank you for visiting!
