@@ -98,6 +98,11 @@ class ParticipantLoc extends Modele {
             ":id_product" => $this->rowid_product,
             ":id_societe" => $this->rowid_societe
         ];
+
+        // log stocker dans dolibar_document/dolibar.log
+        dol_syslog("Module form4saison - Requette sql SELECT -  Classe ParticipantLoc - Methode listeParticipantsLoc : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons");
+        dol_syslog("------------------------------------------------------------------------------------------------------------------", LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+        
         try {
             $bdd = Bdd::connexion();
             $req = $bdd->prepare($sql);
@@ -129,6 +134,11 @@ class ParticipantLoc extends Modele {
             ":id_taille" => $this->taille,
             ":rowid" => $this->rowid_product
         ];
+
+        // log stocker dans dolibar_document/dolibar.log
+        dol_syslog("Module form4saison - Requette sql UPDATE -  Classe ParticipantLoc - Methode updateParticipants : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons");
+        dol_syslog("------------------------------------------------------------------------------------------------------------------", LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+        
         try {
             $bdd = Bdd::connexion();
             $req = $bdd->prepare($sql);

@@ -68,6 +68,11 @@ class User extends Modele {
         `code_client`,
         `default_lang`
         FROM `llx_societe` WHERE `rowid` = :id";
+
+        // log stocker dans dolibar_document/dolibarreq_Sql_CglColl4Saisons.log
+        dol_syslog("Module form4saison - Requette sql SELECT -  Classe User - Methode loadUser : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons");
+        dol_syslog("------------------------------------------------------------------------------------------------------------------", LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+        
         $param = [ ":id" => $this->rowid];
         $bdd = Bdd::connexion();
         $req = $bdd->prepare($sql);

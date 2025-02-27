@@ -9,7 +9,8 @@ use App\Services\Session;
     ?>
 
     <?php
-    // var_dump($_SESSION["lang"]);
+
+        // var_dump($_SESSION["lang"]);
     $lang = $_SESSION["lang"];
     changeLang ($db, $conf,  $lang);
    

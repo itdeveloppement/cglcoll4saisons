@@ -92,6 +92,8 @@ class Depart extends Modele {
                     /* lieu de depart de la session/depart */
                     pla.ref_interne AS lieuDepart,
                     /* affichage de l'activité grisée ou pas */
+                    /* debug */
+                    bul.statut,
                     CASE
                         WHEN ((HOUR(NOW()) >= 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(cal.heured), INTERVAL -2 DAY), ' 00:00:00') AS DATETIME))
                         OR (HOUR(NOW()) < 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(cal.heured), INTERVAL -1 DAY), ' 00:00:00') AS DATETIME)))
@@ -146,17 +148,18 @@ class Depart extends Modele {
 
         $sql .= " ORDER BY cal.heured ASC ";
 
-        dol_syslog($sql);
-
+        // log stocker dans dolibar_document/dolibarr_req_Sql_CglColl4Saisons.log
+        dol_syslog("Module form4saison - Requette sql SELECT -  Classe Depart - Methode loadDeparts : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+        dol_syslog("------------------------------------------------------------------------------------------------------------------", LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+       
         // Préparation et exécution de la requête
         $bdd = Bdd::connexion();
         $req = $bdd->prepare($sql);
         $req->execute($param);
 
         try {
-
-           $test = $req->fetchAll(PDO::FETCH_ASSOC);
-           return $test;
+            return $req->fetchAll(PDO::FETCH_ASSOC);
+           
         } catch (PDOException $e) {
             dol_syslog("Message : Classe Depart.php - Erreur lors de la recuperation de la liste des departs. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";
@@ -195,6 +198,10 @@ class Depart extends Modele {
             ses.rowid = :id_session
         ";
 
+        // log stocker dans dolibar_document/dolibarr_req_Sql_CglColl4Saisons.log
+        dol_syslog("Module form4saison - Requette sql SELECT -  Classe Depart - Methode loadDepart : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+        dol_syslog("------------------------------------------------------------------------------------------------------------------", LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
+        
         // preparation et execution requette
         $param = [":id_session" => $this->rowidDepart];
         $bdd = Bdd::connexion();
