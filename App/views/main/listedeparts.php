@@ -35,7 +35,7 @@ echo '<main class="liste-depart">';
             echo "</article>";
         }
     }
-    if (!empty($listeDeparts)) {
+    if (!empty($listeLocations)) {
         echo "<h3 class='h3detaildepart'>Location de vélos (obs : a formater pour anglais)</h3>";
     }
    
@@ -57,7 +57,5 @@ echo '<main class="liste-depart">';
         }
     }
 echo '</main>';
-?>
 
-<?php
 include_once __DIR__ . "/../layout/footer.php";
