@@ -81,7 +81,7 @@ echo "<main class='detail-depart'>";
             echo '<p class="p-error d-none" id="btn-form">' .  htmlspecialchars(html_entity_decode($langs->trans("err_sumit-form"), ENT_QUOTES, 'UTF-8')). '</p>';
             echo '<button type="submit">' . htmlspecialchars(html_entity_decode($langs->trans("btn-valider"), ENT_QUOTES, 'UTF-8')) . '</button>';
         echo '</div>';
-        echo '</form>';
+    echo '</form>';
 echo '</main>';
 
 include_once __DIR__ . "/../layout/footer.php";
