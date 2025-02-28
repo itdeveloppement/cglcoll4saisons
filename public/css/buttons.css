@@ -72,5 +72,21 @@ header .btn-container {
         max-width: none;
         text-align: center;
         width: 100%;
-    }    
+    }   
+    
+    .detail-depart .container-btn button {   
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 800px) {
+    .container-btn {
+        position: sticky;
+        bottom: 0;
+        background-color: white;
+        padding: 10px;
+        text-align: center;
+        border-top: 1px solid var(--sixiemeColor);
+    }
+    
 }
