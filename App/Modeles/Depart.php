@@ -158,9 +158,8 @@ class Depart extends Modele {
         $req->execute($param);
 
         try {
-            $test = $req->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($test);
-            return $test;
+            return $req->fetchAll(PDO::FETCH_ASSOC);
+
         } catch (PDOException $e) {
             dol_syslog("Message : Classe Depart.php - Erreur lors de la recuperation de la liste des departs. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";
