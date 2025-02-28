@@ -84,7 +84,7 @@ echo "<main class='detail-depart'>";
     echo '</form>';
 echo '</main>';
 
-include_once __DIR__ . "/../layout/footer.php";
+// include_once __DIR__ . "/../layout/footer.php";
 
 ?>
 

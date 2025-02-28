@@ -80,6 +80,7 @@ body {
 .activite .date, .activite .lieu {
     font-weight: 300;
 }
+
 /* a bientot / infos enregistrees */
 .message-confirmation {
     flex-direction: column;
