@@ -30,7 +30,8 @@ echo '<main class="liste-depart">';
                     echo "<p>" . formatDateAffichage ($depart->get("dateDepart")) . "</p>";
                     echo "<h3>" . $depart->get("intituleDepart") . "</h3>";
                     // echo "<p>" . $depart->get("lieuDepart") . "</p>";
-                    echo '<div class="btn-container flex"><a href="/custom/cglcoll4saisons/App/controleurs/afficherdetaildepart.php?session=' . $depart->get("rowidDepart") . '">' . $langs->trans("btn-info") .' </a></div>';
+                    echo '<div class="messageGrise">'. $langs->trans("messageContact") .'</div>';
+                    echo '<div class="messageGrise">'. $langs->trans("messageContact2") .'</div>';
                 echo "</article>";
             }
         }
