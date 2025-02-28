@@ -1,7 +1,8 @@
 /* generale */
 h2 {
-    margin: 15px 0;
+    margin: 14px 0;
     padding: 0 10px;
+    border-bottom: 1px solid var(--sixiemeColor);
 }
 h3 {
     margin: 0 0 5px 0;
@@ -23,14 +24,16 @@ h3 {
     padding: 10px 10px;
     font-weight: 600;
     font-size: 16px;
+    color: var(--deuxiemeColor);
 }
 .activite h3 {
     margin: 0 0 10px 0;
     padding: 10px 10px;
 }
 .formLocation h3, .formDepart h3 {
-    margin: 10px 0;
+    margin: 20px 0 10px 0;
     padding: 5px 10px;
+
 }
 .activite p{
     font-weight: 600 ;
@@ -44,7 +47,4 @@ h3 {
     color: var(--septiemeColor);
 }
 
-.formDepart h3 {
-    padding: 10px;
 
-}

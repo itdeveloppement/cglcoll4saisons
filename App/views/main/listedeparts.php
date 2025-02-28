@@ -15,9 +15,9 @@ echo '<main class="liste-depart">';
     // verif données
     echo "<h2>" . $langs->trans("bonjour") . " " . $langs->trans("civilite") . " " . formatString($user->get("nom")) . $langs->trans("intitule-liste-depart")  . "</h2>";
    
-    if (!empty($listeDeparts)) {
-        echo "<h3 class='h3detaildepart'>" . $langs->trans("activite-accompagnee") . "</h3>";
-    }
+    // if (!empty($listeDeparts)) {
+    //     echo "<h3 class='h3detaildepart'>" . $langs->trans("activite-accompagnee") . "</h3>";
+    // }
     foreach ($listeDeparts as $depart) {
         if ($depart->get('affichageActivite')==1) {
         echo "<article class='card-liste-depart'>";
@@ -36,9 +36,9 @@ echo '<main class="liste-depart">';
             echo "</article>";
         }
     }
-    if (!empty($listeLocations)) {
-        echo "<h3 class='h3detaildepart'>" . $langs->trans("activite-location") . "</h3>";
-    }
+    // if (!empty($listeLocations)) {
+    //     echo "<h3 class='h3detaildepart'>" . $langs->trans("activite-location") . "</h3>";
+    // }
    
     foreach ($listeLocations as $location) {
         if ($location->get('affichageActivite')==1) {

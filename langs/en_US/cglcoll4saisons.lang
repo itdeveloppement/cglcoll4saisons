@@ -56,11 +56,11 @@ MyWidgetDescription = My widget description
 # page liste des departs
 bonjour = Hello 
 civilite = Mr./Mrs 
-intitule-liste-depart =, for each activity, complete or modify the information.
+intitule-liste-depart =, please complete the information. Thank you!
 messageContact = Contact Cigale Aventure.
 
 # page detail des BU et LO
-intitule-detail-depart = , complete or modify the information and validate.
+intitule-detail-depart = , please complete the information. Thank you!
 participant = Member
 loc-velo = Bike rental.
 activite = Activity
@@ -80,7 +80,7 @@ intitlule-errtech = A technical error occurred! Contact Cigale Aventure. Leave a
 intitlule-infos-enregistrees = Your information is saved.
 
 # page aucune activite en cours
-aucunes-activites = Currently, none of your activities require additional information.
+aucunes-activites = All your activities are good to go. No extra information is needed.
 
 # message erreur
 err-longueur-prenom = 40 characters maximum.

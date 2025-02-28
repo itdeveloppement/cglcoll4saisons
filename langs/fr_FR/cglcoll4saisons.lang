@@ -56,14 +56,14 @@ MyWidgetDescription = My widget description
 # page liste des depart
 bonjour = Bonjour 
 civilite = M./Mme
-intitule-liste-depart = , pour chaque activités, complétez les informations.
+intitule-liste-depart = , merci de compléter les informations.
 messageContact = En cours de préparation. 
 messageContact2 = Contactez Cigale Aventure.
 activite-accompagnee = Activité accompagnée
 activite-location = Location de vélo
 
 # page detail des BU et LO
-intitule-detail-depart = , complétez ou modifiez les informations puis valider.
+intitule-detail-depart = , merci de compléter les informations.
 participant = Participant
 loc-velo = Location velo.
 activite = Activité
@@ -81,7 +81,7 @@ intitlule-errtech = Une erreur technique est survenue. Contactez Cigale Aventure
 intitlule-infos-enregistrees = Vos informations sont enregistrées.
 
 # page aucune activite en cours
-aucunes-activites = Actuellement aucune de vos activités ne necessitent d'informations complémentaires.
+aucunes-activites = Toutes vos activités sont prêtes. Aucune information supplémentaire n'est nécessaire.
 
 # input
 label-prenom = Prénom
