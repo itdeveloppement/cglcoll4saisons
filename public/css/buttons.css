@@ -59,15 +59,18 @@ header .btn-container {
 }
 
 @media (max-width: 450px) {
+
     .card-liste-depart .btn-container {
-        width: 100%;
-        display: flex;          /* Utilise Flexbox pour l'alignement */
-        justify-content: center; /* Centre le contenu si nécessaire */
+        display: flex;          
+        justify-content: center;
+        width: 100%; 
     }
     
     .card-liste-depart .btn-container a {
-        display: block;         /* Faire en sorte que le lien occupe toute la largeur */
-        width: 100%;            /* S'assurer que le lien prend 100% de la largeur du parent */
-        text-align: center; 
+        display: block;       
+        flex: 1;
+        max-width: none;
+        text-align: center;
+        width: 100%;
     }    
 }

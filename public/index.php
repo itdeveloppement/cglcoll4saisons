@@ -19,7 +19,9 @@ use App\Services\Session;
     if ($session->isConnected()) {
 
         $listeDeparts = afficherListeDeparts($session->getIdConnected());
-        $listeLocations = afficherListeLocations($session->getIdConnected());
+        
+        // chargement liste depart et location désactivé. A reactiver pour afficher la liste des locaation quand projet finalisé
+        // $listeLocations = afficherListeLocations($session->getIdConnected());
 
         // si liste des activites vide ou pleine
         if (empty($listeLocations) && empty($listeDeparts)) {
@@ -51,7 +53,9 @@ use App\Services\Session;
             $session->connect($rowid);
             // chargement liste depart et location
             $listeDeparts = afficherListeDeparts($session->getIdConnected());
-            $listeLocations = afficherListeLocations($session->getIdConnected());
+
+            // chargement liste depart et location désactivé. A reactiver pour afficher la liste des locaation quand projet finalisé
+            // $listeLocations = afficherListeLocations($session->getIdConnected());
        
             // si liste des activites vide ou pleine
             if (empty($listeLocations) && empty($listeDeparts)) {
