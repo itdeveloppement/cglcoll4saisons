@@ -80,7 +80,7 @@ intitlule-errtech = A technical error occurred! Contact Cigale Aventure. Leave a
 intitlule-infos-enregistrees = Your information is saved.
 
 # page aucune activite en cours
-aucunes-activites = No activitie in progress.
+aucunes-activites = Currently, none of your activities require additional information.
 
 # message erreur
 err-longueur-prenom = 40 characters maximum.
