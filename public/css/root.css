@@ -22,3 +22,17 @@
     --borderShadow: 0 0 20px rgb(96, 96, 96);  /* box-shadow */
     --borderHover: 2px solid rgb(255, 200, 54);
 }
+
+/* placeholder des champs de tous les formulaires */
+/* couleur d'ecriture */
+
+input::placeholder {
+    color: var(--premiereColor);
+    opacity: 1; 
+}
+
+input::-webkit-input-placeholder { color: var(--premiereColor); } /* Chrome, Safari */
+input:-moz-placeholder { color: var(--premiereColor); } /* Firefox 4-18 */
+input::-moz-placeholder { color: var(--premiereColor); } /* Firefox 19+ */
+input:-ms-input-placeholder { color: var(--premiereColor); } /* Internet Explorer */
+

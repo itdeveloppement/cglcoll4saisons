@@ -35,7 +35,7 @@ echo "<main class='detail-location'>";
 
                     echo "</div>";
 
-                    echo "<div class='flex container-input'>";   
+                    echo "<div class='flex container-input'>";
 
                         echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-age")), ENT_QUOTES, 'UTF-8') . '</label>';
 
