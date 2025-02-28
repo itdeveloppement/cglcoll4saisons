@@ -132,13 +132,11 @@ class Location extends Modele {
             $param [":id_bulletin"] = $this->rowidBulletin;
         }
         
-        $sql .= " ORDER BY bul.dateretrait ASC ";
+        $sql .= " ORDER BY bul.dateretrait DESC";
          // log stocker dans dolibar_document/dolibar_.log
         dol_syslog("Module form4saison - Requette sql SELECT -  Classe Location - Methode loadLocations : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
         dol_syslog("------------------------------------------------------------------------------------------------------------------", LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
         
-        dol_syslog($sql);
-
         // preparation et execution requette
         $bdd = Bdd::connexion();
         $req = $bdd->prepare($sql);
@@ -198,7 +196,7 @@ class Location extends Modele {
         // log stocker dans dolibar_document/dolibarreq_Sql_CglColl4Saisons.log
         dol_syslog("Module form4saison - Requette sql SELECT -  Classe Location - Methode loadLocation : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
         dol_syslog("------------------------------------------------------------------------------------------------------------------", LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
-         dol_syslog($sql);
+         
         // preparation et execution requette
         $param = [":id_societe" => $this->rowidProduct];
         $bdd = Bdd::connexion();
