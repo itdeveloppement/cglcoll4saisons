@@ -45,7 +45,6 @@ header .btn-container {
     width: 100%;
     justify-content: center;
     margin-top: 20px;
-    
 }
 
 /*  a bientot / err tech / err droit / info enregistrées*/
@@ -58,16 +57,31 @@ header .btn-container {
     max-width: 220px;
 }
 
+.container-btn {
+    position: sticky;
+    bottom: 0;
+    background-color: var(--cinquiemeColor);
+    padding: 20px;
+    text-align: center;
+}
 @media (max-width: 450px) {
+
     .card-liste-depart .btn-container {
-        width: 100%;
-        display: flex;          /* Utilise Flexbox pour l'alignement */
-        justify-content: center; /* Centre le contenu si nécessaire */
+        display: flex;          
+        justify-content: center;
+        width: 100%; 
     }
     
     .card-liste-depart .btn-container a {
-        display: block;         /* Faire en sorte que le lien occupe toute la largeur */
-        width: 100%;            /* S'assurer que le lien prend 100% de la largeur du parent */
-        text-align: center; 
-    }    
+        display: block;       
+        flex: 1;
+        max-width: none;
+        text-align: center;
+        width: 100%;
+    }   
+    
+    .detail-depart .container-btn button {   
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }

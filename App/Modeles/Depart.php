@@ -146,7 +146,7 @@ class Depart extends Modele {
             $param[":id_bulletin"] = $this->rowidBulletin;
         }
 
-        $sql .= " ORDER BY cal.heured ASC ";
+        $sql .= " ORDER BY cal.heured DESC";
 
         // log stocker dans dolibar_document/dolibarr_req_Sql_CglColl4Saisons.log
         dol_syslog("Module form4saison - Requette sql SELECT -  Classe Depart - Methode loadDeparts : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );

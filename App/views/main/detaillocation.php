@@ -35,7 +35,7 @@ echo "<main class='detail-location'>";
 
                     echo "</div>";
 
-                    echo "<div class='flex container-input'>";   
+                    echo "<div class='flex container-input'>";
 
                         echo '<label for="nom">' . htmlspecialchars(html_entity_decode($langs->trans("label-age")), ENT_QUOTES, 'UTF-8') . '</label>';
 
@@ -64,7 +64,7 @@ echo "<main class='detail-location'>";
     echo '</form>';
 echo '</main>';
 
-include_once __DIR__ . "/../layout/footer.php";
+// include_once __DIR__ . "/../layout/footer.php";
 ?>
 
 <script>

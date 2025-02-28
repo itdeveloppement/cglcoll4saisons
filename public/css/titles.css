@@ -16,6 +16,11 @@ h3 {
 }
 
 /* detail depart */
+
+.liste-depart h2 {
+    font-size: 20px;
+    
+}
 .detail-depart h3, .detail-location h3, .h3detaildepart {
     width: 100%;
     background-color: var( --sixiemeColor);
