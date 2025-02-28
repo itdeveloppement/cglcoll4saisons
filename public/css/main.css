@@ -49,6 +49,7 @@ body {
     padding: 0 20px;
 }
 .card-liste-depart {
+    background-color: var(--sixiemeColor);
     border-radius: var( --borderRadius);
     border: 1px solid var(--sixiemeColor);
     margin-bottom: 10px;

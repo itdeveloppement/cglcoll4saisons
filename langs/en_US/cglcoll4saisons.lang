@@ -57,7 +57,10 @@ MyWidgetDescription = My widget description
 bonjour = Hello 
 civilite = Mr./Mrs 
 intitule-liste-depart =, please complete the information. Thank you!
-messageContact = Contact Cigale Aventure.
+messageContact = The activity is being prepared. 
+messageContact2 = Contact Cigale Aventure.
+activite-accompagnee = Guided outdoor activities
+activite-location = Bicycle rental
 
 # page detail des BU et LO
 intitule-detail-depart = , please complete the information. Thank you!
