@@ -26,11 +26,10 @@
     background-color: rgba(240, 240, 240, 0.5);
 }
 
-
 /* structure des pages */
 body {
-    /* font-family: var(--fonte); */
-    font-family: var(--lato);
+    font-family: var(--fonte);
+    /* font-family: var(--lato); */
     font-size: 14px;
     background-color: var( --quatriemeColor);
   }
@@ -50,8 +49,9 @@ body {
     padding: 0 20px;
 }
 .card-liste-depart {
+    background-color: var(--sixiemeColor);
     border-radius: var( --borderRadius);
-    /*border: 1px solid var(--quatriemeColor);*/
+    border: 1px solid var(--sixiemeColor);
     margin-bottom: 10px;
     padding: 10px;
     line-height: 1.5;
@@ -69,6 +69,7 @@ body {
     padding: 0 20px;
 }
 .activite {
+    margin-top: 20px;
     flex-direction: column;
     line-height: 1.5;
 }
@@ -97,7 +98,6 @@ body {
     left: 50%;
     transform: translateX(-50%);
     max-width: 600px;
-   
 }
 
 /* errtech / errdroit */

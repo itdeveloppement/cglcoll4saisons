@@ -1,4 +1,9 @@
 <?php
+
+/*
+    Obsolette: non utilisé actuelleme
+*/
+
 /**
  * rôle : met en forme la page info enregistrées
  */

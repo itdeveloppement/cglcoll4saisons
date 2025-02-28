@@ -258,8 +258,6 @@ if (formDepart) {
 }
 });
 
-
-
 // Champ âge
 document.querySelectorAll('.age-field').forEach(function(input) {
     // Vérifier au chargement si le champ est rempli

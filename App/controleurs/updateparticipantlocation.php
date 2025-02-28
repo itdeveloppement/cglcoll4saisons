@@ -89,6 +89,7 @@ foreach($prenom as $idBullDet => $value) {
 echo json_encode([
     "status" => "success",
     "redirect" => true,
-    "url" => "../../App/controleurs/afficherinfosenregistrees.php"
+    // "url" => "../../App/controleurs/afficherinfosenregistrees.php"
+    "url" => "../../public/index.php"
 ]);
 
