@@ -64,7 +64,7 @@ echo "<main class='detail-location'>";
     echo '</form>';
 echo '</main>';
 
-include_once __DIR__ . "/../layout/footer.php";
+// include_once __DIR__ . "/../layout/footer.php";
 ?>
 
 <script>
