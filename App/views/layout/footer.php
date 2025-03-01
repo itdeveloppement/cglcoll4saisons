@@ -7,8 +7,8 @@ Template de page : pied de page
                 <div class = "flex container-texte">
                         <p class = "footer-p">
                             <?php
-                            $telephone = "(0)9 80 36 67 84";
-                            echo '<a href="tel:' . $telephone . '">(0)9 80 36 67 84</a>';
+                            $telephone = "+339 80 36 37 84";
+                            echo '<a href="tel:' . $telephone . '">+33(0)9 80 36 37 84</a>';
                             ?>
                         </p>
                         <p class = "footer-p">
