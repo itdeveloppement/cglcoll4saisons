@@ -23,9 +23,10 @@
             
             <?php
             // contenu du bouton langue et parametre $lang url
+            
             if ( $_SESSION["lang"] == "en_US") {
                 $lang = "fr_FR";
-                $btn = "French";
+                $btn = "Français";
             } else {
                 $lang = "en_US";
                 $btn = "English";
