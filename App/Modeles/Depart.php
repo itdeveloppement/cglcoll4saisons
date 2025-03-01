@@ -92,11 +92,9 @@ class Depart extends Modele {
                     /* lieu de depart de la session/depart */
                     pla.ref_interne AS lieuDepart,
                     /* affichage de l'activité grisée ou pas */
-                    /* debug */
-                    bul.statut,
                     CASE
                         WHEN ((HOUR(NOW()) >= 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(cal.heured), INTERVAL -1 DAY), ' 00:00:00') AS DATETIME))
-                        OR (HOUR(NOW()) < 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(cal.heured), INTERVAL -1 DAY), ' 00:00:00') AS DATETIME)))
+                        OR (HOUR(NOW()) < 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE(cal.heured), ' 00:00:00') AS DATETIME)))
                         THEN 1
                         ELSE 0
                     END AS affichageActivite
@@ -146,7 +144,7 @@ class Depart extends Modele {
             $param[":id_bulletin"] = $this->rowidBulletin;
         }
 
-        $sql .= "ORDER BY cal.heured DESC";
+        $sql .= " ORDER BY cal.heured DESC";
 
         // log stocker dans dolibar_document/dolibarr_req_Sql_CglColl4Saisons.log
         dol_syslog("Module form4saison - Requette sql SELECT -  Classe Depart - Methode loadDeparts : " . $sql, LOG_DEBUG, 0, "_req_Sql_CglColl4Saisons" );
@@ -158,8 +156,11 @@ class Depart extends Modele {
         $req->execute($param);
 
         try {
-            return $req->fetchAll(PDO::FETCH_ASSOC);
 
+
+             $test = $req->fetchAll(PDO::FETCH_ASSOC);
+             // var_dump($test);
+             return $test;
         } catch (PDOException $e) {
             dol_syslog("Message : Classe Depart.php - Erreur lors de la recuperation de la liste des departs. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";

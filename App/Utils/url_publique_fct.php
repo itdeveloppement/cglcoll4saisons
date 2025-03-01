@@ -25,7 +25,6 @@ function createURL ($rowidTiers){
     $listeDeparts = $user->get("liste_departs");
     $listeLocations = $user->get("liste_locations");
 
-
     if (!empty($listeDeparts) || !empty($listeLocations)) {
          if (formatDateEntier($user->get("datec"))) {
             $date = formatDateEntier($user->get("datec"));
@@ -33,15 +32,16 @@ function createURL ($rowidTiers){
             $date = '';
         }
     $url = "/custom/cglcoll4saisons/public/index.php?client=" . $user->get("rowid") . "&code=" . $user->get("code_client") . "&date=" . $date ."";
+    dol_syslog("Module form4saison - URL formulaire -  Fct creatUrl : " . $url, LOG_DEBUG, 0, "_url_CglColl4Saisons" );
     return $url;
-   } else { 
-        $url ='';
-        return $url;
+
+   } else {
+    return $url ='';
    }
 }
 
 /**
- * rôle : afficher pour un tiers et un BU l'url du formulaire de collecte de données
+ * rôle : afficher dans LO Dolibarr pour un tiers et un BU l'url du formulaire de collecte de données
  * conditions de selection des données : celles de l'objet Depart methode loadDeparts
  * @param : id du tiers
  * @param : id du bulletin
@@ -75,7 +75,7 @@ function affichageURL_BU($rowidTiers, $rowidBulletinBU) {
 }
 
 /**
- * rôle : afficher pour un tiers et un LO l'url du formulaire de collecte de données
+ * rôle : afficher dans LO Dolibarr pour un tiers et un LO l'url du formulaire de collecte de données
  * conditions de selection des données : celles de l'objet lOCATION methode loadLocations
  * @param : {integer} : $rowidTiers : id du tiers
  * @param : {integer} : $rowidBulletin : id du bulletin/LO
