@@ -89,10 +89,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Vérifie le contenu de formData
                 let formData = new FormData(formLocation);
                 
-                formData.forEach((value, key) => {
-                    console.log(`${key}: ${value}`);
+                // formData.forEach((value, key) => {
+                //     console.log(`${key}: ${value}`);
                     
-                });
+                // });
 
                 // Modifier les données en BDD
                 fetch('../controleurs/updateparticipantlocation.php', {

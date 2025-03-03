@@ -91,8 +91,8 @@ class Location extends Modele {
             CONCAT(UPPER(SUBSTRING(REPLACE(pro.ref, '_', ''), 1, 1)), LOWER(SUBSTRING(REPLACE(pro.ref, '_', ' '), 2))) AS ref,
             /* affichage de l'activité grisée ou pas */
             CASE
-                WHEN ((HOUR(NOW()) >= 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(bul.dateretrait), INTERVAL -2 DAY), ' 00:00:00') AS DATETIME))
-                OR (HOUR(NOW()) < 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(bul.dateretrait), INTERVAL -1 DAY), ' 00:00:00') AS DATETIME)))
+                WHEN ((HOUR(NOW()) >= 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(cal.heured), INTERVAL -1 DAY), ' 00:00:00') AS DATETIME))
+                OR (HOUR(NOW()) < 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE(cal.heured), ' 00:00:00') AS DATETIME)))
                 THEN 1
                 ELSE 0
             END AS affichageActivite

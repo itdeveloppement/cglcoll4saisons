@@ -92,11 +92,9 @@ class Depart extends Modele {
                     /* lieu de depart de la session/depart */
                     pla.ref_interne AS lieuDepart,
                     /* affichage de l'activité grisée ou pas */
-                    /* debug */
-                    bul.statut,
                     CASE
-                        WHEN ((HOUR(NOW()) >= 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(cal.heured), INTERVAL -2 DAY), ' 00:00:00') AS DATETIME))
-                        OR (HOUR(NOW()) < 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(cal.heured), INTERVAL -1 DAY), ' 00:00:00') AS DATETIME)))
+                        WHEN ((HOUR(NOW()) >= 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE_ADD(DATE(cal.heured), INTERVAL -1 DAY), ' 00:00:00') AS DATETIME))
+                        OR (HOUR(NOW()) < 16 AND CURRENT_TIMESTAMP < CAST(CONCAT(DATE(cal.heured), ' 00:00:00') AS DATETIME)))
                         THEN 1
                         ELSE 0
                     END AS affichageActivite
@@ -158,8 +156,7 @@ class Depart extends Modele {
         $req->execute($param);
 
         try {
-            return $req->fetchAll(PDO::FETCH_ASSOC);
-           
+            return $req->fetchAll(PDO::FETCH_ASSOC); 
         } catch (PDOException $e) {
             dol_syslog("Message : Classe Depart.php - Erreur lors de la recuperation de la liste des departs. Exception : " . $e->getMessage(), LOG_ERR, 0, "_cglColl4Saisons" );
             require_once __DIR__ . "/../views/error/errtech.php";
